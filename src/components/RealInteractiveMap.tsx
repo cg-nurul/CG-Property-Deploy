@@ -293,7 +293,7 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
   };
 
   const selectedPlace = places.find(p => p.id === selectedPlaceId) || places[0];
-  const googleMapsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${selectedPlace.lat},${selectedPlace.lng}&destination_place_id=Nue+District+Rama+9`;
+  const googleMapsDirectionsUrl = 'https://maps.app.goo.gl/CbW4QjCVaX2wo5yB7';
 
   const filteredPlaces = activeCategory === 'all' 
     ? places 
