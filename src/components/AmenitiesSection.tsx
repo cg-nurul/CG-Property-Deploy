@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { GradientCarousel, CarouselCardItem } from './ui/GradientCarousel';
 import { 
   FilledPool, 
   FilledDumbbell, 
@@ -20,6 +21,8 @@ import {
   FilledCheckCircleBlueBg,
   FilledChevronDown
 } from './ui/FilledIcons';
+
+const FACILITIES_BG_PATTERN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23dfb85a' fill-opacity='0.65'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E")`;
 
 interface LocalizedText {
   en: string;
@@ -48,6 +51,7 @@ interface AmenityDetail {
 export const AmenitiesSection: React.FC = () => {
   const { language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<'all' | 'building' | 'residence' | 'access'>('all');
+  const [targetCarouselRequest, setTargetCarouselRequest] = useState<{ index: number; timestamp: number } | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const categories = [
@@ -358,23 +362,51 @@ export const AmenitiesSection: React.FC = () => {
     },
   ];
 
-  // Filter featured cards based on activeCategory
-  // When 'all', show 4 balanced highlights (one from each primary highlight)
-  const filteredFeatured = activeCategory === 'all'
-    ? [featuredAmenities[0], featuredAmenities[1], featuredAmenities[4], featuredAmenities[8]]
-    : featuredAmenities.filter(item => item.category === activeCategory);
+  // All cards from all filters are always present in the scrolling array (12 cards total)
+  const allCarouselCards: CarouselCardItem[] = useMemo(() => {
+    return featuredAmenities.map((item) => ({
+      id: item.id,
+      category: item.category,
+      title: item.title[language] || item.title.en,
+      tag: item.tag[language] || item.tag.en,
+      image: item.image,
+      icon: item.icon,
+    }));
+  }, [language]);
 
-  // Filter accordion list based on activeCategory
-  const filteredAccordion = activeCategory === 'all'
-    ? accordionAmenities
-    : accordionAmenities.filter(item => item.category === activeCategory);
+  // When clicking a category pill, update category and smoothly glide carousel to that section
+  const handleCategoryClick = (catId: 'all' | 'building' | 'residence' | 'access') => {
+    setActiveCategory(catId);
+    setExpandedId(null);
+
+    if (catId === 'building') {
+      setTargetCarouselRequest({ index: 0, timestamp: Date.now() });
+    } else if (catId === 'residence') {
+      setTargetCarouselRequest({ index: 4, timestamp: Date.now() });
+    } else if (catId === 'access') {
+      setTargetCarouselRequest({ index: 8, timestamp: Date.now() });
+    } else if (catId === 'all') {
+      setTargetCarouselRequest({ index: 0, timestamp: Date.now() });
+    }
+  };
+
+  // When scrolling through the cards, dynamically switch the active filter pill to match current active card
+  const handleActiveCardChange = useCallback((_index: number, item: CarouselCardItem) => {
+    if (item.category && item.category !== activeCategory) {
+      setActiveCategory(item.category as 'building' | 'residence' | 'access');
+    }
+  }, [activeCategory]);
 
   const toggleAccordion = (id: string) => {
     setExpandedId(prev => (prev === id ? null : id));
   };
 
   return (
-    <section id="amenities-section" className="relative py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+    <section 
+      id="amenities-section" 
+      className="relative pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
+      style={{ marginTop: '-50px', paddingTop: '60px' }}
+    >
       {/* Header */}
       <div className="relative z-10 text-center max-w-4xl mx-auto mb-12 sm:mb-16">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EDE8E1] text-[#042F61] text-xs font-semibold uppercase tracking-widest mb-3">
@@ -409,10 +441,7 @@ export const AmenitiesSection: React.FC = () => {
               <button
                 key={cat.id}
                 id={`amenity-tab-${cat.id}`}
-                onClick={() => {
-                  setActiveCategory(cat.id as any);
-                  setExpandedId(null);
-                }}
+                onClick={() => handleCategoryClick(cat.id as any)}
                 className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   isActive
                     ? 'bg-[#042F61] text-white shadow-xs'
@@ -426,48 +455,104 @@ export const AmenitiesSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Featured Visual Photographic Cards - Even distribution of 4 cards, descriptive paragraph removed */}
+      {/* Featured Visual Photographic Cards - 3D Gradient Carousel with isolated horizontal scroll */}
       <div className="relative z-10 mb-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filteredFeatured.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.id}
-                id={`featured-amenity-${item.id}`}
-                className="bg-white rounded-2xl border border-[#E6E0D8] overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col group cursor-default"
-              >
-                {/* Photo Container with Top Badge */}
-                <div className="relative aspect-4/3 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title[language] || item.title.en}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-                  
-                  {/* Badge */}
-                  <div className="absolute top-3 left-3 bg-black/50 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg flex items-center gap-1.5 border border-white/20">
-                    <Icon className="w-3.5 h-3.5 text-[#DFB85A] fill-current" />
-                    <span>{item.tag[language] || item.tag.en}</span>
-                  </div>
-                </div>
-
-                {/* Clean Title Only (Descriptive paragraph removed to reduce heaviness) */}
-                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-center">
-                  <h3 className="text-base font-bold text-[#042F61] leading-snug group-hover:text-[#235894] transition-colors">
-                    {item.title[language] || item.title.en}
-                  </h3>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <GradientCarousel
+          items={allCarouselCards}
+          targetIndex={targetCarouselRequest}
+          onActiveIndexChange={handleActiveCardChange}
+        />
       </div>
 
       {/* Interactive Accordion Amenities Section to Reduce Text Heaviness */}
-      <div className="relative z-10 bg-[#FAF8F5] rounded-3xl p-6 sm:p-10 border border-[#E6E0D8]">
-        <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div 
+        className="relative z-10 bg-[#FAF8F5] rounded-3xl p-6 sm:p-10 border border-[#E6E0D8] overflow-hidden"
+      >
+        {/* Top-Right Corner Pattern (0.3 opacity) */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: FACILITIES_BG_PATTERN,
+            backgroundSize: '24px 24px',
+            opacity: 0.3,
+            WebkitMaskImage: 'radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 45%, rgba(0,0,0,0) 80%)',
+            maskImage: 'radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 45%, rgba(0,0,0,0) 80%)',
+          }}
+        />
+
+        {/* Bottom-Left Corner Pattern (0.2 opacity) */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: FACILITIES_BG_PATTERN,
+            backgroundSize: '24px 24px',
+            opacity: 0.2,
+            WebkitMaskImage: 'radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 75%)',
+            maskImage: 'radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 75%)',
+          }}
+        />
+
+        {/* Bottom-Right Corner Pattern (0.2 opacity) */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: FACILITIES_BG_PATTERN,
+            backgroundSize: '24px 24px',
+            opacity: 0.2,
+            WebkitMaskImage: 'radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 75%)',
+            maskImage: 'radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 75%)',
+          }}
+        />
+
+        {/* Top-Left Corner Pattern (0.1 opacity) */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: FACILITIES_BG_PATTERN,
+            backgroundSize: '24px 24px',
+            opacity: 0.1,
+            WebkitMaskImage: 'radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 75%)',
+            maskImage: 'radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 75%)',
+          }}
+        />
+
+        {/* Middle Radial Low-Opacity Pattern */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: FACILITIES_BG_PATTERN,
+            backgroundSize: '24px 24px',
+            opacity: 0.05,
+            WebkitMaskImage: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 80%)',
+            maskImage: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 80%)',
+          }}
+        />
+
+        {/* Top-Left Blur Overlay for heading legibility */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundColor: 'rgba(250, 248, 245, 0.65)',
+            backdropFilter: 'blur(5px)',
+            WebkitBackdropFilter: 'blur(5px)',
+            WebkitMaskImage: 'radial-gradient(ellipse at 0% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 65%)',
+            maskImage: 'radial-gradient(ellipse at 0% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 65%)',
+          }}
+        />
+
+        {/* Middle Radial Blur Overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundColor: 'rgba(250, 248, 245, 0.45)',
+            backdropFilter: 'blur(4px)',
+            WebkitBackdropFilter: 'blur(4px)',
+            WebkitMaskImage: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 75%)',
+            maskImage: 'radial-gradient(ellipse at 50% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 75%)',
+          }}
+        />
+
+        <div className="relative z-10 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
             <FilledCheckCircleBlueBg className="w-7 h-7 shrink-0 shadow-xs" />
             <div>
@@ -490,8 +575,8 @@ export const AmenitiesSection: React.FC = () => {
         </div>
 
         {/* Accordion Grid - Even 2-column or 3-column layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-          {filteredAccordion.map((amenity) => {
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          {accordionAmenities.map((amenity) => {
             const Icon = amenity.icon;
             const isExpanded = expandedId === amenity.id;
 

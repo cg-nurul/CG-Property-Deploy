@@ -22,7 +22,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'hero.badge.location': 'Bangkok, Thailand',
     'hero.badge.collection': 'The Rama 9 Collection · 2 Units',
     'hero.badge.preview': 'Featured Residence',
-    'hero.viewDetails': 'View Residence',
+    'hero.viewDetails': 'View Property',
 
     // Why CG Property (The CG Property Difference)
     'why.eyebrow': 'THE CG PROPERTY DIFFERENCE',
@@ -194,7 +194,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'hero.badge.location': '泰国 · 曼谷',
     'hero.badge.collection': '首发系列 · 2套精装住宅',
     'hero.badge.preview': '精选呈现',
-    'hero.viewDetails': '查看住宅',
+    'hero.viewDetails': '查看物业',
 
     // Why CG Property (The CG Property Difference)
     'why.eyebrow': 'CG PROPERTY 卓越品质',
@@ -366,7 +366,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'hero.badge.location': 'กรุงเทพฯ ประเทศไทย',
     'hero.badge.collection': 'เดอะ พระราม 9 คอลเลกชัน · 2 ยูนิต',
     'hero.badge.preview': 'เรซิเดนซ์แนะนำ',
-    'hero.viewDetails': 'ดูรายละเอียด',
+    'hero.viewDetails': 'ดูข้อมูลที่พัก',
 
     // Why CG Property (The CG Property Difference)
     'why.eyebrow': 'THE CG PROPERTY DIFFERENCE',

@@ -20,30 +20,24 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
   return (
     <footer id="main-footer" className="relative bg-[#042F61] text-white pt-16 pb-0 border-t border-[#021B38] overflow-hidden">
-      {/* Geometric CAD & Isometric Grid Background Pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-15 -z-0" aria-hidden="true">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-          <defs>
-            <pattern id="footer-geometric-pattern" width="64" height="64" patternUnits="userSpaceOnUse">
-              <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#D6E9FF" strokeWidth="0.6" />
-              <path d="M 0 32 L 64 32 M 32 0 L 32 64" fill="none" stroke="#588BC7" strokeWidth="0.5" strokeDasharray="3 3" />
-              <polygon points="32,12 52,32 32,52 12,32" fill="none" stroke="#DFB85A" strokeWidth="0.5" />
-              <circle cx="32" cy="32" r="1.5" fill="#DFB85A" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#footer-geometric-pattern)" />
-        </svg>
-      </div>
+      {/* Background Architectural Pattern (Most Back Layer) */}
+      <div 
+        className="absolute inset-0 pointer-events-none footer-pattern-bg -z-0" 
+        style={{ opacity: 'var(--footer-pattern-opacity, 0.4)' }}
+        aria-hidden="true" 
+      />
 
       <div 
         className="absolute -bottom-24 right-1/4 w-96 h-96 rounded-full bg-[#DFB85A]/10 blur-3xl pointer-events-none -z-0"
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-[2560px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div className="relative max-w-[2560px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/15">
+        {/* Main Footer Grid Container */}
+        <div className="relative" style={{ paddingBottom: '30px' }}>
+          {/* Main Footer Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 relative z-10">
           
           {/* Brand Col */}
           <div className="lg:col-span-4 space-y-4">
@@ -52,26 +46,30 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <img
                   src={BRAND_ASSETS.logoLandscapeFooterWhite}
                   alt="CG Property"
-                  className="h-[100px] w-auto object-contain"
-                  style={{ height: '100px' }}
+                  className="footer-brand-logo w-auto object-contain"
+                  style={{
+                    height: '120px',
+                    marginTop: '-50px',
+                    marginLeft: '-30px',
+                  }}
                 />
               </div>
             </div>
-            <p className="text-xs text-white/80 leading-relaxed max-w-sm">
+            <p className="text-xs text-white/95 leading-relaxed max-w-sm">
               {t('intro.heading')}
             </p>
-            <div className="pt-2 text-xs text-white/60 space-y-1">
-              <p>Primary Location: {BRAND_CONFIG.primaryLocation}</p>
-              <p>{BRAND_CONFIG.addressNotice}</p>
+            <div className="pt-2 text-xs text-white/85 space-y-1">
+              <p><span className="text-white font-medium">Primary Location:</span> {BRAND_CONFIG.primaryLocation}</p>
+              <p className="text-white/80">{BRAND_CONFIG.addressNotice}</p>
             </div>
           </div>
 
           {/* Properties Col */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#DFB85A]">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F5D278]">
               {t('collection.heading')}
             </h4>
-            <ul className="space-y-2 text-xs text-white/85">
+            <ul className="space-y-2 text-xs text-white/90">
               {PROPERTIES.map((prop) => (
                 <li key={prop.id}>
                   <button
@@ -81,8 +79,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }}
                     className="hover:text-white transition-colors cursor-pointer text-left flex items-center justify-between w-full group"
                   >
-                    <span>{prop.name} · {prop.tower}</span>
-                    <span className="text-[10px] text-white/50 group-hover:text-[#DFB85A]">{prop.floor}</span>
+                    <span className="text-white/95 group-hover:text-white font-normal">{prop.name} · {prop.tower}</span>
+                    <span className="text-[10px] text-white/75 group-hover:text-[#F5D278] transition-colors">{prop.floor}</span>
                   </button>
                 </li>
               ))}
@@ -92,7 +90,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     onNavigate('/properties');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="text-[#DFB85A] hover:underline inline-flex items-center gap-1 cursor-pointer font-medium"
+                  className="text-[#F5D278] hover:text-white hover:underline inline-flex items-center gap-1 cursor-pointer font-semibold transition-colors"
                 >
                   <span>{t('nav.exploreResidences')}</span>
                   <ArrowUpRight className="w-3 h-3" />
@@ -103,17 +101,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Destinations & Navigation */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#DFB85A]">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F5D278]">
               {t('nav.destinations')}
             </h4>
-            <ul className="space-y-2 text-xs text-white/85">
+            <ul className="space-y-2 text-xs text-white/90">
               <li>
                 <button
                   onClick={() => {
                     onNavigate('/destinations/thailand/bangkok');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-white transition-colors cursor-pointer"
+                  className="text-white/95 hover:text-[#F5D278] transition-colors cursor-pointer"
                 >
                   Bangkok, Thailand
                 </button>
@@ -124,18 +122,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     onNavigate('/destinations');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-white transition-colors cursor-pointer"
+                  className="text-white/95 hover:text-[#F5D278] transition-colors cursor-pointer"
                 >
                   All Destinations
                 </button>
               </li>
-              <li className="pt-2 border-t border-white/10">
+              <li className="pt-2 border-t border-white/20">
                 <button
                   onClick={() => {
                     onNavigate('/about');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-white transition-colors cursor-pointer"
+                  className="text-white/95 hover:text-[#F5D278] transition-colors cursor-pointer"
                 >
                   {t('nav.about')}
                 </button>
@@ -146,7 +144,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     onNavigate('/contact');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-white transition-colors cursor-pointer"
+                  className="text-white/95 hover:text-[#F5D278] transition-colors cursor-pointer"
                 >
                   {t('nav.contact')}
                 </button>
@@ -156,7 +154,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Booking & Language */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#DFB85A]">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#F5D278]">
               Reservations &amp; Language
             </h4>
             
@@ -165,19 +163,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               href={BRAND_CONFIG.airbnbGeneralUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between p-3 rounded-2xl bg-white/10 border border-white/15 hover:bg-white/15 transition-colors group text-xs"
+              className="flex items-center justify-between p-3 rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 transition-colors group text-xs"
             >
               <div>
                 <span className="font-semibold text-white block">Airbnb Host Profile</span>
-                <span className="text-[11px] text-white/70">Verified Rama 9 Collection</span>
+                <span className="text-[11px] text-white/90">Verified Rama 9 Collection</span>
               </div>
-              <ExternalLink className="w-4 h-4 text-[#DFB85A] group-hover:translate-x-0.5 transition-transform" />
+              <ExternalLink className="w-4 h-4 text-[#F5D278] group-hover:translate-x-0.5 transition-transform" />
             </a>
 
             {/* Language Selector */}
             <div className="pt-2">
-              <label className="text-[11px] text-white/70 block mb-1.5 flex items-center gap-1">
-                <Globe className="w-3 h-3 text-[#DFB85A]" />
+              <label className="text-[11px] text-white/90 font-medium block mb-1.5 flex items-center gap-1">
+                <Globe className="w-3 h-3 text-[#F5D278]" />
                 <span>Select Language</span>
               </label>
               <div className="flex flex-wrap gap-1.5">
@@ -185,10 +183,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   <button
                     key={l.code}
                     onClick={() => setLanguage(l.code)}
-                    className={`px-3 py-1 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
+                    className={`px-3 py-1 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
                       language === l.code
-                        ? 'bg-[#DFB85A] text-[#042F61] font-bold shadow-xs'
-                        : 'bg-white/10 text-white/80 hover:bg-white/20'
+                        ? 'bg-[#F5D278] text-[#042F61] font-bold shadow-xs'
+                        : 'bg-white/15 text-white hover:bg-white/25'
                     }`}
                   >
                     {l.label}
@@ -198,10 +196,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
           </div>
 
+          </div>
+
+          {/* Divider Line (Positioned behind the bottom center graphic layer) */}
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-px bg-white/20 pointer-events-none z-[1]" 
+            aria-hidden="true" 
+          />
         </div>
 
         {/* Bottom Bar: Copyright & Legal */}
-        <div className="pt-8 pb-8 sm:pb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
+        <div className="pt-8 pb-8 sm:pb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/90 relative z-10">
           <div>
             © {new Date().getFullYear()} CG Property. {t('footer.rights')}
           </div>
@@ -209,13 +214,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="flex items-center gap-6">
             <button
               onClick={() => onNavigate('/privacy')}
-              className="hover:text-white transition-colors cursor-pointer"
+              className="text-white/85 hover:text-white transition-colors cursor-pointer"
             >
               {t('legal.privacy')}
             </button>
             <button
               onClick={() => onNavigate('/terms')}
-              className="hover:text-white transition-colors cursor-pointer"
+              className="text-white/85 hover:text-white transition-colors cursor-pointer"
             >
               {t('legal.terms')}
             </button>
@@ -224,9 +229,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
       </div>
 
-      {/* Layered Architectural Skyline Graphic (60% scale of full width, layered at the bottom below content) */}
+      {/* Layered Architectural Skyline Graphic (In front of divider line, behind text content) */}
       <div 
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] max-w-[1152px] pointer-events-none z-0 flex justify-center items-end select-none"
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] max-w-[1152px] pointer-events-none z-[2] flex justify-center items-end select-none"
         aria-hidden="true"
       >
         <img

@@ -8,6 +8,7 @@ import { AmenitiesNotice } from '../components/AmenitiesNotice';
 import { BookingModule } from '../components/BookingModule';
 import { ContactForm } from '../components/ContactForm';
 import { RippleButton } from '../components/ui/RippleButton';
+import { AirbnbIcon } from '../components/ui/FilledIcons';
 import { 
   Building2, 
   MapPin, 
@@ -122,10 +123,10 @@ export const PropertyDetailPage: React.FC<PropertyDetailPageProps> = ({ slug, on
               href={property.airbnbUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold-shine px-8 py-4 rounded-2xl text-sm font-bold tracking-wide flex items-center gap-2.5 cursor-pointer"
+              className="btn-gold-shine px-8 py-4 rounded-2xl text-sm font-bold tracking-wide flex items-center gap-2.5 cursor-pointer text-[#042F61]"
             >
               <span>{t('booking.airbnbCta')}</span>
-              <ExternalLink className="w-4 h-4" />
+              <AirbnbIcon className="w-4 h-4" />
             </a>
             <span className="text-[11px] text-white/70 mt-2 font-medium">
               Hosted via official Airbnb listing

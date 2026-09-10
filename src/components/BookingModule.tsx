@@ -1,7 +1,8 @@
 import React from 'react';
 import { Property } from '../types';
 import { useLanguage } from '../context/LanguageContext';
-import { ExternalLink, ShieldCheck, Calendar, Info, MessageSquare } from 'lucide-react';
+import { ShieldCheck, Calendar, Info, MessageSquare } from 'lucide-react';
+import { AirbnbIcon } from './ui/FilledIcons';
 
 interface BookingModuleProps {
   property: Property;
@@ -45,10 +46,10 @@ export const BookingModule: React.FC<BookingModuleProps> = ({ property, onEnquir
           href={property.airbnbUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-gold-shine w-full py-3.5 px-6 rounded-2xl text-sm font-bold tracking-wide flex items-center justify-center gap-2.5 cursor-pointer"
+          className="btn-gold-shine w-full py-3.5 px-6 rounded-2xl text-sm font-bold tracking-wide flex items-center justify-center gap-2.5 cursor-pointer text-[#042F61]"
         >
           <span>{t('booking.airbnbCta')}</span>
-          <ExternalLink className="w-4 h-4" />
+          <AirbnbIcon className="w-4 h-4" />
         </a>
 
         {onEnquire && (

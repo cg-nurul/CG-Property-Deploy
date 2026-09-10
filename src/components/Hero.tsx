@@ -2,15 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { PROPERTIES } from '../data/properties';
 import { PageRoute } from '../types';
-import { RippleButton } from './ui/RippleButton';
+import { SpecularButton } from './ui/SpecularButton';
 import { 
   FilledMapPin, 
   FilledBed, 
   FilledBath, 
   FilledArea, 
+  FilledArrowRight,
   AirbnbIcon 
 } from './ui/FilledIcons';
-import { ChevronRight } from 'lucide-react';
+import { HERO_CARD_PATTERN_URL } from '../data/heroPattern';
 
 interface HeroProps {
   onNavigate: (route: PageRoute) => void;
@@ -104,30 +105,55 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           <div className="lg:col-span-5 flex justify-end">
             <div 
               id="hero-residence-card"
-              className="w-full max-w-sm xl:max-w-md bg-[#042F61]/85 backdrop-blur-2xl rounded-3xl p-4 sm:p-5 shadow-2xl border border-[#588BC7]/35 text-white overflow-hidden relative"
+              className="w-full max-w-sm xl:max-w-md bg-[#042F61] rounded-3xl p-4 sm:p-5 shadow-2xl border border-[#588BC7]/35 text-white overflow-hidden relative"
             >
-              {/* Partial Architectural SVG Geometry Fill */}
-              <div className="absolute -right-8 -bottom-8 w-44 h-44 opacity-20 pointer-events-none -z-0">
-                <svg viewBox="0 0 120 120" fill="none" className="w-full h-full">
-                  <circle cx="60" cy="60" r="50" stroke="#588BC7" strokeWidth="0.8" strokeDasharray="3 3" />
-                  <circle cx="60" cy="60" r="35" stroke="#DFB85A" strokeWidth="1" />
-                  <circle cx="60" cy="60" r="20" stroke="#D6E9FF" strokeWidth="0.6" strokeDasharray="2 2" />
-                  <line x1="0" y1="60" x2="120" y2="60" stroke="#588BC7" strokeWidth="0.5" strokeDasharray="2 4" />
-                  <line x1="60" y1="0" x2="60" y2="120" stroke="#588BC7" strokeWidth="0.5" strokeDasharray="2 4" />
-                  <polygon points="60,15 105,60 60,105 15,60" stroke="#BA994A" strokeWidth="0.7" fill="none" />
-                </svg>
-              </div>
+              {/* Pattern Background Layers with Specified Opacity Zones */}
+              {/* 1. Base Layer: reduced overall opacity (~0.08, down from 0.35), masked to 0 at top-left and gentle at top */}
+              <div 
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backgroundImage: HERO_CARD_PATTERN_URL,
+                  backgroundSize: "600px 600px",
+                  opacity: 0.08,
+                  WebkitMaskImage: "radial-gradient(ellipse at 0% 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 28%, rgba(0,0,0,1) 60%)",
+                  maskImage: "radial-gradient(ellipse at 0% 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 28%, rgba(0,0,0,1) 60%)",
+                }}
+              />
+
+              {/* 2. Top-Right Low Opacity Area: Extends softly over a wider radius at gentle opacity */}
+              <div 
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backgroundImage: HERO_CARD_PATTERN_URL,
+                  backgroundSize: "600px 600px",
+                  opacity: 0.22,
+                  WebkitMaskImage: "radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 80%)",
+                  maskImage: "radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0) 80%)",
+                }}
+              />
+
+              {/* 3. Bottom-Left Accent Layer: Reduced by ~0.3 from 0.85 to 0.55 */}
+              <div 
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backgroundImage: HERO_CARD_PATTERN_URL,
+                  backgroundSize: "600px 600px",
+                  opacity: 0.55,
+                  WebkitMaskImage: "radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 25%, rgba(0,0,0,0) 65%)",
+                  maskImage: "radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 25%, rgba(0,0,0,0) 65%)",
+                }}
+              />
 
               {/* Static Card Content (No Animations) */}
               <div className="relative z-10">
-                {/* Header: Title and Location (Tower and Floor pills removed per request) */}
+                {/* Header: Title and Location with Enhanced Contrast */}
                 <div className="mb-3">
-                  <h4 className="font-bold text-base sm:text-lg text-white leading-snug">
+                  <h4 className="font-bold text-base sm:text-lg text-white leading-snug tracking-wide drop-shadow-xs">
                     {activeProperty.name}
                   </h4>
-                  <div className="flex items-center gap-1.5 text-xs text-[#D6E9FF]/75 mt-0.5">
-                    <FilledMapPin className="w-3 h-3 text-[#D6E9FF]/75 shrink-0 fill-current" />
-                    <span>{activeProperty.location}</span>
+                  <div className="flex items-center gap-1.5 text-xs mt-1">
+                    <FilledMapPin className="w-3.5 h-3.5 text-white shrink-0 fill-current" />
+                    <span className="text-white font-medium tracking-wide">{activeProperty.location}</span>
                   </div>
                 </div>
 
@@ -140,41 +166,43 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   />
                 </div>
 
-                {/* Specs Row with Filled SVGs and Identical Text/SVG Colors */}
-                <div className="grid grid-cols-3 gap-2 py-2.5 mb-3.5 border-y border-white/15 text-[11px] sm:text-xs">
-                  <div className="flex items-center gap-1.5 text-[#D6E9FF]/90">
-                    <FilledBed className="w-3.5 h-3.5 text-[#D6E9FF]/90 shrink-0 fill-current" />
-                    <span>{activeProperty.bedrooms} {t('spec.bedrooms')}</span>
+                {/* Specs Row with Enhanced Backdrop and Crisp Contrast Text */}
+                <div className="grid grid-cols-3 gap-2 py-2 px-3 mb-3.5 rounded-xl bg-[#021B3B]/80 border border-[#588BC7]/30 text-[11px] sm:text-xs">
+                  <div className="flex items-center gap-1.5 text-white">
+                    <FilledBed className="w-3.5 h-3.5 text-white shrink-0 fill-current" />
+                    <span className="font-medium text-white">{activeProperty.bedrooms} {t('spec.bedrooms')}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-[#D6E9FF]/90">
-                    <FilledBath className="w-3.5 h-3.5 text-[#D6E9FF]/90 shrink-0 fill-current" />
-                    <span>{activeProperty.bathrooms} {t('spec.bathrooms')}</span>
+                  <div className="flex items-center gap-1.5 text-white">
+                    <FilledBath className="w-3.5 h-3.5 text-white shrink-0 fill-current" />
+                    <span className="font-medium text-white">{activeProperty.bathrooms} {t('spec.bathrooms')}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-[#D6E9FF]/90">
-                    <FilledArea className="w-3.5 h-3.5 text-[#D6E9FF]/90 shrink-0 fill-current" />
-                    <span>{Math.ceil(activeProperty.sizeSqm)} sqm</span>
+                  <div className="flex items-center gap-1.5 text-white">
+                    <FilledArea className="w-3.5 h-3.5 text-white shrink-0 fill-current" />
+                    <span className="font-medium text-white">{Math.ceil(activeProperty.sizeSqm)} sqm</span>
                   </div>
                 </div>
 
-                {/* View Residence & Book Buttons */}
+                {/* View Property & Book Buttons */}
                 <div className="grid grid-cols-2 gap-2">
-                  <RippleButton
+                  <SpecularButton
                     id={`hero-view-${activeProperty.slug}`}
-                    variant="primary"
+                    variant="white"
                     onClick={() => onNavigate(`/properties/${activeProperty.slug}` as PageRoute)}
-                    className="w-full py-2.5 rounded-xl text-xs font-semibold"
+                    className="w-full"
                   >
-                    <span>{t('hero.viewDetails')}</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-white" />
-                  </RippleButton>
+                    <span className="text-[#042F61] font-bold">
+                      {t('hero.viewDetails')}
+                    </span>
+                    <FilledArrowRight className="w-[21px] h-[21px] text-[#042F61] fill-current group-hover:translate-x-0.5 transition-transform duration-200 shrink-0" />
+                  </SpecularButton>
                   <a
                     href={activeProperty.airbnbUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-gold-shine w-full py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="btn-gold-shine w-full py-2.5 rounded-full text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer text-[#042F61]"
                   >
                     <span>Book Airbnb</span>
-                    <AirbnbIcon className="w-3.5 h-3.5 fill-current" />
+                    <AirbnbIcon className="w-[21px] h-[21px] shrink-0" />
                   </a>
                 </div>
               </div>
