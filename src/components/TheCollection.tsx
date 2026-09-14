@@ -124,12 +124,11 @@ export const TheCollection: React.FC<TheCollectionProps> = ({ onNavigate }) => {
   return (
     <section
       id="the-collection"
-      style={{ marginTop: '-50px' }}
-      className="relative w-full min-h-screen flex flex-col justify-center py-6 sm:py-8 overflow-hidden"
+      className="relative w-full pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-10 sm:pb-12 md:pb-14 lg:pb-16 overflow-hidden"
     >
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-        {/* Header - Aligned Left with Cards, with generous vertical spacing below */}
-        <div className="w-full mb-10 sm:mb-14 lg:mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div className="w-full max-w-7xl mx-auto px-[14px] flex flex-col">
+        {/* Header - Aligned Left with Cards, with dynamic responsive spacing below */}
+        <div className="w-full mb-6 sm:mb-8 lg:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="max-w-2xl">
             <h2 className="font-editorial text-2xl sm:text-3xl lg:text-4xl font-normal text-[#042F61] tracking-tight">
               {t('collection.heading')}
@@ -146,7 +145,7 @@ export const TheCollection: React.FC<TheCollectionProps> = ({ onNavigate }) => {
           {/* Card Stack Container - Wheel/Touch events strictly attached here */}
           <div
             ref={cardsContainerRef}
-            className="flex-1 relative h-[480px] sm:h-[480px] lg:h-[500px] select-none"
+            className="flex-1 relative h-[480px] sm:h-[500px] lg:h-[520px] select-none"
           >
             {/* RESIDENCE 01 CARD */}
             <div
@@ -188,7 +187,7 @@ export const TheCollection: React.FC<TheCollectionProps> = ({ onNavigate }) => {
               </div>
 
               {/* Partial overlay positioned strictly to the right */}
-              <div className="absolute inset-y-0 right-0 w-full sm:w-[58%] md:w-[52%] lg:w-[48%] xl:w-[46%] bg-[#042F61]/85 backdrop-blur-md sm:border-l border-white/15 p-5 sm:p-6 lg:p-7 flex flex-col justify-between z-20 overflow-y-auto sm:overflow-visible">
+              <div className="absolute inset-y-0 right-0 w-full sm:w-[58%] md:w-[52%] lg:w-[48%] xl:w-[46%] bg-[#042F61]/85 backdrop-blur-md sm:border-l border-white/15 p-4 sm:p-6 lg:p-7 flex flex-col justify-between z-20 overflow-y-auto">
                 {/* Top: Headings shifted up for proper spacing */}
                 <div className="pt-0 sm:pt-1">
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">
@@ -316,7 +315,7 @@ export const TheCollection: React.FC<TheCollectionProps> = ({ onNavigate }) => {
               </div>
 
               {/* Partial overlay positioned strictly to the right */}
-              <div className="absolute inset-y-0 right-0 w-full sm:w-[58%] md:w-[52%] lg:w-[48%] xl:w-[46%] bg-[#042F61]/85 backdrop-blur-md sm:border-l border-white/15 p-5 sm:p-6 lg:p-7 flex flex-col justify-between z-20 overflow-y-auto sm:overflow-visible">
+              <div className="absolute inset-y-0 right-0 w-full sm:w-[58%] md:w-[52%] lg:w-[48%] xl:w-[46%] bg-[#042F61]/85 backdrop-blur-md sm:border-l border-white/15 p-4 sm:p-6 lg:p-7 flex flex-col justify-between z-20 overflow-y-auto">
                 {/* Top: Headings shifted up for proper spacing */}
                 <div className="pt-0 sm:pt-1">
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">

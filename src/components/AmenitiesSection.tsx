@@ -404,11 +404,10 @@ export const AmenitiesSection: React.FC = () => {
   return (
     <section 
       id="amenities-section" 
-      className="relative pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
-      style={{ marginTop: '-50px', paddingTop: '60px' }}
+      className="relative pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-12 sm:pb-16 lg:pb-20 px-[14px] w-full max-w-7xl mx-auto overflow-hidden"
     >
       {/* Header */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+      <div className="relative z-10 text-center max-w-4xl mx-auto mb-8 sm:mb-10 lg:mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EDE8E1] text-[#042F61] text-xs font-semibold uppercase tracking-widest mb-3">
           <FilledSparkles className="w-3.5 h-3.5 text-[#9D7C38] fill-current" />
           <span>
@@ -416,8 +415,7 @@ export const AmenitiesSection: React.FC = () => {
           </span>
         </div>
         <h2 
-          className="font-editorial text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-[#042F61] tracking-tight whitespace-nowrap overflow-x-auto"
-          style={{ lineHeight: '60px' }}
+          className="font-editorial text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-[#042F61] tracking-tight leading-tight"
         >
           {language === 'zh' 
             ? <>为<span className="italic">现代高品质生活</span>精心配置</>
@@ -425,7 +423,7 @@ export const AmenitiesSection: React.FC = () => {
             ? <>ออกแบบเพื่อ<span className="italic">การใช้ชีวิตที่เหนือระดับ</span></> 
             : <>Curated for <span className="italic">Modern Living</span> in Bangkok</>}
         </h2>
-        <p className="text-[#5E574E] text-sm sm:text-base mt-3 leading-relaxed max-w-2xl mx-auto">
+        <p className="text-[#5E574E] text-sm sm:text-base mt-2.5 sm:mt-3 leading-relaxed max-w-2xl mx-auto">
           {language === 'zh'
             ? '无论是在40层云端眺望曼谷天际线的无边际泳池，还是套内贴心配备的居家办公空间，每一处细节皆为您精心准备。'
             : language === 'th'
@@ -434,7 +432,7 @@ export const AmenitiesSection: React.FC = () => {
         </p>
 
         {/* Category Navigation Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+        <div className="flex flex-wrap items-center justify-center gap-2 mt-6 sm:mt-8">
           {categories.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (
@@ -456,7 +454,7 @@ export const AmenitiesSection: React.FC = () => {
       </div>
 
       {/* Featured Visual Photographic Cards - 3D Gradient Carousel with isolated horizontal scroll */}
-      <div className="relative z-10 mb-14">
+      <div className="relative z-10 mb-10 sm:mb-12">
         <GradientCarousel
           items={allCarouselCards}
           targetIndex={targetCarouselRequest}
@@ -466,7 +464,7 @@ export const AmenitiesSection: React.FC = () => {
 
       {/* Interactive Accordion Amenities Section to Reduce Text Heaviness */}
       <div 
-        className="relative z-10 bg-[#FAF8F5] rounded-3xl p-6 sm:p-10 border border-[#E6E0D8] overflow-hidden"
+        className="relative z-10 bg-[#FAF8F5] rounded-3xl p-4 sm:p-6 md:p-8 lg:p-9 border border-[#E6E0D8] overflow-hidden w-full"
       >
         {/* Top-Right Corner Pattern (0.3 opacity) */}
         <div

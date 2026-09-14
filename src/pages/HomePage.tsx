@@ -17,7 +17,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const { t, language } = useLanguage();
 
   return (
-    <div className="space-y-4">
+    <div className="w-full flex flex-col">
       {/* Hero Component with Visual Reference Aesthetic */}
       <Hero onNavigate={onNavigate} />
 
@@ -34,9 +34,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <LocationSection onNavigate={onNavigate} />
 
       {/* Direct Contact Section on Homepage */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          <div className="lg:col-span-5 space-y-4">
+      <section className="py-10 sm:py-12 md:py-14 lg:py-16 px-[14px] max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-start">
+          <div className="lg:col-span-5 xl:col-span-4 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EDE8E1] text-[#042F61] text-xs font-semibold uppercase tracking-widest">
               <MessageSquare className="w-3.5 h-3.5 text-[#9D7C38]" />
               <span>
@@ -51,7 +51,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </p>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 xl:col-span-8 w-full">
             <ContactForm />
           </div>
         </div>

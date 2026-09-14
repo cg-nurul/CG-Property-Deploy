@@ -66,7 +66,7 @@ export const BrandIntro: React.FC = () => {
   ];
 
   return (
-    <section id="why-cg-property-section" className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+    <section id="why-cg-property-section" className="relative pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-10 sm:pb-12 md:pb-14 lg:pb-16 px-[14px] w-full max-w-7xl mx-auto overflow-hidden">
       {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: 25 }}
@@ -76,15 +76,15 @@ export const BrandIntro: React.FC = () => {
         className="relative z-10 text-center max-w-3xl mx-auto"
       >
         <span 
-          className="text-[11px] sm:text-xs uppercase font-bold text-[#9D7C38] block mb-3"
-          style={{ wordSpacing: '20px', letterSpacing: '5px' }}
+          className="text-[11px] sm:text-xs uppercase font-bold text-[#9D7C38] block mb-2 sm:mb-3"
+          style={{ wordSpacing: 'clamp(8px, 1.5vw, 18px)', letterSpacing: 'clamp(2px, 0.4vw, 4px)' }}
         >
           {t('why.eyebrow')}
         </span>
 
         <h2 
           className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-normal text-[#042F61] tracking-tight mb-3"
-          style={{ wordSpacing: '10px' }}
+          style={{ wordSpacing: 'clamp(4px, 1vw, 8px)' }}
         >
           {t('why.heading')}
         </h2>
@@ -95,7 +95,7 @@ export const BrandIntro: React.FC = () => {
       </motion.div>
 
       {/* 6 Features Grid */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-20">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 mt-8 sm:mt-10 lg:mt-12">
         {features.map((item, index) => {
           const Icon = item.icon;
           return (
@@ -109,7 +109,7 @@ export const BrandIntro: React.FC = () => {
                 delay: (index % 3) * 0.1, 
                 ease: [0.16, 1, 0.3, 1] 
               }}
-              className="relative overflow-hidden text-center flex flex-col items-center group cursor-default p-6 sm:p-8 rounded-3xl bg-white/60 hover:bg-white border border-[#E6E0D8]/80 hover:border-[#588BC7]/50 shadow-xs hover:shadow-md transition-all duration-300"
+              className="relative overflow-hidden text-center flex flex-col items-center group cursor-default p-5 sm:p-6 lg:p-7 rounded-3xl bg-white/60 hover:bg-white border border-[#E6E0D8]/80 hover:border-[#588BC7]/50 shadow-xs hover:shadow-md transition-all duration-300"
             >
               {/* Left-to-Right Animated Shine Highlight */}
               <div 
