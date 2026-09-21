@@ -59,8 +59,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               {t('intro.heading')}
             </p>
             <div className="pt-2 text-xs text-white/85 space-y-1">
-              <p><span className="text-white font-medium">Primary Location:</span> {BRAND_CONFIG.primaryLocation}</p>
-              <p className="text-white/80">{BRAND_CONFIG.addressNotice}</p>
+              <p><span className="text-white font-medium">Global Hubs:</span> Bangkok, Thailand · Hong Kong SAR</p>
+              <p className="text-white/80">Directly serviced residences across premier international destinations</p>
             </div>
           </div>
 
@@ -114,6 +114,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   className="text-white/95 hover:text-[#F5D278] transition-colors cursor-pointer"
                 >
                   Bangkok, Thailand
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    onNavigate('/destinations/hong-kong');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="text-white/95 hover:text-[#F5D278] transition-colors cursor-pointer"
+                >
+                  Hong Kong SAR
                 </button>
               </li>
               <li>

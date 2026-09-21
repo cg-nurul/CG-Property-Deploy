@@ -58,7 +58,7 @@ export const DestinationBangkokPage: React.FC<DestinationBangkokPageProps> = ({ 
         <div className="relative z-10 max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[#DFB85A] text-xs font-semibold uppercase tracking-widest border border-white/20">
             <MapPin className="w-3.5 h-3.5" />
-            <span>Thailand Destination</span>
+            <span>Curated Destination · Bangkok</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
             Bangkok

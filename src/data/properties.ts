@@ -2,10 +2,10 @@ import { Property, BrandConfig, Destination } from '../types';
 
 export const BRAND_CONFIG: BrandConfig = {
   brandName: 'CG Property',
-  primaryLocation: 'Nue District Rama 9, Bangkok, Thailand',
+  primaryLocation: 'Bangkok, Thailand & Hong Kong SAR',
   contactEmail: 'contact@cgproperty.com', // Configurable placeholder
   contactPhone: '+66 (0) 2 000 0000',     // Configurable placeholder
-  addressNotice: 'Nue District Rama 9, Rama 9 Road, Huai Khwang, Bangkok 10310, Thailand',
+  addressNotice: 'Directly managed residences across Bangkok and Hong Kong',
   airbnbGeneralUrl: 'https://www.airbnb.com/users/show/cg-property-bangkok', // Configurable
 };
 
@@ -412,7 +412,7 @@ export const DESTINATIONS: Destination[] = [
     },
     description: {
       en: 'Discover our collection of furnished residences in Bangkok at Nue District Rama 9.',
-      zh: '探索我们位于曼谷 Nue District Rama 9 的首发精装住宅系列。',
+      zh: '探索我们位于曼谷 Nue District Rama 9 的精选精装住宅系列。',
       th: 'สัมผัสคอลเลกชันที่พักพร้อมอยู่ของเราในกรุงเทพฯ ณ โครงการ Nue District Rama 9',
     },
     heroImage: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1800&q=80',

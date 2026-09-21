@@ -1,6 +1,6 @@
 {
   "name": "CG Property",
-  "description": "A premium hospitality and property brand showcasing curated furnished residences across Bangkok and Hong Kong.",
+  "description": "A global luxury hospitality and property brand showcasing curated furnished residences across premier international destinations including Bangkok and Hong Kong.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

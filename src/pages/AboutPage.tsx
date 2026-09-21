@@ -45,11 +45,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         <div className="flex flex-wrap items-center gap-2.5 pt-2">
           <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#E6E0D8] text-xs font-semibold text-[#042F61] shadow-2xs">
             <MapPin className="w-3.5 h-3.5 text-[#9D7C38]" />
-            {language === 'zh' ? '首发地点：泰国曼谷' : language === 'th' ? 'จุดเริ่มต้น: กรุงเทพฯ ประเทศไทย' : 'Inception Hub: Bangkok, Thailand'}
+            {language === 'zh' ? '全球据点：曼谷与中国香港' : language === 'th' ? 'จุดหมายสำคัญ: กรุงเทพฯ และฮ่องกง' : 'Global Hubs: Bangkok & Hong Kong'}
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#E6E0D8] text-xs font-semibold text-[#042F61] shadow-2xs">
             <Globe2 className="w-3.5 h-3.5 text-[#9D7C38]" />
-            {language === 'zh' ? '全球愿景：世界主要目的地' : language === 'th' ? 'วิสัยทัศน์: ขยายสู่จุดหมายสำคัญทั่วโลก' : 'Global Scope: Worldwide Expansion'}
+            {language === 'zh' ? '全球愿景：世界主要都会' : language === 'th' ? 'วิสัยทัศน์: ขยายสู่จุดหมายสำคัญทั่วโลก' : 'Global Scope: Worldwide Expansion'}
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#E6E0D8] text-xs font-semibold text-[#042F61] shadow-2xs">
             <ShieldCheck className="w-3.5 h-3.5 text-[#9D7C38]" />
@@ -163,13 +163,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
       </div>
 
-      {/* The Bangkok Inception & Worldwide Growth Highlight Section */}
+      {/* The Global Portfolio & Worldwide Expansion Highlight Section */}
       <div className="bg-[#EDE8E1]/50 rounded-3xl p-8 sm:p-12 border border-[#DFD8CE] relative overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           <div className="lg:col-span-7 space-y-4">
             <h3 className="font-editorial text-2xl sm:text-3xl lg:text-4xl font-normal text-[#042F61] tracking-tight">
-              {language === 'zh' ? '泰国曼谷首发，开启全球甄选之旅' : language === 'th' ? 'จุดเริ่มต้นที่กรุงเทพฯ สู่พอร์ตฟอลิโอระดับสากล' : 'Inaugural Launch in Bangkok, Expanding Globally'}
+              {language === 'zh' ? '精选全球核心都会，呈献非凡居停体验' : language === 'th' ? 'คัดสรรเรซิเดนซ์ในมหานครชั้นนำระดับสากล' : 'Curated Residences in Premier Global Metropolises'}
             </h3>
             
             <p className="text-sm sm:text-base text-[#5E574E] leading-relaxed">
@@ -185,7 +185,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 }}
                 className="btn-gold-shine inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold shadow-xs cursor-pointer"
               >
-                <span>{language === 'zh' ? '浏览拉玛九首发公寓' : language === 'th' ? 'สำรวจเรซิเดนซ์ในกรุงเทพฯ' : 'Explore The Bangkok Residences'}</span>
+                <span>{language === 'zh' ? '探索全系精选公寓' : language === 'th' ? 'สำรวจเรซิเดนซ์ทั้งหมด' : 'Explore All Residences'}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
 
@@ -197,35 +197,35 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 }}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#E6E0D8] text-xs font-semibold text-[#042F61] hover:border-[#DFB85A] hover:bg-[#FAF8F5] transition-all shadow-2xs cursor-pointer"
               >
-                <span>{language === 'zh' ? '查看全球目的地规划' : language === 'th' ? 'ดูแผนที่จุดหมายปลายทาง' : 'View Destinations'}</span>
+                <span>{language === 'zh' ? '查看全球目的地' : language === 'th' ? 'ดูจุดหมายปลายทาง' : 'View Destinations'}</span>
               </a>
             </div>
           </div>
 
-          {/* Quick Bangkok Snapshot Card */}
+          {/* Quick Global Snapshot Card */}
           <div className="lg:col-span-5 bg-white rounded-2xl p-6 border border-[#E6E0D8] shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-[#E6E0D8] pb-3">
               <div>
                 <span className="text-[11px] font-bold text-[#9D7C38] uppercase tracking-wider block">
-                  {language === 'zh' ? '当前首发系列' : language === 'th' ? 'คอลเลกชันปัจจุบัน' : 'Current Active Collection'}
+                  {language === 'zh' ? '当前服务城市' : language === 'th' ? 'จุดหมายปลายทางที่ให้บริการ' : 'Active Portfolios'}
                 </span>
                 <h4 className="text-base font-bold text-[#042F61]">
-                  Nue District Rama 9
+                  Bangkok & Hong Kong
                 </h4>
               </div>
               <span className="px-2.5 py-1 rounded-lg bg-[#FAF8F5] border border-[#E6E0D8] text-xs font-bold text-[#042F61]">
-                2 Units
+                3 Residences
               </span>
             </div>
 
             <div className="space-y-2 text-xs text-[#5E574E]">
               <div className="flex justify-between py-1 border-b border-[#FAF8F5]">
-                <span className="text-[#8A8175]">Location</span>
-                <span className="font-semibold text-[#14171A]">Rama 9, Bangkok, Thailand</span>
+                <span className="text-[#8A8175]">Destinations</span>
+                <span className="font-semibold text-[#14171A]">Bangkok, TH & Hong Kong SAR</span>
               </div>
               <div className="flex justify-between py-1 border-b border-[#FAF8F5]">
                 <span className="text-[#8A8175]">Available Layouts</span>
-                <span className="font-semibold text-[#14171A]">Tower R (16F) & Tower N (40F)</span>
+                <span className="font-semibold text-[#14171A]">High-Floor Suites & Sky Residences</span>
               </div>
               <div className="flex justify-between py-1 border-b border-[#FAF8F5]">
                 <span className="text-[#8A8175]">Management</span>
@@ -233,7 +233,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               </div>
               <div className="flex justify-between py-1">
                 <span className="text-[#8A8175]">Booking</span>
-                <span className="font-semibold text-[#042F61]">Airbnb Verified Host</span>
+                <span className="font-semibold text-[#042F61]">Airbnb Verified Superhost Standard</span>
               </div>
             </div>
           </div>

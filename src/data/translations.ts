@@ -16,11 +16,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Hero
     'hero.headline': 'Stay Somewhere Exceptional.',
-    'hero.subheadline': 'Discover our first collection of furnished residences at the heart of Bangkok, Thailand.',
+    'hero.subheadline': 'Discover our curated collection of furnished luxury residences across premier global destinations.',
     'hero.cta.explore': 'Explore Residences',
     'hero.cta.location': 'Discover the Location',
-    'hero.badge.location': 'Bangkok, Thailand',
-    'hero.badge.collection': 'The Rama 9 Collection · 2 Units',
+    'hero.badge.location': 'Global Portfolio',
+    'hero.badge.collection': 'Curated Collection · Bangkok & Hong Kong',
     'hero.badge.preview': 'Featured Residence',
     'hero.viewDetails': 'View Property',
 
@@ -35,7 +35,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'why.feature3.title': 'Trusted Management',
     'why.feature3.desc': 'On-the-ground teams look after every detail of your stay.',
     'why.feature4.title': 'Memorable Locations',
-    'why.feature4.desc': "Handpicked destinations across Thailand's most beautiful places.",
+    'why.feature4.desc': 'Handpicked destinations across premier international metropolises and sought-after locations.',
     'why.feature5.title': 'Professional Service',
     'why.feature5.desc': 'Responsive, attentive service from enquiry to checkout.',
     'why.feature6.title': 'Easy Booking',
@@ -43,8 +43,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Brand Introduction (Legacy keys fallback)
     'intro.eyebrow': 'About CG Property',
-    'intro.heading': 'Thoughtfully selected residences, beginning in Thailand.',
-    'intro.body': 'CG Property brings together carefully selected places to stay, beginning with a collection of furnished residences in Bangkok.',
+    'intro.heading': 'Thoughtfully curated residences across global destinations.',
+    'intro.body': 'CG Property brings together carefully selected places to stay across key global cities, featuring meticulously furnished residences in Bangkok, Hong Kong, and premier destinations worldwide.',
 
     // The Collection
     'collection.heading': 'The Collection',
@@ -81,8 +81,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Location: Nue District Rama 9
     'location.heading': 'Nue District Rama 9',
-    'location.subheading': 'Our first residences are located within Nue District Rama 9 in Bangkok.',
-    'location.description': 'Nue District Rama 9 provides a central urban setting within Bangkok, hosting our initial collection across Tower R and Tower N.',
+    'location.subheading': 'Our Bangkok residences are located within Nue District Rama 9.',
+    'location.description': 'Nue District Rama 9 provides a central urban setting within Bangkok, hosting our premier residences across Tower R and Tower N.',
     'location.mapNotice': 'Location within Bangkok metropolis. Address: Nue District Rama 9, Rama 9 Road, Huai Khwang, Bangkok.',
     'location.towerR': 'Tower R — 16th Floor (The Tower R Suite)',
     'location.towerN': 'Tower N — 40th Floor (The Tower N Sky Suite)',
@@ -93,8 +93,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'bangkok.exploreDestination': 'Explore Bangkok',
 
     // Future Expansion
-    'future.heading': 'Thailand is where our collection begins.',
-    'future.subheading': 'More destinations will follow as the CG Property collection grows.',
+    'future.heading': 'A Growing Global Portfolio of Exceptional Stays.',
+    'future.subheading': 'New premier metropolises and curated retreats are continually joining the CG Property collection.',
 
     // Booking & Airbnb
     'booking.title': 'Reserve Your Stay',
@@ -119,24 +119,24 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     // Destinations Page
     'destinations.title': 'Destinations',
     'destinations.subheading': 'Explore the global destinations and districts where CG Property residences are located.',
-    'destinations.activeDestinations': 'Current Destination',
+    'destinations.activeDestinations': 'Active Destinations',
     'destinations.thailandTitle': 'Thailand',
-    'destinations.thailandDescription': 'Our initial destination in Southeast Asia, hosting our premier residences in Bangkok.',
+    'destinations.thailandDescription': 'A vibrant Southeast Asian metropolis, hosting our premier residences in Bangkok’s central Rama 9 district.',
     'destinations.bangkokTitle': 'Bangkok',
     'destinations.viewDistrict': 'View Residences in Bangkok',
 
     // About Page
     'about.eyebrow': 'About CG Property',
     'about.title': 'Curating Exceptional Stays Worldwide',
-    'about.statement': 'CG Property is a boutique rental company curating an expanding global collection of handpicked residences. Starting with our premier collection in Bangkok, Thailand, we are building a worldwide network of homes defined by quality, elegance, and end-to-end management.',
+    'about.statement': 'CG Property is a boutique hospitality and property company curating a global collection of handpicked residences across premier international destinations. We provide a worldwide network of homes defined by architectural distinction, refined elegance, and uncompromising end-to-end direct management.',
     'about.visionTitle': 'Our Vision',
     'about.visionSubtitle': 'A Worldwide Collection of Distinctive Stays',
     'about.visionDesc': 'To establish a trusted global portfolio of premier rental residences across the world’s most iconic cities and destinations, uniting architectural excellence with elevated comfort.',
     'about.missionTitle': 'Our Mission',
     'about.missionSubtitle': 'Uncompromising Quality & Flawless Servicing',
     'about.missionDesc': 'To deliver consistently memorable stays by directly managing, maintaining, and servicing every single property in our portfolio with exacting hospitality standards.',
-    'about.collectionTitle': 'The Bangkok Inception',
-    'about.collectionDesc': 'Our journey begins in Bangkok, Thailand, with our flagship residences at Nue District Rama 9. Designed for discerning travelers and long-stay guests, each unit combines bespoke interior craftsmanship with panoramic city views.',
+    'about.collectionTitle': 'Curated Global Residences',
+    'about.collectionDesc': 'Our portfolio brings together exceptional residences in the world’s most dynamic metropolises. From high-floor skyline sanctuaries at Nue District Rama 9 in Bangkok to curated residences in Hong Kong SAR, each home combines bespoke interior craftsmanship, hotel-grade servicing, and panoramic city views.',
     'about.standardsTitle': 'The CG Property Management Standard',
     'about.standardsSubtitle': 'We do not simply list properties — every residence is directly managed, serviced, and maintained by our dedicated team.',
     'about.pillar1.title': 'Direct Property Management',
@@ -189,11 +189,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Hero
     'hero.headline': '非凡居所，惬意栖心。',
-    'hero.subheadline': '探索我们位于泰国曼谷核心地段的首发精装住宅系列。',
+    'hero.subheadline': '探索我们分布于全球核心都市的高端精装住宅系列。',
     'hero.cta.explore': '探索住宅',
     'hero.cta.location': '了解区位',
-    'hero.badge.location': '泰国 · 曼谷',
-    'hero.badge.collection': '首发系列 · 2套精装住宅',
+    'hero.badge.location': '全球都会网络',
+    'hero.badge.collection': '全球臻选系列 · 曼谷与中国香港',
     'hero.badge.preview': '精选呈现',
     'hero.viewDetails': '查看物业',
 
@@ -208,7 +208,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'why.feature3.title': '值得信赖的在地管理',
     'why.feature3.desc': '本地专属服务团队悉心照料您入住期间的每一个细节。',
     'why.feature4.title': '优越黄金地段',
-    'why.feature4.desc': '精选泰国极具吸引力与活力的绝佳位置。',
+    'why.feature4.desc': '精选全球极具活力与吸引力的国际都会核心地段。',
     'why.feature5.title': '专业贴心服务',
     'why.feature5.desc': '从最初咨询到最终离店，全程提供敏捷、体贴的高标准服务。',
     'why.feature6.title': '便捷安全预订',
@@ -216,8 +216,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Brand Introduction (Legacy)
     'intro.eyebrow': '关于 CG Property',
-    'intro.heading': '精选品质住宅，始于泰国。',
-    'intro.body': 'CG Property 汇聚悉心甄选的居停之所，以曼谷的一系列精装公寓作为起点。',
+    'intro.heading': '甄选全球卓越居所，呈献非凡旅居。',
+    'intro.body': 'CG Property 汇聚悉心甄选的全球品质居停之所，包含位于曼谷与中国香港等国际都会的系列精装公寓，并在全球范围持续拓展。',
 
     // The Collection
     'collection.heading': '全球臻选住宅系列',
@@ -254,8 +254,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Location: Nue District Rama 9
     'location.heading': 'Nue District Rama 9',
-    'location.subheading': '我们的首发住宅位于曼谷 Nue District Rama 9。',
-    'location.description': 'Nue District Rama 9 坐落于曼谷核心都会区，首批住宅分别位于 R 栋与 N 栋。',
+    'location.subheading': '我们的曼谷精选住宅位于 Nue District Rama 9。',
+    'location.description': 'Nue District Rama 9 坐落于曼谷核心都会区，精选住宅分别位于 R 栋与 N 栋。',
     'location.mapNotice': '曼谷都会区地理位置。地址：Nue District Rama 9, Rama 9 Road, Huai Khwang, Bangkok.',
     'location.towerR': 'R栋 — 16层 (The Tower R Suite)',
     'location.towerN': 'N栋 — 40层 (The Tower N Sky Suite)',
@@ -266,8 +266,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'bangkok.exploreDestination': '探索曼谷目的地',
 
     // Future Expansion
-    'future.heading': '泰国是我们系列的起点。',
-    'future.subheading': '随着 CG Property 臻选系列的拓展，我们将进驻更多全球目的地。',
+    'future.heading': '持续拓展的全球卓越居所版图。',
+    'future.subheading': '随着 CG Property 臻选系列的拓展，更多国际都市与度假胜地将持续加入我们的全球版图。',
 
     // Booking & Airbnb
     'booking.title': '预订您的入住',
@@ -292,24 +292,24 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     // Destinations Page
     'destinations.title': '目的地',
     'destinations.subheading': '探索 CG Property 住宅所在的全球目的地与城市街区。',
-    'destinations.activeDestinations': '当前目的地',
+    'destinations.activeDestinations': '已上线目的地',
     'destinations.thailandTitle': '泰国',
-    'destinations.thailandDescription': '我们在东南亚的首个目的地，于曼谷核心区域呈现首发住宅。',
+    'destinations.thailandDescription': '东南亚充满活力的标志性都市，在曼谷核心拉玛九区呈现高品质精装住宅。',
     'destinations.bangkokTitle': '曼谷',
     'destinations.viewDistrict': '查看曼谷房源',
 
     // About Page
     'about.eyebrow': '关于 CG Property',
     'about.title': '打造全球卓越旅居品质',
-    'about.statement': 'CG Property 是一家专注于全球精选住宅的精品房产租赁与管理公司。以泰国曼谷首发系列为起点，我们正致力于构建遍布全球标志性城市的品质旅居网络，始终坚持直营管理、卓越服务与考究美学。',
+    'about.statement': 'CG Property 是一家专注于全球精选住宅的精品房产与高端旅居品牌。我们致力于在世界主要标志性都市打造品质居停网络，始终坚持全程直营管理、星级客房维护与考究空间美学。',
     'about.visionTitle': '我们的愿景',
     'about.visionSubtitle': '遍布全球的卓越居所网络',
     'about.visionDesc': '在全球最具活力的国际都市与热门目的地打造备受信赖的高品质租赁住宅矩阵，融合建筑美学与非凡居住体验。',
     'about.missionTitle': '我们的使命',
     'about.missionSubtitle': '严苛品质把控与全程精细化服务',
     'about.missionDesc': '通过对旗下所有房源进行全程直营管理、维护与高标准保洁服务，确保每一位客人的入住体验都无可挑剔。',
-    'about.collectionTitle': '曼谷首发系列',
-    'about.collectionDesc': '我们的旅程始于泰国曼谷 Nue District Rama 9。无论是商务出行还是长期旅居，每套寓所均兼备定制空间工艺与全景城市天际线。',
+    'about.collectionTitle': '全球甄选都会系列',
+    'about.collectionDesc': '我们的全球物业矩阵汇聚世界顶级都市的卓越居所。从曼谷拉玛九核心地段的高空天际套房，到中国香港核心街区的精选公寓，每一套寓所均兼备定制空间工艺、星级服务标准与全景都市天际线。',
     'about.standardsTitle': 'CG Property 专属管理标准',
     'about.standardsSubtitle': '我们不仅是房源管理者，更亲自打理并维护每一套居所，确保全流程品质如一。',
     'about.pillar1.title': '全程直营管理',
@@ -362,11 +362,11 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Hero
     'hero.headline': 'สัมผัสประสบการณ์การพักผ่อนเหนือระดับ',
-    'hero.subheadline': 'ค้นพบคอลเลกชันเรซิเดนซ์ตกแต่งครบครันชุดแรกของเรา ณ ใจกลางกรุงเทพมหานคร ประเทศไทย',
+    'hero.subheadline': 'ค้นพบคอลเลกชันเรซิเดนซ์ตกแต่งครบครันในมหานครชั้นนำระดับสากล',
     'hero.cta.explore': 'สำรวจที่พัก',
     'hero.cta.location': 'สำรวจทำเล',
-    'hero.badge.location': 'กรุงเทพฯ ประเทศไทย',
-    'hero.badge.collection': 'เดอะ พระราม 9 คอลเลกชัน · 2 ยูนิต',
+    'hero.badge.location': 'พอร์ตฟอลิโอระดับสากล',
+    'hero.badge.collection': 'คอลเลกชันที่คัดสรร · กรุงเทพฯ และฮ่องกง',
     'hero.badge.preview': 'เรซิเดนซ์แนะนำ',
     'hero.viewDetails': 'ดูข้อมูลที่พัก',
 
@@ -381,7 +381,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'why.feature3.title': 'การดูแลโดยทีมงานในพื้นที่',
     'why.feature3.desc': 'ทีมงานในพื้นที่พร้อมดูแลและใส่ใจทุกรายละเอียดของการเข้าพักของคุณ',
     'why.feature4.title': 'ทำเลที่น่าจดจำ',
-    'why.feature4.desc': 'คัดสรรจุดหมายปลายทางยอดนิยมในย่านที่ดีที่สุดของประเทศไทย',
+    'why.feature4.desc': 'คัดสรรทำเลที่ดีที่สุดในมหานครสำคัญระดับโลก',
     'why.feature5.title': 'การบริการระดับมืออาชีพ',
     'why.feature5.desc': 'บริการที่รวดเร็วและใส่ใจตั้งแต่ขั้นตอนการสอบถามจนถึงการเช็คเอาท์',
     'why.feature6.title': 'จองง่าย สะดวกสบาย',
@@ -389,8 +389,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Brand Introduction (Legacy)
     'intro.eyebrow': 'เกี่ยวกับ CG Property',
-    'intro.heading': 'เรซิเดนซ์ที่คัดสรรอย่างพิถีพิถัน เริ่มต้นที่ประเทศไทย',
-    'intro.body': 'CG Property รวบรวมที่พักที่ได้รับการคัดเลือกอย่างประณีต เริ่มต้นด้วยคอลเลกชันเรซิเดนซ์ตกแต่งครบครันในกรุงเทพมหานคร',
+    'intro.heading': 'เรซิเดนซ์ที่คัดสรรอย่างพิถีพิถันในจุดหมายปลายทางระดับสากล',
+    'intro.body': 'CG Property รวบรวมที่พักที่ได้รับการคัดเลือกอย่างประณีตในมหานครระดับโลก ทั้งในกรุงเทพฯ ฮ่องกง และจุดหมายสำคัญระดับสากล',
 
     // The Collection
     'collection.heading': 'คอลเลกชันเรสซิเดนซ์',
@@ -427,8 +427,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Location: Nue District Rama 9
     'location.heading': 'Nue District Rama 9',
-    'location.subheading': 'เรซิเดนซ์ชุดแรกของเราตั้งอยู่ในโครงการ Nue District Rama 9 กรุงเทพฯ',
-    'location.description': 'Nue District Rama 9 ตั้งอยู่ใจกลางย่านธุรกิจและไลฟ์สไตล์ของกรุงเทพฯ โดยมียูนิตแรกของเราตั้งอยู่ในอาคาร R และอาคาร N',
+    'location.subheading': 'เรซิเดนซ์ในกรุงเทพฯ ของเราตั้งอยู่ในโครงการ Nue District Rama 9',
+    'location.description': 'Nue District Rama 9 ตั้งอยู่ใจกลางย่านธุรกิจและไลฟ์สไตล์ของกรุงเทพฯ โดยมีเรซิเดนซ์ของเราตั้งอยู่ในอาคาร R และอาคาร N',
     'location.mapNotice': 'ทำเลที่ตั้งในกรุงเทพมหานคร ที่อยู่: Nue District Rama 9 ถนนพระราม 9 แขวงห้วยขวาง กรุงเทพฯ',
     'location.towerR': 'อาคาร R — ชั้น 16 (The Tower R Suite)',
     'location.towerN': 'อาคาร N — ชั้น 40 (The Tower N Sky Suite)',
@@ -439,8 +439,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'bangkok.exploreDestination': 'สำรวจกรุงเทพฯ',
 
     // Future Expansion
-    'future.heading': 'ประเทศไทยคือจุดเริ่มต้นของคอลเลกชันของเรา',
-    'future.subheading': 'จุดหมายปลายทางใหม่จะตามมาเมื่อคอลเลกชันของ CG Property เติบโตขึ้น',
+    'future.heading': 'การขยายพอร์ตฟอลิโอที่พักระดับพรีเมียมสู่ระดับสากล',
+    'future.subheading': 'จุดหมายปลายทางระดับโลกแห่งใหม่จะถูกเพิ่มเข้ามาอย่างต่อเนื่องในคอลเลกชันของ CG Property',
 
     // Booking & Airbnb
     'booking.title': 'จองการเข้าพัก',
@@ -465,24 +465,24 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     // Destinations Page
     'destinations.title': 'จุดหมายปลายทาง',
     'destinations.subheading': 'สำรวจจุดหมายปลายทางและทำเลที่ตั้งของเรซิเดนซ์ในเครือ CG Property',
-    'destinations.activeDestinations': 'จุดหมายปลายทางปัจจุบัน',
+    'destinations.activeDestinations': 'จุดหมายปลายทางที่เปิดให้บริการ',
     'destinations.thailandTitle': 'ประเทศไทย',
-    'destinations.thailandDescription': 'จุดหมายแรกของเราในเอเชียตะวันออกเฉียงใต้ พร้อมเรซิเดนซ์ระดับพรีเมียมในกรุงเทพมหานคร',
+    'destinations.thailandDescription': 'มหานครอันเปี่ยมด้วยชีวิตชีวาในเอเชียตะวันออกเฉียงใต้ พร้อมเรซิเดนซ์ระดับพรีเมียมในย่านพระราม 9 กรุงเทพฯ',
     'destinations.bangkokTitle': 'กรุงเทพมหานคร',
     'destinations.viewDistrict': 'ดูเรซิเดนซ์ในกรุงเทพฯ',
 
     // About Page
     'about.eyebrow': 'เกี่ยวกับ CG Property',
     'about.title': 'รังสรรค์ประสบการณ์การพักผ่อนระดับพรีเมียมทั่วโลก',
-    'about.statement': 'CG Property คือบริษัทบริหารและให้เช่าอสังหาริมทรัพย์ระดับพรีเมียมที่รวบรวมเรซิเดนซ์ชั้นนำทั่วโลก โดยเริ่มต้นจากคอลเลกชันแรกในกรุงเทพฯ ประเทศไทย พร้อมวิสัยทัศน์ในการขยายสู่จุดหมายปลายทางสำคัญทั่วโลก ผ่านการบริหารจัดการ การบริการ และการดูแลรักษาคุณภาพอย่างพิถีพิถัน',
+    'about.statement': 'CG Property คือแบรนด์บริหารและให้เช่าที่พักระดับพรีเมียมที่คัดสรรเรซิเดนซ์ชั้นนำในมหานครระดับโลก พร้อมเครือข่ายที่พักที่โดดเด่นด้วยดีไซน์ คุณภาพ และการดูแลจัดการโดยตรงแบบครบวงจร',
     'about.visionTitle': 'วิสัยทัศน์ของเรา',
     'about.visionSubtitle': 'เครือข่ายเรซิเดนซ์ระดับพรีเมียมทั่วทุกมุมโลก',
     'about.visionDesc': 'สร้างสรรค์พอร์ตฟอลิโอที่พักให้เช่าที่ได้รับความไว้วางใจในเมืองหลวงและจุดหมายปลายทางชั้นนำระดับสากล ผสานความงดงามทางสถาปัตยกรรมเข้ากับความสะดวกสบายสูงสุด',
     'about.missionTitle': 'พันธกิจของเรา',
     'about.missionSubtitle': 'มาตรฐานคุณภาพอันเข้มงวดและการบริการที่ไร้รอยต่อ',
     'about.missionDesc': 'มอบประสบการณ์การเข้าพักที่น่าประทับใจอย่างสม่ำเสมอ ผ่านการบริหาร จัดการ และดูแลรักษาทุกยูนิตในคอลเลกชันโดยตรงด้วยมาตรฐานการบริการระดับสูง',
-    'about.collectionTitle': 'จุดเริ่มต้น ณ กรุงเทพมหานคร',
-    'about.collectionDesc': 'การเดินทางของเราเริ่มต้นที่กรุงเทพฯ ณ โครงการ Nue District Rama 9 ออกแบบมาเพื่อผู้เข้าพักทั้งระยะสั้นและระยะยาว ทุกยูนิตผสานงานตกแต่งภายในอันประณีตเข้ากับทัศนียภาพเมืองอันงดงาม',
+    'about.collectionTitle': 'คอลเลกชันเรซิเดนซ์ระดับสากล',
+    'about.collectionDesc': 'พอร์ตฟอลิโอของเราผสานเรซิเดนซ์ที่โดดเด่นในมหานครชั้นนำของโลก ทั้งห้องพักวิวขอบฟ้า ณ Nue District Rama 9 ในกรุงเทพฯ ไปจนถึงเรซิเดนซ์ในฮ่องกง โดยทุกยูนิตผสานการตกแต่งอย่างพิถีพิถันเข้ากับบริการมาตรฐานระดับสากล',
     'about.standardsTitle': 'มาตรฐานการบริหารจัดการของ CG Property',
     'about.standardsSubtitle': 'เราไม่ได้เป็นเพียงตัวกลาง — ทุกเรซิเดนซ์ได้รับการดูแล บริหาร และซ่อมบำรุงโดยทีมงานมืออาชีพของเราโดยตรง',
     'about.pillar1.title': 'การบริหารจัดการโดยตรง',

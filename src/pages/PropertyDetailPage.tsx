@@ -21,7 +21,8 @@ import {
   Layers,
   Maximize2,
   BedDouble,
-  Bath
+  Bath,
+  Calendar
 } from 'lucide-react';
 
 interface PropertyDetailPageProps {
@@ -121,19 +122,27 @@ export const PropertyDetailPage: React.FC<PropertyDetailPageProps> = ({ slug, on
             </div>
           </div>
 
-          <div className="lg:col-span-4 flex flex-col items-start lg:items-end justify-center">
+          <div className="lg:col-span-4 flex flex-col items-start lg:items-end justify-center gap-2.5">
+            <button
+              onClick={() => {
+                const el = document.getElementById('booking-action-card');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="btn-gold-shine px-8 py-3.5 rounded-2xl text-sm font-bold tracking-wide flex items-center gap-2.5 cursor-pointer text-[#042F61] shadow-md active:scale-98"
+            >
+              <Calendar className="w-4 h-4 text-[#042F61]" />
+              <span>Book Now</span>
+            </button>
             <a
               href={property.airbnbUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold-shine px-8 py-4 rounded-2xl text-sm font-bold tracking-wide flex items-center gap-2.5 cursor-pointer text-[#042F61]"
+              className="inline-flex items-center gap-1.5 text-xs text-white/80 hover:text-white transition-colors"
             >
-              <span>{t('booking.airbnbCta')}</span>
-              <AirbnbIcon className="w-4 h-4" />
+              <AirbnbIcon className="w-3.5 h-3.5" />
+              <span>Book stay directly on Airbnb</span>
+              <ExternalLink className="w-3 h-3 opacity-70" />
             </a>
-            <span className="text-[11px] text-white/70 mt-2 font-medium">
-              Hosted via official Airbnb listing
-            </span>
           </div>
         </div>
       </div>

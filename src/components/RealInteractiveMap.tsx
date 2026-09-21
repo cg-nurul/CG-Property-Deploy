@@ -16,6 +16,7 @@ import { PageRoute } from '../types';
 
 interface RealInteractiveMapProps {
   onNavigate?: (route: PageRoute) => void;
+  initialPropertyId?: string;
 }
 
 export interface MapProperty {
@@ -221,7 +222,7 @@ const PLACES_OF_INTEREST: PlaceOfInterest[] = [
       th: 'รถไฟฟ้าด่วนสู่สนามบินนานาชาติสุวรรณภูมิ (BKK)',
     },
   },
-  // Hong Kong POIs
+  // Hong Kong POIs (Curated & uncluttered: essential transit & access landmarks only, no dining/cafe symbols)
   {
     id: 'central-mtr',
     city: 'Hong Kong',
@@ -276,59 +277,28 @@ const PLACES_OF_INTEREST: PlaceOfInterest[] = [
       th: 'ศูนย์การค้าระดับเวิลด์คลาสริมอ่าววิคตอเรีย พร้อมแบรนด์แฟล็กชิปและร้านอาหารมิชลิน',
     },
   },
-  {
-    id: 'lan-kwai-fong',
-    city: 'Hong Kong',
-    name: {
-      en: 'Lan Kwai Fong & SOHO',
-      zh: '兰桂坊与苏豪区',
-      th: 'ลานไควฟงและโซโห',
-    },
-    category: 'dining',
-    lat: 22.2810,
-    lng: 114.1555,
-    distance: { en: '350m · 4 min walk', zh: '350米 · 步行4分钟', th: '350 ม. · เดิน 4 นาที' },
-    description: {
-      en: 'Iconic cosmopolitan entertainment district renowned for artisanal bars, bistros, and nightlife.',
-      zh: '享誉全球的多元文化生活圈，集聚特色鸡尾酒吧、精致餐酒馆与夜生活体验。',
-      th: 'ย่านแฮงก์เอาต์และไลฟ์สไตล์ระดับโลก แหล่งรวมบาร์ ร้านอาหารนานาชาติ และบรรยากาศยามค่ำคืน',
-    },
-  },
-  {
-    id: 'peak-tram',
-    city: 'Hong Kong',
-    name: {
-      en: 'Peak Tram Central Terminus',
-      zh: '山顶缆车中环总站',
-      th: 'สถานีรถรางพีคแทรม เซ็นทรัล',
-    },
-    category: 'transit',
-    lat: 22.2778,
-    lng: 114.1578,
-    distance: { en: '800m · 10 min walk', zh: '800米 · 步行10分钟', th: '800 ม. · เดิน 10 นาที' },
-    description: {
-      en: 'Historic funicular railway carrying visitors directly to Victoria Peak and Sky Terrace 428.',
-      zh: '具有逾百年历史的山顶缆车，带领宾客直登太平山顶与凌霄阁观景台。',
-      th: 'รถรางประวัติศาสตร์มุ่งสู่ยอดเขาวิคตอเรียพีคและจุดชมวิวสกายเทอร์เรซ 428',
-    },
-  },
 ];
 
-export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNavigate }) => {
+export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNavigate, initialPropertyId = 'residence-01' }) => {
   const { language } = useLanguage();
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const propertyMarkersRef = useRef<{ [key: string]: L.Marker }>({});
-  const poiMarkersRef = useRef<{ [key: string]: L.Marker }>({});
+  const poiLayerGroupRef = useRef<L.LayerGroup | null>(null);
   const tileLayerRef = useRef<L.TileLayer | null>(null);
 
   const [mapStyle, setMapStyle] = useState<'streets' | 'satellite' | 'dark'>('streets');
-  const [selectedPropertyId, setSelectedPropertyId] = useState<string>('residence-01');
+  const [selectedPropertyId, setSelectedPropertyId] = useState<string>(initialPropertyId);
   const [showInfoCard, setShowInfoCard] = useState<boolean>(true);
 
   const selectedProperty = MAP_PROPERTIES.find(p => p.id === selectedPropertyId) || MAP_PROPERTIES[0];
 
-  // Tile Providers
+  // Specific zoom level: Quintara zoomed +1 (level 19) for intimate street clarity, Bangkok at level 18
+  const getPropertyZoom = (propertyId: string) => {
+    return propertyId === 'quintara' ? 19 : 18;
+  };
+
+  // Tile Providers: Original OpenStreetMap and Esri tiles (No API key required)
   const tileLayers = {
     dark: {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -352,7 +322,8 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
     setSelectedPropertyId(propertyId);
     const targetProp = MAP_PROPERTIES.find(p => p.id === propertyId);
     if (targetProp && mapInstanceRef.current) {
-      mapInstanceRef.current.flyTo([targetProp.lat, targetProp.lng], 18, {
+      const zoom = getPropertyZoom(targetProp.id);
+      mapInstanceRef.current.flyTo([targetProp.lat, targetProp.lng], zoom, {
         duration: 1.2,
       });
     }
@@ -374,10 +345,11 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
     );
   };
 
-  // Recenter to Currently Selected Property
+  // Recenter to Currently Selected Property (Quintara at zoom 19, Bangkok at 18)
   const handleRecenter = () => {
     if (mapInstanceRef.current && selectedProperty) {
-      mapInstanceRef.current.flyTo([selectedProperty.lat, selectedProperty.lng], 18, {
+      const zoom = getPropertyZoom(selectedProperty.id);
+      mapInstanceRef.current.flyTo([selectedProperty.lat, selectedProperty.lng], zoom, {
         duration: 0.8,
       });
     }
@@ -386,7 +358,8 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
   // Center on Place of Interest
   const handleSelectPoi = (poi: PlaceOfInterest) => {
     if (mapInstanceRef.current) {
-      mapInstanceRef.current.flyTo([poi.lat, poi.lng], 18, { duration: 0.8 });
+      const zoom = getPropertyZoom(selectedProperty.id);
+      mapInstanceRef.current.flyTo([poi.lat, poi.lng], zoom, { duration: 0.8 });
     }
   };
 
@@ -395,9 +368,10 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
     if (!mapContainerRef.current) return;
 
     if (!mapInstanceRef.current) {
+      const initialZoom = getPropertyZoom(selectedProperty.id);
       const map = L.map(mapContainerRef.current, {
         center: [selectedProperty.lat, selectedProperty.lng],
-        zoom: 18,
+        zoom: initialZoom,
         zoomControl: false,
         attributionControl: false,
       });
@@ -415,6 +389,10 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
 
       tileLayerRef.current = initialLayer;
       mapInstanceRef.current = map;
+
+      // Initialize dedicated LayerGroup for active POIs
+      const poiLayerGroup = L.layerGroup().addTo(map);
+      poiLayerGroupRef.current = poiLayerGroup;
 
       // 1. Add Property Markers for ALL Properties
       MAP_PROPERTIES.forEach((prop) => {
@@ -454,44 +432,6 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
 
         propertyMarkersRef.current[prop.id] = marker;
       });
-
-      // 2. Add POI Markers (Bangkok & Hong Kong)
-      PLACES_OF_INTEREST.forEach((poi) => {
-        const poiIcon = L.divIcon({
-          className: 'custom-poi-pin',
-          html: `
-            <div class="relative flex items-center justify-center cursor-pointer transform -translate-x-1/2 -translate-y-1/2 group">
-              <div class="w-7 h-7 rounded-full flex items-center justify-center shadow-lg border border-white/80 transition-transform duration-200 group-hover:scale-110 ${
-                poi.category === 'transit'
-                  ? 'bg-[#0284C7] text-white ring-2 ring-[#0284C7]/20'
-                  : poi.category === 'shopping'
-                  ? 'bg-[#042F61] text-white'
-                  : 'bg-[#9D7C38] text-white'
-              }">
-                ${
-                  poi.category === 'transit'
-                    ? '<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="4" y="3" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="m8 19-2 3"/><path d="m18 22-2-3"/><path d="M8 15h0"/><path d="M16 15h0"/></svg>'
-                    : poi.category === 'shopping'
-                    ? '<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>'
-                    : '<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2"/><path d="M15 2v19"/><path d="M5 2v19"/><path d="M8 2v4a2 2 0 0 1-2 2 2 2 0 0 1-2-2V2"/></svg>'
-                }
-              </div>
-              <div class="absolute top-full left-1/2 -translate-x-1/2 mt-1 px-2 py-0.5 rounded-md text-[9px] font-semibold tracking-tight whitespace-nowrap shadow-md backdrop-blur-md bg-black/75 text-white border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                ${poi.name[language] || poi.name.en}
-              </div>
-            </div>
-          `,
-          iconSize: [28, 28],
-          iconAnchor: [14, 14],
-        });
-
-        const marker = L.marker([poi.lat, poi.lng], { icon: poiIcon }).addTo(map);
-        marker.on('click', () => {
-          handleSelectPoi(poi);
-        });
-
-        poiMarkersRef.current[poi.id] = marker;
-      });
     }
 
     return () => {
@@ -500,7 +440,54 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
         mapInstanceRef.current = null;
       }
     };
-  }, [language]);
+  }, []);
+
+  // Synchronize POI markers for the selected property (Declutters Quintara to show only clean transit & access)
+  useEffect(() => {
+    if (!mapInstanceRef.current || !poiLayerGroupRef.current) return;
+
+    poiLayerGroupRef.current.clearLayers();
+
+    // Determine POIs to display: For Quintara, strictly show curated uncluttered landmarks (zero restaurant/cafe symbols)
+    const activePois = selectedPropertyId === 'quintara'
+      ? PLACES_OF_INTEREST.filter(p => p.city === 'Hong Kong' && p.category !== 'dining')
+      : PLACES_OF_INTEREST.filter(p => p.city === 'Bangkok');
+
+    activePois.forEach((poi) => {
+      const poiIcon = L.divIcon({
+        className: 'custom-poi-pin',
+        html: `
+          <div class="relative flex items-center justify-center cursor-pointer transform -translate-x-1/2 -translate-y-1/2 group">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center shadow-lg border border-white/80 transition-transform duration-200 group-hover:scale-110 ${
+              poi.category === 'transit'
+                ? 'bg-[#0284C7] text-white ring-2 ring-[#0284C7]/20'
+                : poi.category === 'shopping'
+                ? 'bg-[#042F61] text-white'
+                : 'bg-[#9D7C38] text-white'
+            }">
+              ${
+                poi.category === 'transit'
+                  ? '<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="4" y="3" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="m8 19-2 3"/><path d="m18 22-2-3"/><path d="M8 15h0"/><path d="M16 15h0"/></svg>'
+                  : '<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>'
+              }
+            </div>
+            <div class="absolute top-full left-1/2 -translate-x-1/2 mt-1 px-2 py-0.5 rounded-md text-[9px] font-semibold tracking-tight whitespace-nowrap shadow-md backdrop-blur-md bg-black/75 text-white border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              ${poi.name[language] || poi.name.en}
+            </div>
+          </div>
+        `,
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+      });
+
+      const marker = L.marker([poi.lat, poi.lng], { icon: poiIcon });
+      marker.on('click', () => {
+        handleSelectPoi(poi);
+      });
+
+      poiLayerGroupRef.current?.addLayer(marker);
+    });
+  }, [selectedPropertyId, language]);
 
   // Synchronize dynamic marker highlights when selectedPropertyId changes
   useEffect(() => {
@@ -550,8 +537,10 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
     }
   };
 
-  // Filter POIs for active city
-  const cityPois = PLACES_OF_INTEREST.filter(p => p.city === selectedProperty.city);
+  // Filter POIs for active property: For Quintara, strictly show uncluttered non-dining landmarks
+  const cityPois = selectedPropertyId === 'quintara'
+    ? PLACES_OF_INTEREST.filter(p => p.city === 'Hong Kong' && p.category !== 'dining')
+    : PLACES_OF_INTEREST.filter(p => p.city === selectedProperty.city);
 
   return (
     <div id="real-interactive-map-section" className="relative w-full rounded-3xl overflow-hidden border border-[#2B2E33] shadow-2xl bg-[#0D1013]">

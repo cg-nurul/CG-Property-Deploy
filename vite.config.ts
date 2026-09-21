@@ -1,11 +1,33 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import { defineConfig, Plugin } from 'vite';
+import { handleApiRequest } from './api/router';
+
+function apiServerPlugin(): Plugin {
+  return {
+    name: 'api-server-middleware',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (req.url && req.url.startsWith('/api/')) {
+          try {
+            await handleApiRequest(req, res);
+          } catch (err) {
+            console.error('API middleware error:', err);
+            res.statusCode = 500;
+            res.end(JSON.stringify({ error: 'Internal Server Error' }));
+          }
+          return;
+        }
+        next();
+      });
+    },
+  };
+}
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), apiServerPlugin()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

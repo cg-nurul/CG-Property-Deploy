@@ -68,9 +68,9 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         <div className="relative z-10 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-white text-xs font-medium tracking-wide shadow-sm">
             <FilledMapPin className="w-3.5 h-3.5 text-[#DFB85A] shrink-0 fill-current" />
-            <span className="font-semibold">Bangkok, Thailand</span>
+            <span className="font-semibold">{activeProperty.city}, {activeProperty.country}</span>
             <span className="w-1 h-1 rounded-full bg-[#DFB85A]" />
-            <span className="text-white/85">Nue District Rama 9</span>
+            <span className="text-white/85">{activeProperty.location}</span>
           </div>
         </div>
 
