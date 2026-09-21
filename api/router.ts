@@ -1,7 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'http';
-import servicesHandler from './services';
-import availabilityHandler from './availability';
-import bookingsHandler from './bookings';
+import servicesHandler from './services.js';
+import availabilityHandler from './availability.js';
+import bookingsHandler from './bookings.js';
 
 export async function handleApiRequest(req: IncomingMessage & { body?: any; query?: any }, res: ServerResponse) {
   const urlObj = new URL(req.url || '/', `http://${req.headers.host || 'localhost'}`);

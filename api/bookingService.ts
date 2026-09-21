@@ -1,12 +1,12 @@
 import { Resend } from 'resend';
 import { neon } from '@neondatabase/serverless';
-import { 
+import type { 
   BookingService, 
   BookingSlot, 
   BookingRecord, 
   CreateBookingPayload, 
   BookingResponse 
-} from '../src/types';
+} from '../src/types.js';
 
 // Default Curated Services for CG Property Luxury Residences
 export const DEFAULT_SERVICES: BookingService[] = [

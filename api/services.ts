@@ -1,4 +1,4 @@
-import { getServices } from './bookingService';
+import { getServices } from './bookingService.js';
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'GET') {

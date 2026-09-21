@@ -1,5 +1,5 @@
-import { createBooking, cancelBooking, rescheduleBooking } from './bookingService';
-import { CreateBookingPayload } from '../src/types';
+import { createBooking, cancelBooking, rescheduleBooking } from './bookingService.js';
+import type { CreateBookingPayload } from '../src/types.js';
 
 export default async function handler(req: any, res: any) {
   if (req.method === 'POST') {

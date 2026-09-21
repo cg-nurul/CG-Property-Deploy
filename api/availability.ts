@@ -1,4 +1,4 @@
-import { getAvailableSlots } from './bookingService';
+import { getAvailableSlots } from './bookingService.js';
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'GET') {
