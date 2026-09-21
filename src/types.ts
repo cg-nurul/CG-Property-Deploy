@@ -27,6 +27,7 @@ export interface Property {
       zh: string;
       th: string;
     };
+    category?: 'living' | 'bedroom' | 'kitchen' | 'bathroom' | 'details';
   }[];
   // Airbnb direct link (configurable)
   airbnbUrl: string;
@@ -70,9 +71,11 @@ export type PageRoute =
   | '/properties'
   | '/properties/residence-01'
   | '/properties/residence-02'
+  | '/properties/quintara'
   | '/destinations'
   | '/destinations/thailand'
   | '/destinations/thailand/bangkok'
+  | '/destinations/hong-kong'
   | '/about'
   | '/contact'
   | '/privacy'

@@ -46,9 +46,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'intro.heading': 'Thoughtfully selected residences, beginning in Thailand.',
     'intro.body': 'CG Property brings together carefully selected places to stay, beginning with a collection of furnished residences in Bangkok.',
 
-    // The Rama 9 Collection
-    'collection.heading': 'The Rama 9 Collection',
-    'collection.subheading': 'Two distinct furnished residences with tailored layouts and panoramic city views.',
+    // The Collection
+    'collection.heading': 'The Collection',
+    'collection.subheading': 'Distinct furnished residences with tailored layouts, bespoke interiors, and panoramic city views.',
     'collection.residence1.title': 'The Tower R Suite',
     'collection.residence2.title': 'The Tower N Sky Suite',
     'collection.viewProperty': 'View Property',
@@ -112,8 +112,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'property.stayInfo': 'Stay Information',
     'property.stayInfoNotice': 'Complete stay policies and guidelines are provided upon booking through Airbnb.',
     'property.otherResidence': 'Explore The Other Residence',
-    'property.backToProperties': 'Back to The Rama 9 Collection',
+    'property.backToProperties': 'Back to Properties',
     'property.viewGallery': 'View all photos',
+    'gallery.scrollToExplore': 'Scroll to see how it looks from inside',
 
     // Destinations Page
     'destinations.title': 'Destinations',
@@ -218,9 +219,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'intro.heading': '精选品质住宅，始于泰国。',
     'intro.body': 'CG Property 汇聚悉心甄选的居停之所，以曼谷的一系列精装公寓作为起点。',
 
-    // The Rama 9 Collection
-    'collection.heading': '拉玛九臻选系列',
-    'collection.subheading': '两套独具格局与视野的精装现代住宅。',
+    // The Collection
+    'collection.heading': '全球臻选住宅系列',
+    'collection.subheading': '独具考究格局、精致内饰与全景都会视野的臻选精装住宅。',
     'collection.residence1.title': 'The Tower R Suite (R栋臻选套房)',
     'collection.residence2.title': 'The Tower N Sky Suite (N栋云端套房)',
     'collection.viewProperty': '查看房源',
@@ -284,8 +285,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'property.stayInfo': '入住须知',
     'property.stayInfoNotice': '完整的入住守则与指南将在通过 Airbnb 预订时提供。',
     'property.otherResidence': '探索其他精选套房',
-    'property.backToProperties': '返回拉玛九臻选系列',
+    'property.backToProperties': '返回所有精选房源',
     'property.viewGallery': '查看所有照片',
+    'gallery.scrollToExplore': '滑动浏览室内实景',
 
     // Destinations Page
     'destinations.title': '目的地',
@@ -390,9 +392,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'intro.heading': 'เรซิเดนซ์ที่คัดสรรอย่างพิถีพิถัน เริ่มต้นที่ประเทศไทย',
     'intro.body': 'CG Property รวบรวมที่พักที่ได้รับการคัดเลือกอย่างประณีต เริ่มต้นด้วยคอลเลกชันเรซิเดนซ์ตกแต่งครบครันในกรุงเทพมหานคร',
 
-    // The Rama 9 Collection
-    'collection.heading': 'เดอะ พระราม 9 คอลเลกชัน',
-    'collection.subheading': 'เรซิเดนซ์ตกแต่งครบครัน 2 ยูนิต พร้อมรูปแบบเฉพาะตัวและทัศนียภาพเมืองอันงดงาม',
+    // The Collection
+    'collection.heading': 'คอลเลกชันเรสซิเดนซ์',
+    'collection.subheading': 'คอลเลกชันที่พักพร้อมอยู่คัดสรรพิเศษ พร้อมการตกแต่งประณีตและวิวเมืองแบบพาโนรามา',
     'collection.residence1.title': 'The Tower R Suite',
     'collection.residence2.title': 'The Tower N Sky Suite',
     'collection.viewProperty': 'ดูข้อมูลที่พัก',
@@ -456,8 +458,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'property.stayInfo': 'ข้อมูลการเข้าพัก',
     'property.stayInfoNotice': 'ระเบียบและข้อกำหนดการเข้าพักจะได้รับเมื่อทำการจองผ่าน Airbnb',
     'property.otherResidence': 'สำรวจเรซิเดนซ์อื่นในคอลเลกชัน',
-    'property.backToProperties': 'กลับสู่ เดอะ พระราม 9 คอลเลกชัน',
+    'property.backToProperties': 'กลับสู่รายการเรสซิเดนซ์ทั้งหมด',
     'property.viewGallery': 'ดูภาพทั้งหมด',
+    'gallery.scrollToExplore': 'เลื่อนเพื่อชมบรรยากาศภายใน',
 
     // Destinations Page
     'destinations.title': 'จุดหมายปลายทาง',

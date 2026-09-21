@@ -83,9 +83,9 @@ export const DestinationBangkokPage: React.FC<DestinationBangkokPageProps> = ({ 
           </p>
         </div>
 
-        {/* Both Residences in Bangkok Grid */}
+        {/* Residences in Bangkok Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-          {PROPERTIES.map((prop) => (
+          {PROPERTIES.filter((p) => p.city === 'Bangkok').map((prop) => (
             <div
               key={prop.id}
               className="bg-[#FAF8F5] rounded-2xl p-5 border border-[#E6E0D8] flex flex-col justify-between space-y-4 hover:shadow-xs transition-shadow"

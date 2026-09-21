@@ -34,11 +34,14 @@ export const PropertyDetailPage: React.FC<PropertyDetailPageProps> = ({ slug, on
   const contactSectionRef = useRef<HTMLDivElement>(null);
 
   const property = PROPERTIES.find((p) => p.slug === slug) || PROPERTIES[0];
-  const otherProperty = PROPERTIES.find((p) => p.slug !== property.slug) || PROPERTIES[1];
+  const otherProperties = PROPERTIES.filter((p) => p.slug !== property.slug);
+  const isHongKong = property.city === 'Hong Kong';
 
   const handleScrollToContact = () => {
     contactSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const destinationRoute: PageRoute = isHongKong ? '/destinations/hong-kong' : '/destinations/thailand/bangkok';
 
   return (
     <div className="pt-32 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
@@ -59,14 +62,14 @@ export const PropertyDetailPage: React.FC<PropertyDetailPageProps> = ({ slug, on
 
         <div className="flex items-center gap-2 text-xs text-[#8A8175]">
           <a 
-            href="/destinations/thailand/bangkok"
+            href={destinationRoute}
             onClick={(e) => {
               e.preventDefault();
-              onNavigate('/destinations/thailand/bangkok');
+              onNavigate(destinationRoute);
             }}
             className="hover:text-[#042F61] hover:underline transition-colors"
           >
-            {property.location}
+            {property.city}, {property.country}
           </a>
           <span>/</span>
           <span className="font-semibold text-[#042F61]">{property.name}</span>
@@ -85,7 +88,7 @@ export const PropertyDetailPage: React.FC<PropertyDetailPageProps> = ({ slug, on
               </span>
               <span className="bg-white/10 text-white text-[11px] font-medium px-3 py-1 rounded-full flex items-center gap-1 border border-white/10">
                 <MapPin className="w-3 h-3 text-[#DFB85A]" />
-                <span>{property.location}, Bangkok</span>
+                <span>{property.location}, {property.city}</span>
               </span>
             </div>
 
@@ -156,31 +159,42 @@ export const PropertyDetailPage: React.FC<PropertyDetailPageProps> = ({ slug, on
               {property.overview[language] || property.overview.en}
             </p>
             <div className="pt-2 text-xs text-[#8A8175] space-y-1">
-              <p>• Building: Nue District Rama 9 ({property.tower})</p>
-              <p>• Vertical Zone: {property.floor}</p>
+              <p>• Residence: {property.location} ({property.tower})</p>
+              <p>• Elevation / Floor: {property.floor}</p>
               <p>• Interior Space: {Math.ceil(property.sizeSqm)} square meters</p>
-              <p>• Arrangement: {property.bedrooms} Bedrooms, {property.bathrooms} {property.bathrooms > 1 ? 'Bathrooms' : 'Bathroom'}</p>
-              <p>• Handover State: Fully Furnished condominium unit</p>
+              <p>• Layout: {property.bedrooms} Bedrooms, {property.bathrooms} {property.bathrooms > 1 ? 'Bathrooms' : 'Bathroom'}</p>
+              <p>• Handover State: {property.type}</p>
             </div>
           </div>
 
-          {/* Amenities (CMS-Ready graceful placeholder) */}
-          <AmenitiesNotice />
+          {/* Amenities */}
+          <AmenitiesNotice 
+            locationName={property.name} 
+            isHongKong={isHongKong} 
+          />
 
-          {/* Location & Tower Context */}
+          {/* Location & Neighborhood Context */}
           <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E0D8] shadow-xs space-y-4">
             <div className="flex items-center gap-2">
               <Building2 className="w-4 h-4 text-[#9D7C38]" />
               <h3 className="text-xl font-bold text-[#042F61]">
-                {t('location.heading')}
+                {isHongKong 
+                  ? (language === 'zh' ? '香港核心区位与周边' : language === 'th' ? 'ทำเลใจกลางฮ่องกงและสิ่งแวดล้อม' : 'Hong Kong Location & Neighborhood')
+                  : t('location.heading')}
               </h3>
             </div>
             <p className="text-sm text-[#5E574E] leading-relaxed">
-              {t('location.description')}
+              {isHongKong
+                ? (language === 'zh' 
+                    ? 'Quintara 坐落于香港核心中西区／半山地段，兼具都会璀璨生机与宜人居住私密性。毗邻中环国际金融中心商圈、苏豪区（SoHo）精致餐饮及兰桂坊，步行快捷搭乘港铁及中环半山扶梯，尊享四通八达的国际化商务生活圈。'
+                    : language === 'th'
+                    ? 'Quintara ตั้งอยู่ในทำเลชั้นนำย่านมิดเลเวลส์ / เซ็นทรัล ฮ่องกง ผสานความมีชีวิตชีวาของเมืองหลวงระดับโลกเข้ากับความเป็นส่วนตัวสูง อยู่ใกล้ศูนย์กลางการเงิน IFC ร้านอาหารชั้นเลิศใน SoHo และสถานีรถไฟใต้ดิน MTR เพื่อการเดินทางที่ไร้รอยต่อ'
+                    : 'Quintara is positioned within Hong Kong’s esteemed Mid-Levels and Central enclave, offering an enviable balance of metropolitan vibrancy and private residential seclusion. Situated moments from the Central International Finance Centre (IFC) district, SoHo dining, Lan Kwai Fong, and direct MTR transport links, it provides unmatched international connectivity.')
+                : t('location.description')}
             </p>
             <div className="bg-[#FAF8F5] p-4 rounded-2xl border border-[#E6E0D8] text-xs text-[#6B645A] space-y-1">
               <p className="font-semibold text-[#042F61]">{property.location}</p>
-              <p>Rama 9 Road, Huai Khwang, Bangkok 10310, Thailand</p>
+              <p>{property.district}, {property.city}, {property.country}</p>
               <p className="text-[#8A8175]">Tower: {property.tower} · Level: {property.floor}</p>
             </div>
           </div>
@@ -201,31 +215,43 @@ export const PropertyDetailPage: React.FC<PropertyDetailPageProps> = ({ slug, on
             </div>
           </div>
 
-          {/* Compare with Other Residence */}
-          {otherProperty && (
-            <div className="bg-[#FAF8F5] rounded-3xl p-6 sm:p-8 border border-[#E6E0D8] flex flex-col sm:flex-row items-center justify-between gap-6">
-              <div className="space-y-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#9D7C38]">
-                  {t('property.otherResidence')}
-                </span>
-                <h4 className="text-xl font-bold text-[#042F61]">
-                  {otherProperty.name} ({otherProperty.tower} · {otherProperty.floor})
-                </h4>
-                <p className="text-xs text-[#6B645A]">
-                  {Math.ceil(otherProperty.sizeSqm)} sqm · {otherProperty.bedrooms} Bed · {otherProperty.bathrooms} Bath
-                </p>
+          {/* Compare with Other Residences */}
+          {otherProperties.length > 0 && (
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#9D7C38]">
+                {t('property.otherResidence')}
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {otherProperties.map((other) => (
+                  <div 
+                    key={other.id}
+                    className="bg-[#FAF8F5] rounded-2xl p-5 border border-[#E6E0D8] flex flex-col justify-between gap-4 hover:border-[#DFB85A]/60 transition-colors"
+                  >
+                    <div className="space-y-1">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#9D7C38]">
+                        {other.city} · {other.tower}
+                      </span>
+                      <h5 className="text-lg font-bold text-[#042F61]">
+                        {other.name}
+                      </h5>
+                      <p className="text-xs text-[#6B645A]">
+                        {Math.ceil(other.sizeSqm)} sqm · {other.bedrooms} Bed · {other.bathrooms} Bath · {other.floor}
+                      </p>
+                    </div>
+                    <RippleButton
+                      variant="primary"
+                      onClick={() => {
+                        onNavigate(`/properties/${other.slug}` as PageRoute);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="px-4 py-2 rounded-full text-xs font-semibold tracking-wide self-start"
+                    >
+                      <span>View {other.name}</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-white" />
+                    </RippleButton>
+                  </div>
+                ))}
               </div>
-              <RippleButton
-                variant="primary"
-                onClick={() => {
-                  onNavigate(`/properties/${otherProperty.slug}` as PageRoute);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide shrink-0"
-              >
-                <span>View {otherProperty.name}</span>
-                <ArrowRight className="w-3.5 h-3.5 text-white" />
-              </RippleButton>
             </div>
           )}
 

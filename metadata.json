@@ -1,6 +1,6 @@
 {
   "name": "CG Property",
-  "description": "A premium hospitality and property brand showcasing curated furnished residences at Nue District Rama 9, Bangkok, Thailand.",
+  "description": "A premium hospitality and property brand showcasing curated furnished residences across Bangkok and Hong Kong.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

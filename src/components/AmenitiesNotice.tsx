@@ -17,10 +17,18 @@ import {
   Car
 } from 'lucide-react';
 
-export const AmenitiesNotice: React.FC = () => {
+interface AmenitiesNoticeProps {
+  locationName?: string;
+  isHongKong?: boolean;
+}
+
+export const AmenitiesNotice: React.FC<AmenitiesNoticeProps> = ({ 
+  locationName,
+  isHongKong = false 
+}) => {
   const { t, language } = useLanguage();
 
-  const keyAmenities = [
+  const bangkokAmenities = [
     { icon: Waves, label: { en: 'Sky Infinity Pool & Sundeck', zh: '云端无边际泳池及日光甲板', th: 'สระว่ายน้ำลอยฟ้าอินฟินิตี้' } },
     { icon: Dumbbell, label: { en: 'Panoramic Sky Fitness Studio', zh: '高空全景健身中心', th: 'ฟิตเนสสตูดิโอลอยฟ้า' } },
     { icon: Laptop, label: { en: 'Co-Working & Sky Lounge', zh: '行政共享办公酒廊', th: 'สกายเลานจ์และพื้นที่ทำงาน' } },
@@ -35,6 +43,23 @@ export const AmenitiesNotice: React.FC = () => {
     { icon: CreditCard, label: { en: 'Floor-Secured Keycard Lift Access', zh: '梯控专属门禁电梯系统', th: 'ลิฟต์ล็อคชั้นด้วยคีย์การ์ด' } },
   ];
 
+  const hongKongAmenities = [
+    { icon: Waves, label: { en: 'Skyline Wellness & Horizon Lounge', zh: '天际观景酒廊与健康生活空间', th: 'ฮอไรซันเลานจ์และสเปซดูแลสุขภาพ' } },
+    { icon: Dumbbell, label: { en: 'Technogym Executive Fitness Studio', zh: '全套泰诺健高阶健身中心', th: 'ฟิตเนสสตูดิโอระดับไฮเอนด์' } },
+    { icon: Laptop, label: { en: 'Private Meeting Pods & Workspaces', zh: '私密行政会议舱与静音办公区', th: 'ห้องประชุมส่วนตัวและพื้นที่ทำงาน' } },
+    { icon: Wifi, label: { en: 'Gigabit Ultra-Fast Fiber Internet', zh: '千兆超高速光纤专线网络', th: 'อินเทอร์เน็ตไฟเบอร์ระดับกิกะบิต' } },
+    { icon: UtensilsCrossed, label: { en: 'Designer Kitchen with Premium Appliances', zh: '进口大理石开放式高端厨电厨房', th: 'ครัวดีไซเนอร์พร้อมเครื่องใช้ไฟฟ้าระดับพรีเมียม' } },
+    { icon: Lock, label: { en: 'Biometric & Smart Keyless Entry', zh: '生物指纹与智能数字无钥匙门禁', th: 'ระบบสแกนลายนิ้วมือและดิจิทัลล็อค' } },
+    { icon: Wind, label: { en: 'Acoustic Soundproofing & Air Purification', zh: '双层静音隔音玻璃与空气净化系统', th: 'กระจกกันเสียงสองชั้นและระบบฟอกอากาศ' } },
+    { icon: Shirt, label: { en: 'In-Suite Washer & Dryer Care Unit', zh: '套内洗烘一体机及衣物护理设备', th: 'เครื่องซักผ้าและอบผ้าในตัว' } },
+    { icon: Tv, label: { en: 'Ultra HD 4K Cinema Display', zh: '超高清4K巨幕智能影音屏', th: 'จอภาพ 4K ความละเอียดสูง' } },
+    { icon: ShieldCheck, label: { en: '24/7 Concierge & Multi-Tier Security', zh: '24小时礼宾服务与多重严密安防', th: 'บริการเจ้าหน้าที่อำนวยความสะดวก 24 ชม.' } },
+    { icon: CreditCard, label: { en: 'Private High-Speed Secure Lift Access', zh: '专属高保密高速门禁电梯', th: 'ลิฟต์ความเร็วสูงระบบรักษาความปลอดภัยส่วนตัว' } },
+    { icon: Trees, label: { en: 'Landscaped Outdoor Courtyard Garden', zh: '雅致园林景观户外休憩庭院', th: 'สวนคอร์ทยาร์ดกลางแจ้งร่มรื่น' } },
+  ];
+
+  const keyAmenities = isHongKong ? hongKongAmenities : bangkokAmenities;
+
   return (
     <div id="property-amenities-section" className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E0D8] shadow-xs space-y-6">
       <div className="flex items-center justify-between pb-4 border-b border-[#E6E0D8]">
@@ -45,7 +70,7 @@ export const AmenitiesNotice: React.FC = () => {
           </h3>
         </div>
         <span className="text-xs font-semibold text-[#8A8175] uppercase tracking-wider">
-          Nue District Rama 9
+          {locationName || (isHongKong ? 'Hong Kong Residence' : 'Nue District Rama 9')}
         </span>
       </div>
 

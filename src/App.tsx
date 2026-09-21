@@ -8,6 +8,7 @@ import { PropertiesPage } from './pages/PropertiesPage';
 import { PropertyDetailPage } from './pages/PropertyDetailPage';
 import { DestinationsPage } from './pages/DestinationsPage';
 import { DestinationBangkokPage } from './pages/DestinationBangkokPage';
+import { DestinationHongKongPage } from './pages/DestinationHongKongPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { LegalPage } from './pages/LegalPage';
@@ -20,9 +21,11 @@ export function App() {
       '/properties',
       '/properties/residence-01',
       '/properties/residence-02',
+      '/properties/quintara',
       '/destinations',
       '/destinations/thailand',
       '/destinations/thailand/bangkok',
+      '/destinations/hong-kong',
       '/about',
       '/contact',
       '/privacy',
@@ -59,14 +62,24 @@ export function App() {
     if (currentRoute === '/properties') {
       return <PropertiesPage onNavigate={navigate} />;
     }
+    if (currentRoute === '/properties/quintara') {
+      return <PropertyDetailPage slug="quintara" onNavigate={navigate} />;
+    }
     if (currentRoute === '/properties/residence-01') {
       return <PropertyDetailPage slug="residence-01" onNavigate={navigate} />;
     }
     if (currentRoute === '/properties/residence-02') {
       return <PropertyDetailPage slug="residence-02" onNavigate={navigate} />;
     }
+    if (currentRoute.startsWith('/properties/')) {
+      const slug = currentRoute.replace('/properties/', '');
+      return <PropertyDetailPage slug={slug} onNavigate={navigate} />;
+    }
     if (currentRoute === '/destinations') {
       return <DestinationsPage onNavigate={navigate} />;
+    }
+    if (currentRoute === '/destinations/hong-kong') {
+      return <DestinationHongKongPage onNavigate={navigate} />;
     }
     if (currentRoute === '/destinations/thailand' || currentRoute === '/destinations/thailand/bangkok') {
       return <DestinationBangkokPage onNavigate={navigate} />;
