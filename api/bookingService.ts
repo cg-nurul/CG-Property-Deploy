@@ -60,7 +60,7 @@ let localBookings: BookingRecord[] = [
     id: 'bkg-demo-1',
     booking_reference: 'CG-2026-N9R1',
     property_id: 'residence-01',
-    property_name: 'The Tower R Suite',
+    property_name: 'NUE District R9',
     service_id: 'svc-private-viewing',
     service_name: 'Private In-Person Viewing & Tour',
     customer_name: 'Alexander Wright',

@@ -188,7 +188,11 @@ export const TheCollection: React.FC<TheCollectionProps> = ({ onNavigate }) => {
                   <img
                     src={prop.coverImage}
                     alt={prop.name}
-                    className="absolute inset-0 w-full h-full object-cover object-center"
+                    className={`absolute inset-0 h-full object-cover ${
+                      prop.id === 'residence-01'
+                        ? 'w-[calc(100%+350px)] max-w-none -translate-x-[350px] object-center'
+                        : 'w-full object-center'
+                    }`}
                   />
 
                   {/* Subtle photographic vignette on the image */}
@@ -198,15 +202,17 @@ export const TheCollection: React.FC<TheCollectionProps> = ({ onNavigate }) => {
                   <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-20 flex flex-wrap items-center gap-2">
                     {/* Location Pill: Brand Blue frosted glass with gold text & svg */}
                     <span className="bg-[#042F61]/85 backdrop-blur-md text-[#DFB85A] text-[11px] font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-[#DFB85A]/35 shadow-md">
-                      <FilledMapPin className="w-3.5 h-3.5 text-[#DFB85A] fill-current" />
-                      <span className="text-[#DFB85A]">{prop.location}</span>
+                      <FilledMapPin className="w-3.5 h-3.5 text-[#DFB85A] fill-current shrink-0" />
+                      <span className="text-[#DFB85A]">{prop.city}, {prop.country}</span>
                     </span>
 
-                    {/* Tower Pill: Brand Blue frosted glass with building svg and matching gold text */}
-                    <span className="bg-[#042F61]/85 backdrop-blur-md text-[#DFB85A] text-[11px] font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-[#DFB85A]/35 shadow-md">
-                      <FilledBuilding className="w-3.5 h-3.5 text-[#DFB85A] fill-current" />
-                      <span className="text-[#DFB85A]">{prop.tower}</span>
-                    </span>
+                    {/* Optional Tower Pill */}
+                    {prop.tower && (
+                      <span className="bg-[#042F61]/85 backdrop-blur-md text-[#DFB85A] text-[11px] font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-[#DFB85A]/35 shadow-md">
+                        <FilledBuilding className="w-3.5 h-3.5 text-[#DFB85A] fill-current" />
+                        <span className="text-[#DFB85A]">{prop.tower}</span>
+                      </span>
+                    )}
 
                     {/* Floor Pill: Brand Gold frosted glass with matching brand blue text & svg */}
                     <span className="bg-[#DFB85A]/90 backdrop-blur-md text-[#042F61] text-[11px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-[#042F61]/25 shadow-md">
@@ -224,8 +230,8 @@ export const TheCollection: React.FC<TheCollectionProps> = ({ onNavigate }) => {
                       <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight">
                         {prop.name}
                       </h3>
-                      <p className="text-xs sm:text-sm text-[#DFB85A] uppercase tracking-wider font-semibold mt-1">
-                        {prop.location} · {prop.city}
+                      <p className="text-xs sm:text-sm text-[#DFB85A] tracking-wider font-semibold mt-1 truncate" title={prop.location}>
+                        {prop.location}
                       </p>
                     </div>
 

@@ -59,8 +59,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               {t('intro.heading')}
             </p>
             <div className="pt-2 text-xs text-white/85 space-y-1">
-              <p><span className="text-white font-medium">Global Hubs:</span> Bangkok, Thailand · Hong Kong SAR</p>
-              <p className="text-white/80">Directly serviced residences across premier international destinations</p>
+              <p><span className="text-white font-medium">Location:</span> Bangkok, Thailand</p>
+              <p className="text-white/80">Directly serviced residences across premier Bangkok destinations</p>
             </div>
           </div>
 
@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     }}
                     className="hover:text-white transition-colors cursor-pointer text-left flex items-center justify-between w-full group"
                   >
-                    <span className="text-white/95 group-hover:text-white font-normal">{prop.name} · {prop.tower}</span>
+                    <span className="text-white/95 group-hover:text-white font-normal">{prop.name}</span>
                     <span className="text-[10px] text-white/75 group-hover:text-[#F5D278] transition-colors">{prop.floor}</span>
                   </button>
                 </li>
@@ -114,17 +114,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   className="text-white/95 hover:text-[#F5D278] transition-colors cursor-pointer"
                 >
                   Bangkok, Thailand
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    onNavigate('/destinations/hong-kong');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="text-white/95 hover:text-[#F5D278] transition-colors cursor-pointer"
-                >
-                  Hong Kong SAR
                 </button>
               </li>
               <li>

@@ -19,6 +19,7 @@ export interface Property {
   roomNumberInternal: string;
   // Primary hero photo
   coverImage: string;
+  heroImage?: string;
   // High quality gallery photos (architectural, living, dining, bedroom, view)
   gallery: {
     url: string;

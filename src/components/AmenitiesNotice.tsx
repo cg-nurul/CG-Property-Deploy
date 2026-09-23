@@ -14,19 +14,411 @@ import {
   Shirt,
   Laptop,
   Trees,
-  Car
+  Car,
+  Sofa,
+  Plug,
+  BedDouble,
+  Moon,
+  Package,
+  Baby,
+  Bath,
+  Droplets,
+  Flame,
+  CheckCircle,
+  CircleDot,
+  Layers,
+  Minus,
+  Smile,
+  Microwave,
+  Refrigerator,
+  WashingMachine,
+  Utensils,
+  Archive
 } from 'lucide-react';
 
 interface AmenitiesNoticeProps {
   locationName?: string;
   isHongKong?: boolean;
+  propertySlug?: string;
 }
 
 export const AmenitiesNotice: React.FC<AmenitiesNoticeProps> = ({ 
   locationName,
-  isHongKong = false 
+  isHongKong = false,
+  propertySlug
 }) => {
   const { t, language } = useLanguage();
+
+  const isQuintara = propertySlug === 'quintara' || locationName?.toLowerCase().includes('quintara');
+  const isNueDistrict = propertySlug === 'residence-01' || locationName?.toLowerCase().includes('nue district');
+
+  // Professional normalized amenities for NUE District R9 Residence
+  const nueDistrictAmenities = [
+    { 
+      icon: Sofa, 
+      label: { 
+        en: 'Comfortable Living Sofa', 
+        zh: '舒适客厅沙发', 
+        th: 'โซฟาห้องนั่งเล่นแสนสบาย' 
+      } 
+    },
+    { 
+      icon: Moon, 
+      label: { 
+        en: 'Blackout & Privacy Curtains', 
+        zh: '全遮光与私密窗帘', 
+        th: 'ผ้าม่านกันแสงและเพิ่มความเป็นส่วนตัว' 
+      } 
+    },
+    { 
+      icon: Utensils, 
+      label: { 
+        en: 'Dining Table & Seating', 
+        zh: '雅致餐桌与餐椅配套', 
+        th: 'โต๊ะรับประทานอาหารพร้อมเก้าอี้' 
+      } 
+    },
+    { 
+      icon: Plug, 
+      label: { 
+        en: 'Accessible Power Outlets', 
+        zh: '便捷多功能电源插座', 
+        th: 'เต้ารับไฟฟ้าใช้งานสะดวก' 
+      } 
+    },
+    { 
+      icon: Wind, 
+      label: { 
+        en: 'Climate-Controlled Air Conditioning', 
+        zh: '舒适静音分体变频空调', 
+        th: 'เครื่องปรับอากาศควบคุมอุณหภูมิ' 
+      } 
+    },
+    { 
+      icon: Tv, 
+      label: { 
+        en: 'Smart TV with Remote Control', 
+        zh: '智能高清电视（配专属遥控器）', 
+        th: 'สมาร์ททีวีพร้อมรีโมทคอนโทรล' 
+      } 
+    },
+    { 
+      icon: Flame, 
+      label: { 
+        en: 'Induction Cooktop', 
+        zh: '现代微烹电磁炉台', 
+        th: 'เตาแม่เหล็กไฟฟ้าสำหรับการปรุงอาหาร' 
+      } 
+    },
+    { 
+      icon: Microwave, 
+      label: { 
+        en: 'Multi-Function 3-in-1 Microwave', 
+        zh: '三合一多功能微波炉', 
+        th: 'ไมโครเวฟมัลติฟังก์ชั่น 3-in-1' 
+      } 
+    },
+    { 
+      icon: Archive, 
+      label: { 
+        en: 'Kitchen Storage Cabinetry', 
+        zh: '厨房专属储物吊柜与橱柜', 
+        th: 'ตู้เก็บของและอุปกรณ์ครัว' 
+      } 
+    },
+    { 
+      icon: Refrigerator, 
+      label: { 
+        en: 'In-Unit Refrigerator & Freezer', 
+        zh: '套内大容量保鲜冰箱', 
+        th: 'ตู้เย็นสำหรับเก็บรักษาอาหาร' 
+      } 
+    },
+    { 
+      icon: WashingMachine, 
+      label: { 
+        en: '2-in-1 In-Unit Washer & Dryer', 
+        zh: '套内一体式洗烘洗衣机', 
+        th: 'เครื่องซักผ้าและอบผ้าแบบ 2-in-1 ในห้อง' 
+      } 
+    },
+    { 
+      icon: BedDouble, 
+      label: { 
+        en: 'Comfortable Bed with Linens & Pillows', 
+        zh: '舒适大床与高品质床品枕头', 
+        th: 'เตียงนอนสบายพร้อมชุดเครื่องนอนและหมอน' 
+      } 
+    },
+    { 
+      icon: Package, 
+      label: { 
+        en: 'Wardrobe & Extra Storage Space', 
+        zh: '宽敞衣橱与充裕收纳空间', 
+        th: 'ตู้เสื้อผ้าและพื้นที่เก็บของเพิ่มเติม' 
+      } 
+    },
+    { 
+      icon: Shirt, 
+      label: { 
+        en: 'Clothes Hangers', 
+        zh: '专用衣物衣架', 
+        th: 'ไม้แขวนเสื้อ' 
+      } 
+    },
+    { 
+      icon: Sparkles, 
+      label: { 
+        en: 'Mirror & Dressing Area', 
+        zh: '独立更衣镜与梳妆区', 
+        th: 'กระจกและมุมแต่งตัว' 
+      } 
+    },
+    { 
+      icon: Droplets, 
+      label: { 
+        en: 'Walk-In Shower', 
+        zh: '步入式独立淋浴间', 
+        th: 'ห้องอาบน้ำแบบวอล์กอิน' 
+      } 
+    },
+    { 
+      icon: Flame, 
+      label: { 
+        en: 'Continuous Hot Water Supply', 
+        zh: '恒温充沛热水系统', 
+        th: 'ระบบน้ำอุ่นสม่ำเสมอ' 
+      } 
+    },
+    { 
+      icon: CheckCircle, 
+      label: { 
+        en: 'Sanitary Toilet', 
+        zh: '独立洁净马桶洁具', 
+        th: 'สุขภัณฑ์ชักโครกมาตรฐาน' 
+      } 
+    },
+    { 
+      icon: CircleDot, 
+      label: { 
+        en: 'Wash Basin & Vanity Mirror', 
+        zh: '洗手台盆及浴室梳妆镜', 
+        th: 'อ่างล้างหน้าพร้อมกระจกเงา' 
+      } 
+    },
+    { 
+      icon: Layers, 
+      label: { 
+        en: 'Fresh Bath & Hand Towels', 
+        zh: '高品质洁净洗浴毛巾', 
+        th: 'ผ้าขนหนูสะอาดนุ่ม' 
+      } 
+    },
+    { 
+      icon: Minus, 
+      label: { 
+        en: 'Dedicated Towel Rail', 
+        zh: '浴室专属毛巾架', 
+        th: 'ราวแขวนผ้าขนหนู' 
+      } 
+    },
+    { 
+      icon: Wind, 
+      label: { 
+        en: 'In-Room Hairdryer', 
+        zh: '客房专属电吹风', 
+        th: 'ไดร์เป่าผมในห้องพัก' 
+      } 
+    },
+    { 
+      icon: Smile, 
+      label: { 
+        en: 'Essential Toiletries', 
+        zh: '基础洗护备品', 
+        th: 'ของใช้ในห้องน้ำที่จำเป็น' 
+      } 
+    },
+    { 
+      icon: Baby, 
+      label: { 
+        en: 'Baby Cot (Available Upon Request)', 
+        zh: '婴儿床（按需提供）', 
+        th: 'เตียงเด็กอ่อน (ตามคำขอ)' 
+      } 
+    },
+    { 
+      icon: Bath, 
+      label: { 
+        en: 'Baby Bath Tub (Available Upon Request)', 
+        zh: '婴儿浴盆（按需提供）', 
+        th: 'อ่างอาบน้ำเด็ก (ตามคำขอ)' 
+      } 
+    },
+  ];
+
+  // Professional normalized amenities for Quintara Residence
+  const quintaraAmenities = [
+    { 
+      icon: Sofa, 
+      label: { 
+        en: 'Comfortable Convertible Sofa', 
+        zh: '舒适多功能沙发床', 
+        th: 'โซฟาปรับนอนแสนสบาย' 
+      } 
+    },
+    { 
+      icon: Plug, 
+      label: { 
+        en: 'Accessible Power Outlets', 
+        zh: '便捷多功能电源插座', 
+        th: 'เต้ารับไฟฟ้าใช้งานสะดวก' 
+      } 
+    },
+    { 
+      icon: Wind, 
+      label: { 
+        en: 'Climate-Controlled Air Conditioning', 
+        zh: '舒适分体静音空调', 
+        th: 'เครื่องปรับอากาศปรับอุณหภูมิได้' 
+      } 
+    },
+    { 
+      icon: UtensilsCrossed, 
+      label: { 
+        en: 'Complete Kitchen Essentials', 
+        zh: '齐备厨房烹饪基本用具', 
+        th: 'อุปกรณ์ครัวพื้นฐานครบครัน' 
+      } 
+    },
+    { 
+      icon: Tv, 
+      label: { 
+        en: 'Smart TV & Entertainment', 
+        zh: '智能高清电视与影音娱乐', 
+        th: 'สมาร์ททีวีและความบันเทิง' 
+      } 
+    },
+    { 
+      icon: BedDouble, 
+      label: { 
+        en: 'Comfortable Bed with Linens & Pillows', 
+        zh: '舒适大床与高品质床品枕头', 
+        th: 'เตียงนอนสบายพร้อมชุดเครื่องนอนและหมอน' 
+      } 
+    },
+    { 
+      icon: Moon, 
+      label: { 
+        en: 'Blackout-Style Window Curtains', 
+        zh: '遮光隐私窗帘', 
+        th: 'ผ้าม่านกันแสงสไตล์แบล็คเอาท์' 
+      } 
+    },
+    { 
+      icon: Package, 
+      label: { 
+        en: 'Wardrobe & Extra Storage Space', 
+        zh: '宽敞衣橱与充裕收纳空间', 
+        th: 'ตู้เสื้อผ้าและพื้นที่เก็บของเพิ่มเติม' 
+      } 
+    },
+    { 
+      icon: Shirt, 
+      label: { 
+        en: 'Clothes Hangers', 
+        zh: '专用衣物衣架', 
+        th: 'ไม้แขวนเสื้อ' 
+      } 
+    },
+    { 
+      icon: Sparkles, 
+      label: { 
+        en: 'Mirror & Dressing Area', 
+        zh: '独立更衣镜与梳妆区', 
+        th: 'กระจกและมุมแต่งตัว' 
+      } 
+    },
+    { 
+      icon: Droplets, 
+      label: { 
+        en: 'Walk-In Shower', 
+        zh: '步入式独立淋浴间', 
+        th: 'ห้องอาบน้ำแบบวอล์กอิน' 
+      } 
+    },
+    { 
+      icon: Flame, 
+      label: { 
+        en: 'Continuous Hot Water Supply', 
+        zh: '恒温充沛热水系统', 
+        th: 'ระบบน้ำอุ่นสม่ำเสมอ' 
+      } 
+    },
+    { 
+      icon: CheckCircle, 
+      label: { 
+        en: 'Sanitary Toilet', 
+        zh: '独立洁净马桶洁具', 
+        th: 'สุขภัณฑ์ชักโครกมาตรฐาน' 
+      } 
+    },
+    { 
+      icon: CircleDot, 
+      label: { 
+        en: 'Wash Basin & Vanity Mirror', 
+        zh: '洗手台盆及浴室梳妆镜', 
+        th: 'อ่างล้างหน้าพร้อมกระจกเงา' 
+      } 
+    },
+    { 
+      icon: Layers, 
+      label: { 
+        en: 'Fresh Bath & Hand Towels', 
+        zh: '高品质洁净洗浴毛巾', 
+        th: 'ผ้าขนหนูสะอาดนุ่ม' 
+      } 
+    },
+    { 
+      icon: Minus, 
+      label: { 
+        en: 'Dedicated Towel Rail', 
+        zh: '浴室专属毛巾架', 
+        th: 'ราวแขวนผ้าขนหนู' 
+      } 
+    },
+    { 
+      icon: Wind, 
+      label: { 
+        en: 'In-Room Hairdryer', 
+        zh: '客房专属电吹风', 
+        th: 'ไดร์เป่าผมในห้องพัก' 
+      } 
+    },
+    { 
+      icon: Smile, 
+      label: { 
+        en: 'Essential Toiletries', 
+        zh: '基础洗护备品', 
+        th: 'ของใช้ในห้องน้ำที่จำเป็น' 
+      } 
+    },
+    { 
+      icon: Baby, 
+      label: { 
+        en: 'Baby Cot (Available Upon Request)', 
+        zh: '婴儿床（按需提供）', 
+        th: 'เตียงเด็กอ่อน (ตามคำขอ)' 
+      } 
+    },
+    { 
+      icon: Bath, 
+      label: { 
+        en: 'Baby Bath Tub (Available Upon Request)', 
+        zh: '婴儿浴盆（按需提供）', 
+        th: 'อ่างอาบน้ำเด็ก (ตามคำขอ)' 
+      } 
+    },
+  ];
 
   const bangkokAmenities = [
     { icon: Waves, label: { en: 'Sky Infinity Pool & Sundeck', zh: '云端无边际泳池及日光甲板', th: 'สระว่ายน้ำลอยฟ้าอินฟินิตี้' } },
@@ -58,7 +450,13 @@ export const AmenitiesNotice: React.FC<AmenitiesNoticeProps> = ({
     { icon: Trees, label: { en: 'Landscaped Outdoor Courtyard Garden', zh: '雅致园林景观户外休憩庭院', th: 'สวนคอร์ทยาร์ดกลางแจ้งร่มรื่น' } },
   ];
 
-  const keyAmenities = isHongKong ? hongKongAmenities : bangkokAmenities;
+  const keyAmenities = isQuintara
+    ? quintaraAmenities
+    : isNueDistrict
+    ? nueDistrictAmenities
+    : isHongKong
+    ? hongKongAmenities
+    : bangkokAmenities;
 
   return (
     <div id="property-amenities-section" className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E0D8] shadow-xs space-y-6">

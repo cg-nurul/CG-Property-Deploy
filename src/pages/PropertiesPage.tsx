@@ -39,10 +39,10 @@ export const PropertiesPage: React.FC<PropertiesPageProps> = ({ onNavigate }) =>
         <FullToSemiDottedLine className="my-2" />
         <p className="text-base sm:text-lg text-[#5E574E] mt-3 leading-relaxed">
           {language === 'zh'
-            ? '探索位于曼谷与中国香港核心区域的高端精装住宅系列。'
+            ? '探索位于曼谷核心区域的高端精装住宅系列。'
             : language === 'th'
-            ? 'สัมผัสคอลเลกชันเรสซิเดนซ์หรูพร้อมอยู่ใจกลางกรุงเทพฯ และฮ่องกง'
-            : 'Explore our curated collection of furnished luxury residences across premier districts in Bangkok and Hong Kong.'}
+            ? 'สัมผัสคอลเลกชันเรสซิเดนซ์หรูพร้อมอยู่ใจกลางกรุงเทพฯ'
+            : 'Explore our curated collection of furnished luxury residences across premier districts in Bangkok.'}
         </p>
 
         {/* Filter Pills */}
@@ -65,17 +65,7 @@ export const PropertiesPage: React.FC<PropertiesPageProps> = ({ onNavigate }) =>
                 : 'bg-[#EDE8E1] text-[#5E574E] hover:text-[#042F61]'
             }`}
           >
-            Bangkok, Thailand (2)
-          </button>
-          <button
-            onClick={() => setFilterCity('Hong Kong')}
-            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-              filterCity === 'Hong Kong'
-                ? 'bg-[#042F61] text-white shadow-xs'
-                : 'bg-[#EDE8E1] text-[#5E574E] hover:text-[#042F61]'
-            }`}
-          >
-            Hong Kong SAR (1)
+            Bangkok, Thailand ({PROPERTIES.filter(p => p.city === 'Bangkok').length})
           </button>
         </div>
       </div>
@@ -108,7 +98,7 @@ export const PropertiesPage: React.FC<PropertiesPageProps> = ({ onNavigate }) =>
                   <span>{prop.city}, {prop.country}</span>
                 </div>
                 <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md text-[#042F61] text-xs font-bold px-3 py-1 rounded-lg">
-                  {prop.tower} · {prop.floor}
+                  {prop.tower ? `${prop.tower} · ` : ''}{prop.floor}
                 </div>
               </div>
             </div>
@@ -117,7 +107,7 @@ export const PropertiesPage: React.FC<PropertiesPageProps> = ({ onNavigate }) =>
             <div className={`lg:col-span-6 space-y-6 ${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
               <div>
                 <span className="text-xs uppercase tracking-widest text-[#9D7C38] font-bold">
-                  {prop.tower} · {prop.floor}
+                  {prop.tower ? `${prop.tower} · ` : ''}{prop.floor}
                 </span>
                 <h2 className="text-3xl font-bold text-[#042F61] mt-1">
                   {prop.name}

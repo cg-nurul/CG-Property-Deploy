@@ -43,7 +43,7 @@ export interface MapProperty {
 
 interface PlaceOfInterest {
   id: string;
-  city: 'Bangkok' | 'Hong Kong';
+  city: 'Bangkok';
   name: { en: string; zh: string; th: string };
   category: 'transit' | 'shopping' | 'dining';
   lat: number;
@@ -56,13 +56,13 @@ export const MAP_PROPERTIES: MapProperty[] = [
   {
     id: 'residence-01',
     slug: 'residence-01',
-    shortName: 'Tower R',
-    name: 'The Tower R Suite',
+    shortName: 'NUE District R9',
+    name: 'NUE District R9',
     city: 'Bangkok',
     country: 'Thailand',
-    location: 'Nue District Rama 9',
-    district: 'Rama 9',
-    tower: 'Tower R',
+    location: '185/241 · 185 Rama IX Rd, Huai Khwang, Bangkok 10310, Thailand',
+    district: 'Huai Khwang',
+    tower: '',
     floor: '16th Floor',
     sizeSqm: 46,
     specs: '46 sqm · 2 Bed / 2 Bath',
@@ -72,66 +72,40 @@ export const MAP_PROPERTIES: MapProperty[] = [
     destinationRoute: '/destinations/thailand/bangkok',
     propertyRoute: '/properties/residence-01',
     description: {
-      en: '16th floor residence featuring abundant natural light, Scandinavian styling, and direct Rama 9 transit access.',
-      zh: '位于 Nue District Rama 9 R 栋 16 层，尊享充沛采光与当代北欧温馨格调，便捷通达拉玛九商圈。',
-      th: 'เรซิเดนซ์ชั้น 16 อาคาร R รับแสงธรรมชาติ พร้อมการตกแต่งสไตล์สแกนดิเนเวียนร่วมสมัย เดินทางสะดวกสบาย',
+      en: '16th floor residence at 185/241 · 185 Rama IX Rd, Huai Khwang, Bangkok featuring abundant natural light, Scandinavian styling, and direct Rama 9 transit access.',
+      zh: '位于曼谷拉玛九路 185 号（185/241 · 185 Rama IX Rd）16 层，尊享充沛采光与当代北欧温馨格调，便捷通达拉玛九商圈。',
+      th: 'เรซิเดนซ์ชั้น 16 ณ 185/241 ถนนพระราม 9 ห้วยขวาง กรุงเทพฯ รับแสงธรรมชาติ พร้อมการตกแต่งสไตล์สแกนดิเนเวียนร่วมสมัย',
     },
     coverImage: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Living%20Room.webp',
-  },
-  {
-    id: 'residence-02',
-    slug: 'residence-02',
-    shortName: 'Tower N',
-    name: 'The Tower N Sky Suite',
-    city: 'Bangkok',
-    country: 'Thailand',
-    location: 'Nue District Rama 9',
-    district: 'Rama 9',
-    tower: 'Tower N',
-    floor: '40th Floor',
-    sizeSqm: 41,
-    specs: '41 sqm · 2 Bed / 1 Bath',
-    lat: 13.7574,
-    lng: 100.5670,
-    googleMapsUrl: 'https://maps.app.goo.gl/CbW4QjCVaX2wo5yB7',
-    destinationRoute: '/destinations/thailand/bangkok',
-    propertyRoute: '/properties/residence-02',
-    description: {
-      en: '40th floor high-rise suite delivering panoramic Bangkok metropolitan skyline vistas and tranquil modern interiors.',
-      zh: 'Nue District Rama 9 N 栋 40 层高区云端套房，坐拥开阔城市天际线与静谧现代居停空间。',
-      th: 'สกายเรซิเดนซ์ชั้น 40 อาคาร N วิวเมืองกรุงเทพมุมสูงแบบพาโนรามา พร้อมความเงียบสงบและเป็นส่วนตัว',
-    },
-    coverImage: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20N%20_40th%20Floor/40th%20Floor%20Living%20Room.webp',
   },
   {
     id: 'quintara',
     slug: 'quintara',
     shortName: 'Quintara',
     name: 'Quintara',
-    city: 'Hong Kong',
-    country: 'Hong Kong SAR',
-    location: 'Mid-Levels, Central',
-    district: 'Central',
-    tower: 'Tower 1',
-    floor: '28th Floor',
+    city: 'Bangkok',
+    country: 'Thailand',
+    location: '176 Soi Ratchadaphisek 12, Huai Khwang, Bangkok 10310, Thailand',
+    district: 'Huai Khwang',
+    tower: 'Quintara',
+    floor: 'Curated Residence',
     sizeSqm: 58,
     specs: '58 sqm · 2 Bed / 2 Bath',
-    lat: 22.2815,
-    lng: 114.1535,
-    googleMapsUrl: 'https://maps.google.com/?q=22.2815,114.1535',
-    destinationRoute: '/destinations/hong-kong',
+    lat: 13.7747,
+    lng: 100.5747,
+    googleMapsUrl: 'https://maps.google.com/?q=176+Soi+Ratchadaphisek+12,+Huai+Khwang,+Bangkok+10310,+Thailand',
+    destinationRoute: '/destinations/thailand/bangkok',
     propertyRoute: '/properties/quintara',
     description: {
-      en: 'Curated 28th floor luxury residence in Mid-Levels with Victoria Harbour views and effortless access to Central.',
-      zh: '坐落于香港中半山 28 层，奢享维多利亚港胜景与中环都会天际线，尊享核心地标繁华生活。',
-      th: 'เรซิเดนซ์หรูชั้น 28 ในย่านมิดเลเวลส์ พร้อมวิวอ่าววิคตอเรียและเส้นขอบฟ้าฮ่องกง เชื่อมต่อสู่ย่านเซ็นทรัลอย่างรวดเร็ว',
+      en: 'Curated luxury residence at 176 Soi Ratchadaphisek 12, Huai Khwang, Bangkok with effortless access to MRT Huai Khwang and Ratchadaphisek avenue.',
+      zh: '位于曼谷辉煌区拉差达披色12巷176号的精选奢雅寓所，便捷通达 MRT 辉煌站与拉差达商圈。',
+      th: 'เรซิเดนซ์หรู ณ เลขที่ 176 ซอยรัชดาภิเษก 12 ห้วยขวาง กรุงเทพฯ เดินทางสะดวกใกล้ MRT ห้วยขวาง และถนนรัชดาภิเษก',
     },
     coverImage: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Quintara/Living%20Room%201.webp',
   },
 ];
 
 const PLACES_OF_INTEREST: PlaceOfInterest[] = [
-  // Bangkok POIs
   {
     id: 'mrt-rama9',
     city: 'Bangkok',
@@ -151,6 +125,24 @@ const PLACES_OF_INTEREST: PlaceOfInterest[] = [
     },
   },
   {
+    id: 'mrt-huai-khwang',
+    city: 'Bangkok',
+    name: {
+      en: 'MRT Huai Khwang Station',
+      zh: 'MRT 辉煌地铁站',
+      th: 'MRT สถานีห้วยขวาง',
+    },
+    category: 'transit',
+    lat: 13.7785,
+    lng: 100.5739,
+    distance: { en: '450m · 6 min walk', zh: '450米 · 步行6分钟', th: '450 ม. · เดิน 6 นาที' },
+    description: {
+      en: 'Direct underground connection to Rama 9, Sukhumvit, and Chatuchak.',
+      zh: 'MRT 蓝色环线核心枢纽，直通拉玛九、素坤逸与乍都乍。',
+      th: 'เชื่อมต่อตรงสู่พระราม 9 สุขุมวิท และจตุจักร',
+    },
+  },
+  {
     id: 'central-rama9',
     city: 'Bangkok',
     name: {
@@ -166,6 +158,24 @@ const PLACES_OF_INTEREST: PlaceOfInterest[] = [
       en: '7-story retail lifestyle complex featuring international dining, supermarkets, and fashion.',
       zh: '7层大型综合商场，汇集国际美食、高端超市与时尚品牌。',
       th: 'ศูนย์การค้าไลฟ์สไตล์ 7 ชั้น ครบครันด้วยร้านอาหาร ซูเปอร์มาร์เก็ต และแบรนด์ชั้นนำ',
+    },
+  },
+  {
+    id: 'the-street-ratchada',
+    city: 'Bangkok',
+    name: {
+      en: 'The Street Ratchada',
+      zh: 'The Street Ratchada 商业中心',
+      th: 'เดอะ สตรีท รัชดา',
+    },
+    category: 'shopping',
+    lat: 13.7705,
+    lng: 100.5725,
+    distance: { en: '600m · 8 min walk', zh: '600米 · 步行8分钟', th: '600 ม. · เดิน 8 นาที' },
+    description: {
+      en: '24-hour lifestyle retail destination with restaurants, fitness, and boutique shops.',
+      zh: '24小时多元生活方式商业体，汇集各色餐厅、健身与精品店铺。',
+      th: 'ศูนย์การค้าไลฟ์สไตล์ 24 ชั่วโมง พร้อมร้านอาหาร ฟิตเนส และแหล่งช้อปปิ้ง',
     },
   },
   {
@@ -220,61 +230,6 @@ const PLACES_OF_INTEREST: PlaceOfInterest[] = [
       en: 'Express train service directly to Suvarnabhumi International Airport (BKK).',
       zh: '直达素万那普国际机场（BKK）的机场专线列车。',
       th: 'รถไฟฟ้าด่วนสู่สนามบินนานาชาติสุวรรณภูมิ (BKK)',
-    },
-  },
-  // Hong Kong POIs (Curated & uncluttered: essential transit & access landmarks only, no dining/cafe symbols)
-  {
-    id: 'central-mtr',
-    city: 'Hong Kong',
-    name: {
-      en: 'Central MTR Station',
-      zh: '港铁中环站',
-      th: 'สถานีรถไฟฟ้า MTR เซ็นทรัล',
-    },
-    category: 'transit',
-    lat: 22.2818,
-    lng: 114.1583,
-    distance: { en: '450m · 6 min walk', zh: '450米 · 步行6分钟', th: '450 ม. · เดิน 6 นาที' },
-    description: {
-      en: 'Core interchange station connecting Island Line, Tsuen Wan Line, and Airport Express.',
-      zh: '贯通港岛线与荃湾线的核心交通枢纽，地下步行通达机场快线香港站。',
-      th: 'สถานีศูนย์กลางเชื่อมต่อสาย Island Line, Tsuen Wan Line และ Airport Express',
-    },
-  },
-  {
-    id: 'midlevels-escalator',
-    city: 'Hong Kong',
-    name: {
-      en: 'Central-Mid-Levels Escalator',
-      zh: '中环半山扶手电梯',
-      th: 'บันไดเลื่อนเซ็นทรัล-มิดเลเวลส์',
-    },
-    category: 'transit',
-    lat: 22.2825,
-    lng: 114.1539,
-    distance: { en: '150m · 2 min walk', zh: '150米 · 步行2分钟', th: '150 ม. · เดิน 2 นาที' },
-    description: {
-      en: 'World-famous covered escalator system providing effortless pedestrian flow to Central & SOHO.',
-      zh: '全球最长户外有盖扶梯系统，惬意直通中环商业区、苏豪及荷李活道美食街区。',
-      th: 'ระบบบันไดเลื่อนกลางแจ้งที่ยาวที่สุดในโลก เชื่อมต่อสู่ย่านเซ็นทรัลและโซโห',
-    },
-  },
-  {
-    id: 'ifc-mall',
-    city: 'Hong Kong',
-    name: {
-      en: 'IFC Mall & Two IFC',
-      zh: '国际金融中心商场 (ifc mall)',
-      th: 'ศูนย์การค้า ifc mall',
-    },
-    category: 'shopping',
-    lat: 22.2855,
-    lng: 114.1588,
-    distance: { en: '700m · 9 min walk', zh: '700米 · 步行9分钟', th: '700 ม. · เดิน 9 นาที' },
-    description: {
-      en: 'Waterfront luxury lifestyle destination featuring international luxury brands and fine dining.',
-      zh: '维港滨海顶级奢华购物地标，汇聚全球名品旗舰店与米其林星级名厨餐厅。',
-      th: 'ศูนย์การค้าระดับเวิลด์คลาสริมอ่าววิคตอเรีย พร้อมแบรนด์แฟล็กชิปและร้านอาหารมิชลิน',
     },
   },
 ];
@@ -332,15 +287,14 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
   // Fit All Properties in View
   const handleFitAll = () => {
     if (!mapInstanceRef.current) return;
-    // Bounds encompassing Bangkok [13.75, 100.56] and Hong Kong [22.28, 114.15]
     mapInstanceRef.current.fitBounds(
       [
-        [13.5, 100.3],
-        [22.5, 114.5],
+        [13.750, 100.560],
+        [13.785, 100.580],
       ],
       {
-        padding: [60, 60],
-        maxZoom: 6,
+        padding: [50, 50],
+        maxZoom: 15,
       }
     );
   };
@@ -448,10 +402,10 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
 
     poiLayerGroupRef.current.clearLayers();
 
-    // Determine POIs to display: For Quintara, strictly show curated uncluttered landmarks (zero restaurant/cafe symbols)
+    // Determine POIs to display for selected property
     const activePois = selectedPropertyId === 'quintara'
-      ? PLACES_OF_INTEREST.filter(p => p.city === 'Hong Kong' && p.category !== 'dining')
-      : PLACES_OF_INTEREST.filter(p => p.city === 'Bangkok');
+      ? PLACES_OF_INTEREST.filter(p => p.id === 'mrt-huai-khwang' || p.id === 'the-street-ratchada' || p.id === 'central-rama9' || p.id === 'mrt-rama9')
+      : PLACES_OF_INTEREST.filter(p => p.id !== 'mrt-huai-khwang');
 
     activePois.forEach((poi) => {
       const poiIcon = L.divIcon({
@@ -537,10 +491,10 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
     }
   };
 
-  // Filter POIs for active property: For Quintara, strictly show uncluttered non-dining landmarks
+  // Filter POIs for active property
   const cityPois = selectedPropertyId === 'quintara'
-    ? PLACES_OF_INTEREST.filter(p => p.city === 'Hong Kong' && p.category !== 'dining')
-    : PLACES_OF_INTEREST.filter(p => p.city === selectedProperty.city);
+    ? PLACES_OF_INTEREST.filter(p => p.id === 'mrt-huai-khwang' || p.id === 'the-street-ratchada' || p.id === 'central-rama9' || p.id === 'mrt-rama9')
+    : PLACES_OF_INTEREST.filter(p => p.id !== 'mrt-huai-khwang');
 
   return (
     <div id="real-interactive-map-section" className="relative w-full rounded-3xl overflow-hidden border border-[#2B2E33] shadow-2xl bg-[#0D1013]">
@@ -644,7 +598,7 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-white/10 text-[#DFB85A] text-[11px] font-semibold uppercase tracking-widest mb-1.5 border border-white/10">
                   <MapPin className="w-3 h-3" />
-                  <span>{selectedProperty.city} · {selectedProperty.tower}</span>
+                  <span>{selectedProperty.city}, {selectedProperty.country}</span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
                   {selectedProperty.name}
@@ -654,14 +608,14 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
                 </p>
               </div>
 
-              {/* Property Switcher Cards: Shows all 3 properties with instant switching */}
+              {/* Property Switcher Cards: Shows both properties with instant switching */}
               <div className="space-y-1.5 pt-0.5">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-[#DFB85A] flex items-center justify-between">
                   <span>{language === 'zh' ? '切换房源' : language === 'th' ? 'เลือกเรซิเดนซ์' : 'Select Residence'}</span>
                   <span className="text-[10px] text-white/50 lowercase font-normal">{MAP_PROPERTIES.length} properties</span>
                 </div>
 
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   {MAP_PROPERTIES.map((prop) => {
                     const isSelected = selectedPropertyId === prop.id;
                     return (
@@ -736,8 +690,8 @@ export const RealInteractiveMap: React.FC<RealInteractiveMapProps> = ({ onNaviga
           <div className="bg-[#042F61]/90 backdrop-blur-md p-3.5 rounded-2xl border border-white/15 text-white shadow-xl space-y-2">
             <div className="text-[11px] font-bold uppercase tracking-wider text-[#DFB85A] px-1 flex items-center justify-between">
               <span>
-                {selectedProperty.city === 'Hong Kong' 
-                  ? (language === 'zh' ? '中环地标亮点' : language === 'th' ? 'ไฮไลท์ย่านเซ็นทรัล' : 'Central Highlights')
+                {selectedPropertyId === 'quintara' 
+                  ? (language === 'zh' ? '拉差达地标亮点' : language === 'th' ? 'ไฮไลท์รัชดาภิเษก' : 'Ratchada Highlights')
                   : (language === 'zh' ? '拉玛九地标亮点' : language === 'th' ? 'ไฮไลท์พระราม 9' : 'Rama 9 Highlights')}
               </span>
               <span className="text-[10px] text-white/50 lowercase font-normal">{selectedProperty.city}</span>

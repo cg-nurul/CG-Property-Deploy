@@ -316,6 +316,46 @@ body::-webkit-scrollbar {
 }
 
 /* ==========================================================================
+   TEXT GOLD SHINE SWEEP ON HOVER (LEFT-TO-RIGHT SHINE, NO GLOW)
+   ========================================================================== */
+
+@keyframes textLeftToRightShine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -80% 0;
+  }
+}
+
+.text-gold-shine {
+  display: inline-block;
+  background: linear-gradient(
+    110deg,
+    #DFB85A 0%,
+    #DFB85A 32%,
+    #FFFFFF 50%,
+    #DFB85A 68%,
+    #DFB85A 100%
+  );
+  background-size: 250% 100%;
+  background-position: 200% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: none !important;
+  text-shadow: none !important;
+  cursor: pointer;
+  transition: none;
+}
+
+.text-gold-shine:hover {
+  animation: textLeftToRightShine 0.95s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+/* ==========================================================================
    VISUAL FLOURISH: AMBIENT ORBS & ARCHITECTURAL PATTERN UTILITIES
    ========================================================================== */
 

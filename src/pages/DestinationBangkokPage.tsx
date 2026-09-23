@@ -42,7 +42,7 @@ export const DestinationBangkokPage: React.FC<DestinationBangkokPageProps> = ({ 
           <span>/</span>
           <span className="font-semibold text-[#042F61]">Bangkok</span>
           <span>/</span>
-          <span>Nue District Rama 9</span>
+          <span>Curated Residences</span>
         </div>
       </div>
 
@@ -69,17 +69,17 @@ export const DestinationBangkokPage: React.FC<DestinationBangkokPageProps> = ({ 
         </div>
       </div>
 
-      {/* District Story: Nue District Rama 9 */}
+      {/* District Story: Bangkok Residences */}
       <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E6E0D8] shadow-xs space-y-6">
         <div className="max-w-2xl space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-[#9D7C38]">
             Curated District
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold text-[#042F61]">
-            {t('location.heading')}
+            {language === 'zh' ? '曼谷精选住宅' : language === 'th' ? 'เรซิเดนซ์คัดสรรในกรุงเทพฯ' : 'Curated Bangkok Residences'}
           </h2>
           <p className="text-sm text-[#5E574E] leading-relaxed">
-            {t('location.description')}
+            {language === 'zh' ? '探索我们在曼谷核心区域（拉玛九及辉煌区）精心打造的高端精装住宅。' : language === 'th' ? 'สำรวจเรซิเดนซ์หรูพร้อมอยู่ของเราในทำเลศักยภาพของกรุงเทพฯ (พระราม 9 และห้วยขวาง)' : 'Discover our curated luxury residences located in Bangkok’s premier central districts (Rama 9 and Huai Khwang).'}
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export const DestinationBangkokPage: React.FC<DestinationBangkokPageProps> = ({ 
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#9D7C38]">
-                    {prop.tower} · {prop.floor}
+                    {prop.tower ? `${prop.tower} · ` : ''}{prop.floor}
                   </span>
                   <span className="text-xs font-semibold bg-[#EDE8E1] px-2.5 py-0.5 rounded-md text-[#042F61]">
                     {Math.ceil(prop.sizeSqm)} sqm

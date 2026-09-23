@@ -248,4 +248,48 @@ export const FilledCheckCircleGoldBg: React.FC<IconProps> = ({ className = 'w-7 
   </svg>
 );
 
+// Filled Lobby / Entrance
+export const FilledLobby: React.FC<IconProps> = ({ className = 'w-4 h-4' }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M19 2H5c-1.1 0-2 .9-2 2v17h3v-7h4v7h4v-7h4v7h3V4c0-1.1-.9-2-2-2zm-9 6H7V5h3v3zm7 0h-3V5h3v3z" />
+  </svg>
+);
+
+// Filled Gamepad / Gaming / VR
+export const FilledGamepad: React.FC<IconProps> = ({ className = 'w-4 h-4' }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H9v2H7v-2H5v-2h2V9h2v2h2v2zm4.5 1c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 8 18.5 8s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+  </svg>
+);
+
+// Filled Golf Simulator
+export const FilledGolf: React.FC<IconProps> = ({ className = 'w-4 h-4' }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M19.5 18a2.5 2.5 0 0 1-2.5 2.5H7A2.5 2.5 0 0 1 4.5 18c0-.98.57-1.83 1.4-2.22l.1-.05V4h10l-3 4 3 4H8v6h9a.5.5 0 0 0 .5-.5c0-.28-.22-.5-.5-.5H9v-2h8a2.5 2.5 0 0 1 2.5 2.5z" />
+  </svg>
+);
+
+// Filled Camera / Photography & Art Studio
+export const FilledCamera: React.FC<IconProps> = ({ className = 'w-4 h-4' }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <circle cx="12" cy="12" r="3.2" />
+    <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
+  </svg>
+);
+
+// Filled Sky Running Track / Athletics
+export const FilledTrack: React.FC<IconProps> = ({ className = 'w-4 h-4' }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-.9-.4 2 6.5 1.2z" />
+  </svg>
+);
+
+// Filled Lotus / Zen & Sanctuary Space
+export const FilledLotus: React.FC<IconProps> = ({ className = 'w-4 h-4' }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M12 2c-.6 2.4-2.1 5.3-3.8 7.3C6.6 11.2 5 13.4 5 16c0 3.9 3.1 7 7 7s7-3.1 7-7c0-2.6-1.6-4.8-3.2-6.7C14.1 7.3 12.6 4.4 12 2zm0 18.5c-2.5 0-4.5-2-4.5-4.5 0-1.7 1.1-3.2 2.2-4.6 1-1.3 1.9-2.8 2.3-4.4.4 1.6 1.3 3.1 2.3 4.4 1.1 1.4 2.2 2.9 2.2 4.6 0 2.5-2 4.5-4.5 4.5z" />
+  </svg>
+);
+
+
 

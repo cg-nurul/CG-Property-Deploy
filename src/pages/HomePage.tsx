@@ -24,7 +24,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* Brand Introduction Section */}
       <BrandIntro />
 
-      {/* The Rama 9 Collection Editorial Presentation (The Tower R Suite & The Tower N Sky Suite) */}
+      {/* Curated Collection Editorial Presentation */}
       <TheCollection onNavigate={onNavigate} />
 
       {/* Visual Building and In-Residence Amenities Showcase */}

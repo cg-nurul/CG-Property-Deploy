@@ -49,8 +49,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     // The Collection
     'collection.heading': 'The Collection',
     'collection.subheading': 'Distinct furnished residences with tailored layouts, bespoke interiors, and panoramic city views.',
-    'collection.residence1.title': 'The Tower R Suite',
-    'collection.residence2.title': 'The Tower N Sky Suite',
+    'collection.residence1.title': 'NUE District R9',
+    'collection.residence2.title': 'Quintara',
     'collection.viewProperty': 'View Property',
     'collection.viewResidence': 'View Property',
     'collection.bookNow': 'Book Now',
@@ -75,17 +75,17 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Comparison
     'comparison.heading': 'Compare the Residences',
-    'comparison.subheading': 'Review the key architectural specifications of our two furnished residences at Nue District Rama 9.',
+    'comparison.subheading': 'Review the key architectural specifications of our two furnished residences in Bangkok.',
     'comparison.feature': 'Specification',
     'comparison.selectResidence': 'View Details',
 
     // Location: Nue District Rama 9
     'location.heading': 'Nue District Rama 9',
-    'location.subheading': 'Our Bangkok residences are located within Nue District Rama 9.',
-    'location.description': 'Nue District Rama 9 provides a central urban setting within Bangkok, hosting our premier residences across Tower R and Tower N.',
-    'location.mapNotice': 'Location within Bangkok metropolis. Address: Nue District Rama 9, Rama 9 Road, Huai Khwang, Bangkok.',
-    'location.towerR': 'Tower R — 16th Floor (The Tower R Suite)',
-    'location.towerN': 'Tower N — 40th Floor (The Tower N Sky Suite)',
+    'location.subheading': 'Our Bangkok residence is located within Nue District Rama 9.',
+    'location.description': 'Nue District Rama 9 provides a central urban setting within Bangkok, hosting our premier residence on the 16th floor.',
+    'location.mapNotice': 'Location within Bangkok metropolis. Address: 185/241 · 185 Rama IX Rd, Huai Khwang, Bangkok 10310, Thailand.',
+    'location.residence1': '16th Floor (NUE District R9)',
+    'location.residence2': 'Huai Khwang — Quintara',
 
     // Bangkok Destination
     'bangkok.heading': 'Bangkok',
@@ -222,8 +222,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     // The Collection
     'collection.heading': '全球臻选住宅系列',
     'collection.subheading': '独具考究格局、精致内饰与全景都会视野的臻选精装住宅。',
-    'collection.residence1.title': 'The Tower R Suite (R栋臻选套房)',
-    'collection.residence2.title': 'The Tower N Sky Suite (N栋云端套房)',
+    'collection.residence1.title': 'NUE District R9',
+    'collection.residence2.title': 'Quintara',
     'collection.viewProperty': '查看房源',
     'collection.viewResidence': '查看房源',
     'collection.bookNow': '立即预订',
@@ -248,17 +248,17 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Comparison
     'comparison.heading': '住宅参数对比',
-    'comparison.subheading': '对比我们位于 Nue District Rama 9 的两套精装住宅核心建筑参数。',
+    'comparison.subheading': '对比我们位于曼谷的两套精装住宅核心建筑参数。',
     'comparison.feature': '参数项',
     'comparison.selectResidence': '查看详情',
 
     // Location: Nue District Rama 9
     'location.heading': 'Nue District Rama 9',
     'location.subheading': '我们的曼谷精选住宅位于 Nue District Rama 9。',
-    'location.description': 'Nue District Rama 9 坐落于曼谷核心都会区，精选住宅分别位于 R 栋与 N 栋。',
-    'location.mapNotice': '曼谷都会区地理位置。地址：Nue District Rama 9, Rama 9 Road, Huai Khwang, Bangkok.',
-    'location.towerR': 'R栋 — 16层 (The Tower R Suite)',
-    'location.towerN': 'N栋 — 40层 (The Tower N Sky Suite)',
+    'location.description': 'Nue District Rama 9 坐落于曼谷核心都会区，精选住宅位于 16 层。',
+    'location.mapNotice': '曼谷都会区地理位置。地址：185/241 · 185 Rama IX Rd, Huai Khwang, Bangkok 10310, Thailand.',
+    'location.residence1': '16层 (NUE District R9)',
+    'location.residence2': '辉煌区 — Quintara',
 
     // Bangkok Destination
     'bangkok.heading': '曼谷',
@@ -395,8 +395,8 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     // The Collection
     'collection.heading': 'คอลเลกชันเรสซิเดนซ์',
     'collection.subheading': 'คอลเลกชันที่พักพร้อมอยู่คัดสรรพิเศษ พร้อมการตกแต่งประณีตและวิวเมืองแบบพาโนรามา',
-    'collection.residence1.title': 'The Tower R Suite',
-    'collection.residence2.title': 'The Tower N Sky Suite',
+    'collection.residence1.title': 'NUE District R9',
+    'collection.residence2.title': 'Quintara',
     'collection.viewProperty': 'ดูข้อมูลที่พัก',
     'collection.viewResidence': 'ดูข้อมูลที่พัก',
     'collection.bookNow': 'จองทันที',
@@ -421,17 +421,17 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
     // Comparison
     'comparison.heading': 'เปรียบเทียบเรซิเดนซ์',
-    'comparison.subheading': 'เปรียบเทียบข้อมูลจำเพาะทางสถาปัตยกรรมของเรซิเดนซ์ทั้งสองแห่ง ณ Nue District Rama 9',
+    'comparison.subheading': 'เปรียบเทียบข้อมูลจำเพาะทางสถาปัตยกรรมของเรซิเดนซ์ทั้งสองแห่งในกรุงเทพฯ',
     'comparison.feature': 'ข้อมูลจำเพาะ',
     'comparison.selectResidence': 'ดูรายละเอียด',
 
     // Location: Nue District Rama 9
     'location.heading': 'Nue District Rama 9',
     'location.subheading': 'เรซิเดนซ์ในกรุงเทพฯ ของเราตั้งอยู่ในโครงการ Nue District Rama 9',
-    'location.description': 'Nue District Rama 9 ตั้งอยู่ใจกลางย่านธุรกิจและไลฟ์สไตล์ของกรุงเทพฯ โดยมีเรซิเดนซ์ของเราตั้งอยู่ในอาคาร R และอาคาร N',
-    'location.mapNotice': 'ทำเลที่ตั้งในกรุงเทพมหานคร ที่อยู่: Nue District Rama 9 ถนนพระราม 9 แขวงห้วยขวาง กรุงเทพฯ',
-    'location.towerR': 'อาคาร R — ชั้น 16 (The Tower R Suite)',
-    'location.towerN': 'อาคาร N — ชั้น 40 (The Tower N Sky Suite)',
+    'location.description': 'Nue District Rama 9 ตั้งอยู่ใจกลางย่านธุรกิจและไลฟ์สไตล์ของกรุงเทพฯ โดยมีเรซิเดนซ์ของเราตั้งอยู่บนชั้น 16',
+    'location.mapNotice': 'ทำเลที่ตั้งในกรุงเทพมหานคร ที่อยู่: 185/241 · 185 ถนนพระราม 9 แขวงห้วยขวาง กรุงเทพฯ 10310 ประเทศไทย',
+    'location.residence1': 'ชั้น 16 (NUE District R9)',
+    'location.residence2': 'ห้วยขวาง — Quintara',
 
     // Bangkok Destination
     'bangkok.heading': 'กรุงเทพมหานคร',

@@ -5,6 +5,8 @@ import { useLanguage } from '../context/LanguageContext';
 import { PropertyGallery } from '../components/PropertyGallery';
 import { PropertyFacts } from '../components/PropertyFacts';
 import { AmenitiesNotice } from '../components/AmenitiesNotice';
+import { NueDistrictAmenitiesCarousel } from '../components/NueDistrictAmenitiesCarousel';
+import { QuintaraAmenitiesCarousel } from '../components/QuintaraAmenitiesCarousel';
 import { BookingModule } from '../components/BookingModule';
 import { ContactForm } from '../components/ContactForm';
 import { RippleButton } from '../components/ui/RippleButton';
@@ -42,7 +44,7 @@ export const PropertyDetailPage: React.FC<PropertyDetailPageProps> = ({ slug, on
     contactSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const destinationRoute: PageRoute = isHongKong ? '/destinations/hong-kong' : '/destinations/thailand/bangkok';
+  const destinationRoute: PageRoute = '/destinations/thailand/bangkok';
 
   return (
     <div className="pt-32 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
@@ -85,11 +87,11 @@ export const PropertyDetailPage: React.FC<PropertyDetailPageProps> = ({ slug, on
           <div className="lg:col-span-8 space-y-4">
             <div className="flex flex-wrap items-center gap-2">
               <span className="bg-[#DFB85A] text-[#042F61] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                {property.tower} · {property.floor}
+                {property.tower ? `${property.tower} · ` : ''}{property.floor}
               </span>
               <span className="bg-white/10 text-white text-[11px] font-medium px-3 py-1 rounded-full flex items-center gap-1 border border-white/10">
                 <MapPin className="w-3 h-3 text-[#DFB85A]" />
-                <span>{property.location}, {property.city}</span>
+                <span>{property.city}, {property.country}</span>
               </span>
             </div>
 
@@ -180,31 +182,42 @@ export const PropertyDetailPage: React.FC<PropertyDetailPageProps> = ({ slug, on
           <AmenitiesNotice 
             locationName={property.name} 
             isHongKong={isHongKong} 
+            propertySlug={property.slug}
           />
+
+          {/* NUE District R9 Dedicated Scrollable Amenities Section */}
+          {(property.slug === 'residence-01' || property.name.toLowerCase().includes('nue district')) && (
+            <NueDistrictAmenitiesCarousel />
+          )}
+
+          {/* Quintara Dedicated Scrollable Amenities Section */}
+          {(property.slug === 'quintara' || property.name.toLowerCase().includes('quintara')) && (
+            <QuintaraAmenitiesCarousel />
+          )}
 
           {/* Location & Neighborhood Context */}
           <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E6E0D8] shadow-xs space-y-4">
             <div className="flex items-center gap-2">
               <Building2 className="w-4 h-4 text-[#9D7C38]" />
               <h3 className="text-xl font-bold text-[#042F61]">
-                {isHongKong 
-                  ? (language === 'zh' ? '香港核心区位与周边' : language === 'th' ? 'ทำเลใจกลางฮ่องกงและสิ่งแวดล้อม' : 'Hong Kong Location & Neighborhood')
+                {property.slug === 'quintara'
+                  ? (language === 'zh' ? 'Quintara 核心区位与周边' : language === 'th' ? 'ทำเลที่ตั้ง Quintara และการเดินทาง' : 'Quintara Location & Neighborhood')
                   : t('location.heading')}
               </h3>
             </div>
             <p className="text-sm text-[#5E574E] leading-relaxed">
-              {isHongKong
+              {property.slug === 'quintara'
                 ? (language === 'zh' 
-                    ? 'Quintara 坐落于香港核心中西区／半山地段，兼具都会璀璨生机与宜人居住私密性。毗邻中环国际金融中心商圈、苏豪区（SoHo）精致餐饮及兰桂坊，步行快捷搭乘港铁及中环半山扶梯，尊享四通八达的国际化商务生活圈。'
+                    ? 'Quintara 坐落于曼谷辉煌区（176 Soi Ratchadaphisek 12, Huai Khwang, Bangkok 10310, Thailand），兼具都会活力与私密居住体验。毗邻 MRT 辉煌站、The Street Ratchada 及拉玛九商圈，尊享便捷的现代都会生活圈。'
                     : language === 'th'
-                    ? 'Quintara ตั้งอยู่ในทำเลชั้นนำย่านมิดเลเวลส์ / เซ็นทรัล ฮ่องกง ผสานความมีชีวิตชีวาของเมืองหลวงระดับโลกเข้ากับความเป็นส่วนตัวสูง อยู่ใกล้ศูนย์กลางการเงิน IFC ร้านอาหารชั้นเลิศใน SoHo และสถานีรถไฟใต้ดิน MTR เพื่อการเดินทางที่ไร้รอยต่อ'
-                    : 'Quintara is positioned within Hong Kong’s esteemed Mid-Levels and Central enclave, offering an enviable balance of metropolitan vibrancy and private residential seclusion. Situated moments from the Central International Finance Centre (IFC) district, SoHo dining, Lan Kwai Fong, and direct MTR transport links, it provides unmatched international connectivity.')
+                    ? 'Quintara ตั้งอยู่ ณ เลขที่ 176 ซอยรัชดาภิเษก 12 แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพฯ 10310 ประเทศไทย ผสานความสงบเป็นส่วนตัวเข้ากับความสะดวกสบาย เดินทางสะดวกใกล้ MRT ห้วยขวาง, The Street รัชดา และศูนย์รวมธุรกิจพระราม 9'
+                    : 'Quintara is positioned at 176 Soi Ratchadaphisek 12, Huai Khwang, Bangkok 10310, Thailand. Situated moments from MRT Huai Khwang, The Street Ratchada, and Rama 9, it offers seamless connectivity and tranquil private seclusion within central Bangkok.')
                 : t('location.description')}
             </p>
             <div className="bg-[#FAF8F5] p-4 rounded-2xl border border-[#E6E0D8] text-xs text-[#6B645A] space-y-1">
               <p className="font-semibold text-[#042F61]">{property.location}</p>
               <p>{property.district}, {property.city}, {property.country}</p>
-              <p className="text-[#8A8175]">Tower: {property.tower} · Level: {property.floor}</p>
+              <p className="text-[#8A8175]">{property.tower ? `Tower: ${property.tower} · ` : ''}Level: {property.floor}</p>
             </div>
           </div>
 

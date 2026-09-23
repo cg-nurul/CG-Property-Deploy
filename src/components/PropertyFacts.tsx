@@ -40,11 +40,11 @@ export const PropertyFacts: React.FC<PropertyFactsProps> = ({ property }) => {
       value: property.floor,
       icon: Layers,
     },
-    {
+    ...(property.tower ? [{
       label: t('spec.tower'),
       value: property.tower,
       icon: Building2,
-    },
+    }] : []),
     {
       label: t('spec.furnished'),
       value: t('spec.furnishedStatus'),
@@ -69,7 +69,7 @@ export const PropertyFacts: React.FC<PropertyFactsProps> = ({ property }) => {
           {t('property.keyFacts')}
         </h3>
         <span className="text-xs text-[#8A8175] font-medium uppercase tracking-wider">
-          {property.name} · {property.tower}
+          {property.name}{property.tower ? ` · ${property.tower}` : ''}
         </span>
       </div>
 

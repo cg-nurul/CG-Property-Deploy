@@ -308,19 +308,19 @@ export const GradientCarousel: React.FC<GradientCarouselProps> = ({
       </div>
 
       {/* Symmetrical Navigation & Editorial Progress Bar */}
-      <div className="relative z-20 flex items-center justify-between max-w-md mx-auto mt-4 px-4">
+      <div className="relative z-20 flex items-center justify-between max-w-2xl sm:max-w-3xl lg:max-w-4xl mx-auto mt-5 px-4 w-full">
         {/* Left Arrow */}
         <button
           onClick={prev}
           disabled={progress <= 0.05}
           aria-label="Previous card"
-          className="w-9 h-9 rounded-full bg-white border border-[#E6E0D8] text-[#042F61] shadow-xs flex items-center justify-center transition-all hover:bg-[#FAF8F5] hover:border-[#042F61]/30 disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+          className="w-9 h-9 shrink-0 rounded-full bg-white border border-[#E6E0D8] text-[#042F61] shadow-xs flex items-center justify-center transition-all hover:bg-[#FAF8F5] hover:border-[#042F61]/30 disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
 
         {/* Minimal Editorial Segment Progress Indicator */}
-        <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-1.5 max-w-[260px] sm:max-w-md mx-2">
+        <div className="flex items-center justify-center gap-1 sm:gap-1.5 flex-nowrap overflow-x-auto no-scrollbar mx-2 sm:mx-4">
           {items.map((_, idx) => {
             const isActive = activeIdx === idx;
             return (
@@ -331,7 +331,7 @@ export const GradientCarousel: React.FC<GradientCarouselProps> = ({
                   jumpTo(idx);
                 }}
                 aria-label={`Jump to amenity ${idx + 1}`}
-                className="group py-2 px-0.5 cursor-pointer"
+                className="group py-2 px-0.5 shrink-0 cursor-pointer"
               >
                 <span
                   className={`block h-1.5 rounded-full transition-all duration-300 ${
@@ -350,7 +350,7 @@ export const GradientCarousel: React.FC<GradientCarouselProps> = ({
           onClick={next}
           disabled={progress >= maxProgress - 0.05}
           aria-label="Next card"
-          className="w-9 h-9 rounded-full bg-white border border-[#E6E0D8] text-[#042F61] shadow-xs flex items-center justify-center transition-all hover:bg-[#FAF8F5] hover:border-[#042F61]/30 disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+          className="w-9 h-9 shrink-0 rounded-full bg-white border border-[#E6E0D8] text-[#042F61] shadow-xs flex items-center justify-center transition-all hover:bg-[#FAF8F5] hover:border-[#042F61]/30 disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
         >
           <ChevronRight className="w-4 h-4" />
         </button>

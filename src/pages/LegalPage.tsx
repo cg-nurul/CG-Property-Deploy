@@ -84,7 +84,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, onNavigate }) => {
               2. Property Information Accuracy
             </h3>
             <p>
-              All property specifications regarding The Tower R Suite and The Tower N Sky Suite at Nue District Rama 9 reflect confirmed architectural details. Official house rules and reservation conditions apply when booking via Airbnb.
+              All property specifications regarding NUE District R9 and Quintara reflect confirmed architectural details. Official house rules and reservation conditions apply when booking via Airbnb.
             </p>
 
             <h3 className="text-lg font-bold text-[#042F61]">

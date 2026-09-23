@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { GradientCarousel, CarouselCardItem } from './ui/GradientCarousel';
 import { 
@@ -19,7 +19,14 @@ import {
   FilledCar, 
   FilledSparkles, 
   FilledCheckCircleBlueBg,
-  FilledChevronDown
+  FilledChevronDown,
+  FilledBath,
+  FilledLobby,
+  FilledGamepad,
+  FilledGolf,
+  FilledCamera,
+  FilledTrack,
+  FilledLotus
 } from './ui/FilledIcons';
 
 const FACILITIES_BG_PATTERN = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23dfb85a' fill-opacity='0.65'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E")`;
@@ -50,168 +57,95 @@ interface AmenityDetail {
 
 export const AmenitiesSection: React.FC = () => {
   const { language } = useLanguage();
-  const [activeCategory, setActiveCategory] = useState<'all' | 'building' | 'residence' | 'access'>('all');
-  const [targetCarouselRequest, setTargetCarouselRequest] = useState<{ index: number; timestamp: number } | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const categories = [
-    { id: 'all', label: { en: 'All Amenities', zh: '全部设施', th: 'สิ่งอำนวยความสะดวกทั้งหมด' } },
-    { id: 'building', label: { en: 'Building & Sky Leisure', zh: '楼宇与云端休闲', th: 'สิ่งอำนวยความสะดวกในอาคาร' } },
-    { id: 'residence', label: { en: 'In-Residence Comforts', zh: '室内生活配置', th: 'สิ่งอำนวยความสะดวกในห้องพัก' } },
-    { id: 'access', label: { en: 'Security & Transit', zh: '安保与交通出行', th: 'ความปลอดภัยและการเดินทาง' } },
-  ];
-
-  // Evenly distributed featured cards: 4 cards per category
+  // Featured amenities cards with categorized facilities
   const featuredAmenities: FeaturedAmenity[] = [
-    // Building (4 cards)
+    // Building & Sky Leisure
     {
-      id: 'sky-pool',
+      id: 'work-spaces',
       category: 'building',
       title: {
-        en: 'Sky Infinity Pool & Sun Deck',
-        zh: '云端无边际泳池与日光甲板',
-        th: 'สระว่ายน้ำลอยฟ้าแบบอินฟินิตี้และระเบียงอาบแดด',
+        en: 'Idea Gen',
+        zh: 'Idea Gen 灵感创想空间',
+        th: 'Idea Gen พื้นที่ระดมความคิด',
       },
-      tag: { en: 'Sky Facility', zh: '云端设施', th: 'สิ่งอำนวยความสะดวกชั้นสูง' },
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledPool,
-    },
-    {
-      id: 'sky-gym',
-      category: 'building',
-      title: {
-        en: 'Panoramic Sky Fitness Studio',
-        zh: '高空全景健身中心',
-        th: 'ฟิตเนสสตูดิโอลอยฟ้าพร้อมวิวเมือง',
-      },
-      tag: { en: 'Wellness', zh: '康体健身', th: 'สุขภาพและฟิตเนส' },
-      image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledDumbbell,
-    },
-    {
-      id: 'sky-lounge',
-      category: 'building',
-      title: {
-        en: 'Co-Working & Executive Sky Lounge',
-        zh: '云端行政共享办公酒廊',
-        th: 'สกายเลานจ์และพื้นที่ทำงานร่วมกัน',
-      },
-      tag: { en: 'Work & Leisure', zh: '商务休闲', th: 'ทำงานและพักผ่อน' },
+      tag: { en: 'Work Spaces', zh: '创想办公', th: 'พื้นที่ทำงาน' },
       image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
       icon: FilledLaptop,
     },
     {
-      id: 'sky-garden',
+      id: 'cuisine-spaces',
       category: 'building',
       title: {
-        en: 'Rooftop Botanical Sky Garden',
-        zh: '顶层空中生态花园',
-        th: 'สวนลอยฟ้าบนชั้นดาดฟ้า',
+        en: 'MHy’ Cuisine',
+        zh: 'MHy’ Cuisine 私享美馔厨房',
+        th: 'MHy’ Cuisine ครัวส่วนกลางสำหรับสังสรรค์',
       },
-      tag: { en: 'Rooftop Oasis', zh: '顶层绿洲', th: 'โอเอซิสดาดฟ้า' },
-      image: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledTree,
-    },
-
-    // Residence (4 cards)
-    {
-      id: 'res-furnish',
-      category: 'residence',
-      title: {
-        en: 'Architectural Furnished Living',
-        zh: '全套定制精装奢阔起居',
-        th: 'ห้องนั่งเล่นตกแต่งสไตล์สถาปัตยกรรม',
-      },
-      tag: { en: 'Living Space', zh: '舒适起居', th: 'พื้นที่อยู่อาศัย' },
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledArmchair,
-    },
-    {
-      id: 'res-bed',
-      category: 'residence',
-      title: {
-        en: 'Master King Bedroom Suites',
-        zh: '奢享主卧套间与品质床品',
-        th: 'ห้องนอนใหญ่พร้อมเครื่องนอนพรีเมียม',
-      },
-      tag: { en: 'Bedrooms', zh: '静谧寝居', th: 'ห้องนอนสุดหรู' },
-      image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledArmchair,
-    },
-    {
-      id: 'res-kitchen',
-      category: 'residence',
-      title: {
-        en: 'Fully Equipped Kitchenette',
-        zh: '完备现代微烹小厨房',
-        th: 'ครัวพร้อมอุปกรณ์ครบครัน',
-      },
-      tag: { en: 'Kitchenette', zh: '现代小厨', th: 'ครัวพร้อมอุปกรณ์' },
+      tag: { en: 'Cuisine Spaces', zh: '烹饪空间', th: 'พื้นที่สำหรับงานครัว' },
       image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80',
       icon: FilledUtensils,
     },
     {
-      id: 'res-smart',
-      category: 'residence',
+      id: 'rooftop-theatre',
+      category: 'building',
       title: {
-        en: 'Smart TV & Seamless Wi-Fi',
-        zh: '智能高清大屏与高速网络',
-        th: 'สมาร์ททีวีและอินเทอร์เน็ตความเร็วสูง',
+        en: 'Airy Theatre',
+        zh: 'Airy Theatre 空中露天影院',
+        th: 'Airy Theatre โรงภาพยนตร์ลอยฟ้า',
       },
-      tag: { en: 'Entertainment', zh: '智能影音', th: 'ความบันเทิง' },
-      image: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1200&q=80',
+      tag: { en: 'Rooftop Theatre', zh: '天台影院', th: 'โรงภาพยนตร์ดาดฟ้า' },
+      image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80',
       icon: FilledTv,
     },
-
-    // Security & Transit (4 cards)
     {
-      id: 'acc-security',
-      category: 'access',
+      id: 'sky-track',
+      category: 'building',
       title: {
-        en: '24/7 Security & CCTV Monitoring',
-        zh: '24小时安保与全景监控',
-        th: 'ระบบรักษาความปลอดภัย 24 ชม.',
+        en: 'Sky Track',
+        zh: 'Sky Track 云端天际慢跑道',
+        th: 'Sky Track ลู่วิ่งลอยฟ้าชมวิวเมือง',
       },
-      tag: { en: 'Safety', zh: '安全保障', th: 'ความปลอดภัย' },
-      image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledShield,
+      tag: { en: 'Sky Track', zh: '空中跑道', th: 'ลู่วิ่งลอยฟ้า' },
+      image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1200&q=80',
+      icon: FilledTrack,
     },
     {
-      id: 'acc-keycard',
-      category: 'access',
+      id: 'pool-spaces',
+      category: 'building',
       title: {
-        en: 'Direct Keycard Lift Access',
-        zh: '专属门禁卡私密梯控直达',
-        th: 'ลิฟต์ล็อคชั้นด้วยคีย์การ์ดส่วนตัว',
+        en: 'Seamless Pool',
+        zh: 'Seamless Pool 无边际天际泳池',
+        th: 'Seamless Pool สระว่ายน้ำไร้ขอบวิวเมือง',
       },
-      tag: { en: 'Privacy', zh: '私密保障', th: 'ความเป็นส่วนตัว' },
-      image: 'https://images.unsplash.com/photo-1582650625119-3a31f8418b7d?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledCard,
+      tag: { en: 'Poolside Retreat', zh: '天际泳池', th: 'พักผ่อนริมสระ' },
+      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80',
+      icon: FilledPool,
     },
     {
-      id: 'acc-mrt',
-      category: 'access',
+      id: 'zen-space',
+      category: 'building',
       title: {
-        en: '5-Minute Walk to MRT Rama 9',
-        zh: '步行5分钟直达地铁站与商圈',
-        th: 'เดินเพียง 5 นาทีถึง MRT พระราม 9',
+        en: 'Sanctuary Space',
+        zh: 'Sanctuary Space 禅意养心之境',
+        th: 'Sanctuary Space พื้นที่พักผ่อนเพื่อความสงบ',
       },
-      tag: { en: 'Transit', zh: '核心交通', th: 'การเดินทาง' },
-      image: 'https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledTrain,
+      tag: { en: 'Zen Space', zh: '禅意静修', th: 'พื้นที่แห่งความสงบ' },
+      image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1200&q=80',
+      icon: FilledLotus,
     },
     {
-      id: 'acc-parking',
-      category: 'access',
+      id: 'main-gym',
+      category: 'building',
       title: {
-        en: 'Covered Parking & EV Charging',
-        zh: '室内专属车位与充电桩设施',
-        th: 'ที่จอดรถในร่มและจุดชาร์จ EV',
+        en: '24/7 Active Gym',
+        zh: '24/7 全天候活力健身房',
+        th: '24/7 Active ฟิตเนสเปิดตลอด 24 ชั่วโมง',
       },
-      tag: { en: 'Parking', zh: '车位设施', th: 'ที่จอดรถ' },
-      image: 'https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledCar,
-    },
+      tag: { en: 'Fitness', zh: '康体健身', th: 'สุขภาพและฟิตเนส' },
+      image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80',
+      icon: FilledDumbbell,
+    }
   ];
 
   // Comprehensive Amenities List organized for the Accordion
@@ -374,29 +308,6 @@ export const AmenitiesSection: React.FC = () => {
     }));
   }, [language]);
 
-  // When clicking a category pill, update category and smoothly glide carousel to that section
-  const handleCategoryClick = (catId: 'all' | 'building' | 'residence' | 'access') => {
-    setActiveCategory(catId);
-    setExpandedId(null);
-
-    if (catId === 'building') {
-      setTargetCarouselRequest({ index: 0, timestamp: Date.now() });
-    } else if (catId === 'residence') {
-      setTargetCarouselRequest({ index: 4, timestamp: Date.now() });
-    } else if (catId === 'access') {
-      setTargetCarouselRequest({ index: 8, timestamp: Date.now() });
-    } else if (catId === 'all') {
-      setTargetCarouselRequest({ index: 0, timestamp: Date.now() });
-    }
-  };
-
-  // When scrolling through the cards, dynamically switch the active filter pill to match current active card
-  const handleActiveCardChange = useCallback((_index: number, item: CarouselCardItem) => {
-    if (item.category && item.category !== activeCategory) {
-      setActiveCategory(item.category as 'building' | 'residence' | 'access');
-    }
-  }, [activeCategory]);
-
   const toggleAccordion = (id: string) => {
     setExpandedId(prev => (prev === id ? null : id));
   };
@@ -430,35 +341,12 @@ export const AmenitiesSection: React.FC = () => {
             ? 'สัมผัสสิ่งอำนวยความสะดวกครบครัน ทั้งสระว่ายน้ำลอยฟ้า ฟิตเนส สกายเลานจ์ และความสะดวกสบายระดับพรีเมียมภายในที่พัก'
             : 'From panoramic sky facilities perched high above Rama 9 to meticulously appointed in-residence comforts, discover everything provided for your stay.'}
         </p>
-
-        {/* Category Navigation Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mt-6 sm:mt-8">
-          {categories.map((cat) => {
-            const isActive = activeCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                id={`amenity-tab-${cat.id}`}
-                onClick={() => handleCategoryClick(cat.id as any)}
-                className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
-                  isActive
-                    ? 'bg-[#042F61] text-white shadow-xs'
-                    : 'bg-[#EDE8E1] text-[#5E574E] hover:text-[#042F61] hover:bg-[#E3DCD3]'
-                }`}
-              >
-                {cat.label[language] || cat.label.en}
-              </button>
-            );
-          })}
-        </div>
       </div>
 
       {/* Featured Visual Photographic Cards - 3D Gradient Carousel with isolated horizontal scroll */}
       <div className="relative z-10 mb-10 sm:mb-12">
         <GradientCarousel
           items={allCarouselCards}
-          targetIndex={targetCarouselRequest}
-          onActiveIndexChange={handleActiveCardChange}
         />
       </div>
 

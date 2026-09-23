@@ -69,7 +69,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate }
                     {dest.name[language] || dest.name.en}
                   </h2>
                   <p className="text-xs text-[#8A8175] font-semibold mt-0.5">
-                    {isHK ? 'Mid-Levels & Central · 1 Furnished Residence' : 'Nue District Rama 9 · 2 Furnished Residences'}
+                    {isHK ? 'Mid-Levels & Central · 1 Furnished Residence' : 'NUE District R9 & Quintara · 2 Furnished Residences'}
                   </p>
                 </div>
 
@@ -85,7 +85,7 @@ export const DestinationsPage: React.FC<DestinationsPageProps> = ({ onNavigate }
                   <ul className="space-y-1.5 text-[#5E574E] pl-5 list-disc">
                     {destProperties.map((p) => (
                       <li key={p.id}>
-                        <span className="font-medium text-[#042F61]">{p.name}</span> — {p.tower}, {p.floor} ({Math.ceil(p.sizeSqm)} sqm, {p.bedrooms} Bed / {p.bathrooms} Bath)
+                        <span className="font-medium text-[#042F61]">{p.name}</span> — {p.tower ? `${p.tower}, ` : ''}{p.floor} ({Math.ceil(p.sizeSqm)} sqm, {p.bedrooms} Bed / {p.bathrooms} Bath)
                       </li>
                     ))}
                   </ul>
