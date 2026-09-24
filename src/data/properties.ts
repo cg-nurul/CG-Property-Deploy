@@ -30,8 +30,59 @@ export const PROPERTIES: Property[] = [
     heroImage: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ext%203.webp',
     gallery: [
       {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ext%201.webp',
+        category: 'details',
+        tag: 'exterior',
+        caption: {
+          en: 'NUE District R9 architectural tower facade and arrival forecourt',
+          zh: 'NUE District R9 现代建筑立面与入户前庭',
+          th: 'ทัศนียภาพสถาปัตยกรรมภายนอกโครงการ NUE District R9 และลานทางเข้า',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ext%202.webp',
+        category: 'details',
+        tag: 'exterior',
+        caption: {
+          en: 'Tower elevation showcasing contemporary geometric architectural design',
+          zh: '高耸塔楼立面，尽显当代几何建筑美学',
+          th: 'มุมมองอาคารสูงแสดงดีไซน์เรขาคณิตร่วมสมัย',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ext%203.webp',
+        category: 'details',
+        tag: 'exterior',
+        caption: {
+          en: 'Iconic exterior skyline view of NUE District R9 at Rama 9',
+          zh: '拉玛九核心区 NUE District R9 标志性天际线外景',
+          th: 'ทัศนียภาพอาคารโดดเด่นใจกลางทำเลพระราม 9',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ext%204.webp',
+        category: 'details',
+        tag: 'exterior',
+        caption: {
+          en: 'Street-level perspective highlighting modern urban context',
+          zh: '街道视角，展现繁华都市生活圈与现代建筑氛围',
+          th: 'มุมมองจากระดับถนนสะท้อนบรรยากาศเมืองทันสมัย',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ext%205.webp',
+        category: 'details',
+        tag: 'exterior',
+        caption: {
+          en: 'Architectural podium and landscaped ground grounds',
+          zh: '建筑裙楼与精品绿化园林景致',
+          th: 'ทัศนียภาพโพเดียมและภูมิทัศน์สวนรอบโครงการ',
+        },
+      },
+      {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Living%20Room.webp',
         category: 'living',
+        tag: 'interior',
         caption: {
           en: '16th floor living room with natural light and contemporary Scandinavian styling',
           zh: '16层采光起居室与当代北欧温馨格调',
@@ -41,6 +92,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Living%20Room%20Close%20up.webp',
         category: 'living',
+        tag: 'interior',
         caption: {
           en: 'Close-up perspective of living area showcasing bespoke furnishings and finishes',
           zh: '起居室特写视角，展现定制家具与精细材质',
@@ -50,6 +102,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Living%20Room%20Far.webp',
         category: 'living',
+        tag: 'interior',
         caption: {
           en: 'Expansive wide-angle view across the living room lounge',
           zh: '起居室休闲沙龙区开阔全景',
@@ -59,6 +112,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Living%20Room%20Sideways.webp',
         category: 'living',
+        tag: 'interior',
         caption: {
           en: 'Side profile view across the open-plan living room',
           zh: '开放式起居室侧向通透视角',
@@ -68,6 +122,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Living%20Room%20Sideways%202.webp',
         category: 'living',
+        tag: 'interior',
         caption: {
           en: 'Alternative architectural angle highlighting living room ambiance',
           zh: '起居室多元空间层次与采光视角',
@@ -77,6 +132,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Living%20Room%20With%20Kitchen.webp',
         category: 'living',
+        tag: 'interior',
         caption: {
           en: 'Seamless open flow connecting living salon and modern fitted kitchen',
           zh: '起居客厅与现代一体化厨房的通透贯通动线',
@@ -86,6 +142,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Kitchen.webp',
         category: 'kitchen',
+        tag: 'interior',
         caption: {
           en: 'Fully equipped gourmet kitchen featuring integrated cooktop and custom cabinetry',
           zh: '配置完备的品质厨房，配备嵌入式炉灶与定制橱柜',
@@ -95,6 +152,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Bedroom%20Full%20View.webp',
         category: 'bedroom',
+        tag: 'interior',
         caption: {
           en: 'Full architectural view of master bedroom suite with plush queen bedding',
           zh: '主卧套房全景，配置奢适大床与定制床头软包',
@@ -104,6 +162,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Bedroom%20Wide.webp',
         category: 'bedroom',
+        tag: 'interior',
         caption: {
           en: 'Wide-angle panoramic perspective of primary bedroom suite',
           zh: '主卧套房宽幅全景视角，明亮采光与舒适布局',
@@ -113,6 +172,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Bedroom%20Close.webp',
         category: 'bedroom',
+        tag: 'interior',
         caption: {
           en: 'Refined close-up of master suite bedding and warm bedside illumination',
           zh: '主卧床品细节与温馨床头暖光氛围',
@@ -122,6 +182,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Bedroom%20Window.webp',
         category: 'bedroom',
+        tag: 'interior',
         caption: {
           en: 'Expansive master bedroom glazing framing open skyline outlook',
           zh: '主卧采光大窗与城市开阔天际线景观',
@@ -131,6 +192,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Bed%20Extended.webp',
         category: 'bedroom',
+        tag: 'interior',
         caption: {
           en: 'Extended perspective across the primary bedroom suite and lounging zone',
           zh: '主卧套间延展视角，营造惬意通透起居生活',
@@ -140,6 +202,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Bedroom%202.webp',
         category: 'bedroom',
+        tag: 'interior',
         caption: {
           en: 'Dedicated second bedroom appointed with comfortable mattress suite',
           zh: '雅致次卧空间，配备舒适软床与多功能布局',
@@ -149,6 +212,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Washroom.webp',
         category: 'bathroom',
+        tag: 'interior',
         caption: {
           en: 'Primary ensuite bathroom featuring glazed walk-in shower and contemporary vanity',
           zh: '主卫干湿分离步入式淋浴间与现代面盆台面',
@@ -158,6 +222,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Washroom%202.webp',
         category: 'bathroom',
+        tag: 'interior',
         caption: {
           en: 'Secondary guest bathroom complete with modern ceramic fixtures and shower',
           zh: '次卫客用洗手间，配备高品质陶瓷洁具与独立淋浴',
@@ -167,6 +232,7 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Towels.webp',
         category: 'bathroom',
+        tag: 'interior',
         caption: {
           en: 'Fresh boutique bath linens and tailored vanity essentials',
           zh: '高品质洁净洗浴毛巾与精选卫浴洗护备品',
@@ -176,10 +242,121 @@ export const PROPERTIES: Property[] = [
       {
         url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/16th%20Foor%20Random%20Shot.webp',
         category: 'details',
+        tag: 'interior',
         caption: {
           en: 'Curated architectural vignette and boutique interior design accents',
           zh: '精选室内空间美学细节与精品软装设计',
           th: 'มุมมองรายละเอียดการตกแต่งและงานดีไซน์ภายในเรสซิเดนซ์',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ame%201.webp',
+        category: 'details',
+        tag: 'amenities',
+        caption: {
+          en: 'Grand arrival lobby and designer welcome lounge at Tower R',
+          zh: 'Tower R 迎宾艺术挑高大堂与奢华会客沙龙',
+          th: 'โถงต้อนรับหลักและล็อบบี้รับรองดีไซน์ระดับลักชัวรี ณ อาคาร R',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ame%202.webp',
+        category: 'details',
+        tag: 'amenities',
+        caption: {
+          en: 'Sky Infinity Pool with panoramic Bangkok skyline vistas',
+          zh: '云端无边际高空泳池，尽揽曼谷繁华天际线全景',
+          th: 'สระว่ายน้ำลอยฟ้าอินฟินิตี้พร้อมทัศนียภาพเส้นขอบฟ้าใจกลางกรุงเทพฯ',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ame%203.webp',
+        category: 'details',
+        tag: 'amenities',
+        caption: {
+          en: 'Poolside sunbathing deck and relaxed luxury sky terrace',
+          zh: '无边际水岸日光躺椅与舒适景观观景平台',
+          th: 'เดคพักผ่อนริมสระว่ายน้ำและพื้นที่ชมวิวเมืองมุมสูง',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ame%204.webp',
+        category: 'details',
+        tag: 'amenities',
+        caption: {
+          en: 'Panoramic Sky Fitness Studio equipped with cardio & strength stations',
+          zh: '高空全景健身中心，配备顶级有氧跑步机与力量塑形器械',
+          th: 'ฟิตเนสสตูดิโอลอยฟ้าอุปกรณ์ครบครันพร้อมวิวเมืองแบบพาโนรามา',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ame%205.webp',
+        category: 'details',
+        tag: 'amenities',
+        caption: {
+          en: 'Urban Yoga, stretch & pilates studio zone',
+          zh: '城市瑜伽、拉伸与普拉提静心空间',
+          th: 'สตูดิโอโยคะ พิลาทิส และพื้นที่ยืดเหยียดเพื่อสุขภาพ',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ame%206.webp',
+        category: 'details',
+        tag: 'amenities',
+        caption: {
+          en: 'Synergy Co-Working Space and private executive meeting pods',
+          zh: 'Synergy 协同办公空间与专属静音会客洽谈舱',
+          th: 'พื้นที่ทำงานร่วมกัน โคเวิร์กกิ้งสเปซ และมุมประชุมผู้บริหาร',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ame%207.webp',
+        category: 'details',
+        tag: 'amenities',
+        caption: {
+          en: 'Idea Gen creative brainstorming lounge and peaceful reading library',
+          zh: 'Idea Gen 创意灵感沙龙与宁静图书阅览室',
+          th: 'Idea Gen เลานจ์สร้างสรรค์ไอเดียและห้องสมุดส่วนกลาง',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ame%208.webp',
+        category: 'details',
+        tag: 'amenities',
+        caption: {
+          en: 'Mingle Entertainment, interactive VR and e-sports gaming lounge',
+          zh: 'Mingle 休闲娱乐天地、VR 体验与互动电竞室',
+          th: 'ห้องเกมมิ่งสันทนาการ VR และโซนอีสปอร์ตทันสมัย',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ame%209.webp',
+        category: 'details',
+        tag: 'amenities',
+        caption: {
+          en: 'Golf Simulator suite for practice and virtual tournaments',
+          zh: '高尔夫专业模拟球舱，畅享虚拟挥杆训练',
+          th: 'ห้องจำลองกอล์ฟเสมือนจริงสำหรับการฝึกซ้อมระดับมืออาชีพ',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ame%2010.webp',
+        category: 'details',
+        tag: 'amenities',
+        caption: {
+          en: 'Mellow Co-Kitchen and private social dining suite for residents',
+          zh: 'Mellow 共享厨房与业主尊享私宴社交餐聚空间',
+          th: 'ห้องครัวและห้องจัดเลี้ยงสังสรรค์ส่วนกลาง Mellow Co-Kitchen',
+        },
+      },
+      {
+        url: 'https://storage.googleapis.com/chelsongordon/CG%20Property/images/Tower%20R%20_16th%20Floor/nue%20ame%2011.webp',
+        category: 'details',
+        tag: 'amenities',
+        caption: {
+          en: 'Lush landscaped green sanctuary and tranquil open-air sky garden',
+          zh: '高空葱郁绿化园林步道与静谧露天空中花园',
+          th: 'สวนลอยฟ้าธรรมชาติและพื้นที่สีเขียวพักผ่อนกลางแจ้ง',
         },
       },
     ],

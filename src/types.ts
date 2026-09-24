@@ -29,6 +29,7 @@ export interface Property {
       th: string;
     };
     category?: 'living' | 'bedroom' | 'kitchen' | 'bathroom' | 'details';
+    tag?: 'interior' | 'amenities' | 'exterior';
   }[];
   // Airbnb direct link (configurable)
   airbnbUrl: string;

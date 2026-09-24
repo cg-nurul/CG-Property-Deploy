@@ -59,96 +59,107 @@ export const AmenitiesSection: React.FC = () => {
   const { language } = useLanguage();
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  // Featured amenities cards with categorized facilities
+  // Featured universal amenities cards for all residences
   const featuredAmenities: FeaturedAmenity[] = [
-    // Building & Sky Leisure
     {
-      id: 'work-spaces',
+      id: 'sky-pool',
       category: 'building',
       title: {
-        en: 'Idea Gen',
-        zh: 'Idea Gen 灵感创想空间',
-        th: 'Idea Gen พื้นที่ระดมความคิด',
-      },
-      tag: { en: 'Work Spaces', zh: '创想办公', th: 'พื้นที่ทำงาน' },
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledLaptop,
-    },
-    {
-      id: 'cuisine-spaces',
-      category: 'building',
-      title: {
-        en: 'MHy’ Cuisine',
-        zh: 'MHy’ Cuisine 私享美馔厨房',
-        th: 'MHy’ Cuisine ครัวส่วนกลางสำหรับสังสรรค์',
-      },
-      tag: { en: 'Cuisine Spaces', zh: '烹饪空间', th: 'พื้นที่สำหรับงานครัว' },
-      image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledUtensils,
-    },
-    {
-      id: 'rooftop-theatre',
-      category: 'building',
-      title: {
-        en: 'Airy Theatre',
-        zh: 'Airy Theatre 空中露天影院',
-        th: 'Airy Theatre โรงภาพยนตร์ลอยฟ้า',
-      },
-      tag: { en: 'Rooftop Theatre', zh: '天台影院', th: 'โรงภาพยนตร์ดาดฟ้า' },
-      image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledTv,
-    },
-    {
-      id: 'sky-track',
-      category: 'building',
-      title: {
-        en: 'Sky Track',
-        zh: 'Sky Track 云端天际慢跑道',
-        th: 'Sky Track ลู่วิ่งลอยฟ้าชมวิวเมือง',
-      },
-      tag: { en: 'Sky Track', zh: '空中跑道', th: 'ลู่วิ่งลอยฟ้า' },
-      image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledTrack,
-    },
-    {
-      id: 'pool-spaces',
-      category: 'building',
-      title: {
-        en: 'Seamless Pool',
-        zh: 'Seamless Pool 无边际天际泳池',
-        th: 'Seamless Pool สระว่ายน้ำไร้ขอบวิวเมือง',
+        en: 'Sky Infinity Pool',
+        zh: '云端无边际泳池',
+        th: 'สระว่ายน้ำลอยฟ้าอินฟินิตี้',
       },
       tag: { en: 'Poolside Retreat', zh: '天际泳池', th: 'พักผ่อนริมสระ' },
       image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80',
       icon: FilledPool,
     },
     {
-      id: 'zen-space',
+      id: 'sky-fitness',
       category: 'building',
       title: {
-        en: 'Sanctuary Space',
-        zh: 'Sanctuary Space 禅意养心之境',
-        th: 'Sanctuary Space พื้นที่พักผ่อนเพื่อความสงบ',
+        en: 'Panoramic Sky Fitness',
+        zh: '高空全景健身中心',
+        th: 'ฟิตเนสสตูดิโอลอยฟ้า',
       },
-      tag: { en: 'Zen Space', zh: '禅意静修', th: 'พื้นที่แห่งความสงบ' },
-      image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1200&q=80',
-      icon: FilledLotus,
-    },
-    {
-      id: 'main-gym',
-      category: 'building',
-      title: {
-        en: '24/7 Active Gym',
-        zh: '24/7 全天候活力健身房',
-        th: '24/7 Active ฟิตเนสเปิดตลอด 24 ชั่วโมง',
-      },
-      tag: { en: 'Fitness', zh: '康体健身', th: 'สุขภาพและฟิตเนส' },
+      tag: { en: 'Fitness & Wellness', zh: '康体健身', th: 'สุขภาพและฟิตเนส' },
       image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80',
       icon: FilledDumbbell,
+    },
+    {
+      id: 'work-spaces',
+      category: 'building',
+      title: {
+        en: 'Co-Working & Creative Hub',
+        zh: '行政共享办公与创想空间',
+        th: 'พื้นที่ทำงานและสกายเลานจ์',
+      },
+      tag: { en: 'Work Spaces', zh: '创想办公', th: 'พื้นที่ทำงาน' },
+      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+      icon: FilledLaptop,
+    },
+    {
+      id: 'rooftop-lounge',
+      category: 'building',
+      title: {
+        en: 'Rooftop Sky Lounge',
+        zh: '顶层天际酒廊与露台',
+        th: 'สกายเลานจ์และจุดชมวิวเมือง',
+      },
+      tag: { en: 'Sky Leisure', zh: '天际沙龙', th: 'เลานจ์ลอยฟ้า' },
+      image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80',
+      icon: FilledTv,
+    },
+    {
+      id: 'green-spaces',
+      category: 'building',
+      title: {
+        en: 'Landscaped Sky Gardens',
+        zh: '立体景观花园与绿洲',
+        th: 'สวนลอยฟ้าและพื้นที่สีเขียว',
+      },
+      tag: { en: 'Green Retreats', zh: '生态绿洲', th: 'พื้นที่สีเขียว' },
+      image: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80',
+      icon: FilledTree,
+    },
+    {
+      id: 'arrival-spaces',
+      category: 'building',
+      title: {
+        en: 'Grand Arrival Lobby',
+        zh: '尊尚现代迎宾大堂',
+        th: 'โถงต้อนรับและล็อบบี้รับรอง',
+      },
+      tag: { en: 'Arrival Spaces', zh: '迎宾大堂', th: 'โถงต้อนรับ' },
+      image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
+      icon: FilledLobby,
+    },
+    {
+      id: 'cuisine-spaces',
+      category: 'building',
+      title: {
+        en: 'Social Gourmet Kitchen',
+        zh: '社交美馔厨房与聚会空间',
+        th: 'ครัวสังสรรค์และพื้นที่สังสรรค์',
+      },
+      tag: { en: 'Dining Spaces', zh: '烹饪聚会', th: 'พื้นที่สำหรับงานครัว' },
+      image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80',
+      icon: FilledUtensils,
+    },
+    {
+      id: 'curated-residence',
+      category: 'residence',
+      title: {
+        en: 'Curated Designer Living',
+        zh: '私享定制高雅居境',
+        th: 'พื้นที่อยู่อาศัยตกแต่งครบครัน',
+      },
+      tag: { en: 'In-Residence', zh: '套内空间', th: 'ในห้องพัก' },
+      image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80',
+      icon: FilledArmchair,
     }
   ];
 
-  // Comprehensive Amenities List organized for the Accordion
+  // Comprehensive Universal Amenities List organized for the Accordion (applicable across all properties)
   const accordionAmenities: AmenityDetail[] = [
     {
       id: 'detail-furnished',
@@ -185,6 +196,18 @@ export const AmenitiesSection: React.FC = () => {
         th: 'เตาไฟฟ้า ตู้เย็นขนาดใหญ่ ไมโครเวฟ กาต้มน้ำไฟฟ้า เครื่องครัว และชุดจานชามครบครันสำหรับทำอาหาร' 
       },
       icon: FilledUtensils,
+    },
+    {
+      id: 'detail-bath',
+      category: 'residence',
+      categoryLabel: { en: 'In-Residence', zh: '套内配置', th: 'ในห้องพัก' },
+      title: { en: 'En-Suite Bathroom & Rain Shower', zh: '独立卫浴与步入式淋浴间', th: 'ห้องน้ำในตัวพร้อมฝักบัว' },
+      desc: { 
+        en: 'Modern private bathroom featuring a walk-in glass shower, continuous hot water supply, fresh plush towels, vanity mirror, in-room hairdryer, and essential toiletries.', 
+        zh: '现代舒适卫浴空间，配有玻璃步入式淋浴间、充沛恒温热水、洁净洗浴毛巾、梳妆镜、电吹风及基础洗护备品。', 
+        th: 'ห้องน้ำโมเดิร์นพร้อมฝักบัววอล์กอิน ระบบน้ำอุ่นสม่ำเสมอ ผ้าขนหนูสะอาด กระจกเงา ไดร์เป่าผม และของใช้จำเป็น' 
+      },
+      icon: FilledBath,
     },
     {
       id: 'detail-lock',
@@ -235,6 +258,66 @@ export const AmenitiesSection: React.FC = () => {
       icon: FilledTv,
     },
     {
+      id: 'detail-sky-pool',
+      category: 'building',
+      categoryLabel: { en: 'Building', zh: '公共设施', th: 'ส่วนกลางอาคาร' },
+      title: { en: 'Sky Infinity Pool & Sun Deck', zh: '云端无边际泳池与日光甲板', th: 'สระว่ายน้ำลอยฟ้าอินฟินิตี้และเดคชมวิว' },
+      desc: { 
+        en: 'Elevated outdoor swimming pool perched high above the city with sweeping panoramic Bangkok skyline views, poolside loungers, and shaded relaxation zones.', 
+        zh: '高空开阔户外泳池，俯瞰曼谷壮丽城市天际线，配有舒适池畔躺椅与遮阳休憩区。', 
+        th: 'สระว่ายน้ำลอยฟ้ากลางแจ้งชมวิวเมืองกรุงเทพฯ แบบพาโนรามา พร้อมเก้าอี้ริมสระและมุมพักผ่อน' 
+      },
+      icon: FilledPool,
+    },
+    {
+      id: 'detail-sky-gym',
+      category: 'building',
+      categoryLabel: { en: 'Building', zh: '公共设施', th: 'ส่วนกลางอาคาร' },
+      title: { en: 'Panoramic Sky Fitness Studio', zh: '高空全景健身中心', th: 'ฟิตเนสสตูดิโอลอยฟ้าครบวงจร' },
+      desc: { 
+        en: 'State-of-the-art strength & cardio center with panoramic skyline views, free weights, resistance equipment, and open yoga/stretching areas.', 
+        zh: '配备专业力量训练器械、有氧跑步机与拉伸活动区，在开阔城市美景中保持充沛活力。', 
+        th: 'สตูดิโอออกกำลังกายพร้อมอุปกรณ์คาร์ดิโอ ดัมเบล เวทเทรนนิ่ง และพื้นที่ยืดเหยียดพร้อมวิวเมือง' 
+      },
+      icon: FilledDumbbell,
+    },
+    {
+      id: 'detail-coworking',
+      category: 'building',
+      categoryLabel: { en: 'Building', zh: '公共设施', th: 'ส่วนกลางอาคาร' },
+      title: { en: 'Co-Working & Executive Lounge', zh: '行政共享办公与商务酒廊', th: 'สกายเลานจ์และพื้นที่ทำงานส่วนกลาง' },
+      desc: { 
+        en: 'Dedicated collaborative spaces with high-speed internet, ergonomic seating, quiet work zones, and panoramic natural lighting for productive work away from home.', 
+        zh: '专属共享办公空间，配备高速网络、人体工学座椅与静音办公区，采光极佳，办公会客皆宜。', 
+        th: 'พื้นที่ทำงานร่วมกันพร้อมอินเทอร์เน็ตความเร็วสูง ที่นั่งทำงานสะดวกสบาย และมุมทำงานที่เงียบสงบ' 
+      },
+      icon: FilledLaptop,
+    },
+    {
+      id: 'detail-gardens',
+      category: 'building',
+      categoryLabel: { en: 'Building', zh: '公共设施', th: 'ส่วนกลางอาคาร' },
+      title: { en: 'Landscaped Sky Gardens & Open Terraces', zh: '空中园林花园与景观露台', th: 'สวนลอยฟ้าและพื้นที่สีเขียวกลางแจ้ง' },
+      desc: { 
+        en: 'Artfully designed elevated outdoor green spaces, tranquil contemplation paths, and open-air sunset viewing decks offering a peaceful retreat above the city.', 
+        zh: '精心设计的空中绿洲园林，设有散步休闲步道与落日观景台，提供远离喧嚣的静谧休憩之所。', 
+        th: 'สวนลอยฟ้าที่ได้รับการออกแบบอย่างประณีต ทางเดินพักผ่อน และจุดชมวิวพระอาทิตย์ตกอันเงียบสงบ' 
+      },
+      icon: FilledTree,
+    },
+    {
+      id: 'detail-lobby',
+      category: 'building',
+      categoryLabel: { en: 'Building', zh: '公共设施', th: 'ส่วนกลางอาคาร' },
+      title: { en: 'Grand Arrival Lobby & Concierge Welcome', zh: '现代尊尚迎宾大堂与礼宾接待', th: 'โถงต้อนรับและล็อบบี้รับรอง' },
+      desc: { 
+        en: 'Welcoming air-conditioned architectural lobby lounge with high ceilings, dedicated reception zones, and comfortable courier and parcel collection areas.', 
+        zh: '高挑空现代迎宾大堂，配备舒适等候沙发区与专属接待动线，尽显私享格调。', 
+        th: 'ล็อบบี้ต้อนรับโอ่โถงตกแต่งอย่างหรูหรา พร้อมพื้นที่พักผ่อนปรับอากาศและบริการต้อนรับ' 
+      },
+      icon: FilledLobby,
+    },
+    {
       id: 'detail-security',
       category: 'access',
       categoryLabel: { en: 'Access & Safety', zh: '安防交通', th: 'ความปลอดภัย' },
@@ -262,11 +345,11 @@ export const AmenitiesSection: React.FC = () => {
       id: 'detail-transit',
       category: 'access',
       categoryLabel: { en: 'Access & Safety', zh: '安防交通', th: 'ความปลอดภัย' },
-      title: { en: '5-Minute Walk to MRT Rama 9', zh: '步行5分钟即达地铁蓝线与商圈', th: '5 นาทีถึง MRT พระราม 9' },
+      title: { en: 'Prime MRT Transit & Central Connectivity', zh: '核心地铁捷运与都会商圈直达', th: 'เดินทางสะดวกใกล้ MRT และศูนย์การค้าชั้นนำ' },
       desc: { 
-        en: 'Sheltered walkway minutes to MRT Phra Ram 9 station, Central Rama 9 lifestyle mall, Fortune Town IT mall, and Rama 9 CBD office towers.', 
-        zh: '步行几分钟即可到达 MRT Phra Ram 9 地铁站、Central Rama 9 购物中心与 Fortune IT 数码城。', 
-        th: 'เดินเพียงไม่กี่นาทีถึงสถานีรถไฟฟ้าใต้ดิน MRT พระราม 9, ห้างเซ็นทรัลพระราม 9 และฟอร์จูนทาวน์' 
+        en: 'Strategic central Bangkok positioning moments from MRT stations, expressways, premier lifestyle shopping malls, and cultural dining hubs.', 
+        zh: '坐拥曼谷核心便捷地段，步行数分钟即达 MRT 地铁站，轻松连接城市高速、大型购物中心与特色美食商圈。', 
+        th: 'ทำเลศักยภาพใจกลางเมือง เดินทางสะดวกใกล้สถานีรถไฟฟ้าใต้ดิน MRT ทางด่วน ห้างสรรพสินค้าชั้นนำ และย่านอาหารยอดนิยม' 
       },
       icon: FilledTrain,
     },
@@ -281,18 +364,6 @@ export const AmenitiesSection: React.FC = () => {
         th: 'อาคารจอดรถในร่มปลอดภัยจากสภาพอากาศ พร้อมจุดชาร์จรถยนต์ไฟฟ้าสำหรับผู้พักอาศัย' 
       },
       icon: FilledCar,
-    },
-    {
-      id: 'detail-sky-facilities',
-      category: 'building',
-      categoryLabel: { en: 'Building', zh: '公共设施', th: 'ส่วนกลางอาคาร' },
-      title: { en: 'Sky Infinity Pool & Fitness Complex', zh: '云端无边泳池与全景健身会所', th: 'สระว่ายน้ำลอยฟ้าและฟิตเนสครบวงจร' },
-      desc: { 
-        en: 'Panoramic outdoor swimming pool, sunset loungers, state-of-the-art strength & cardio center, and high-altitude yoga studio located on the 40th floor.', 
-        zh: '40层高空无边际泳池、落日日光躺椅、高端力量与有氧健身中心及全景瑜伽拉伸馆。', 
-        th: 'สระว่ายน้ำลอยฟ้าชมพระอาทิตย์ตก ฟิตเนสสตูดิโอพร้อมอุปกรณ์ครบครัน และห้องโยคะวิวเมืองบนชั้น 40' 
-      },
-      icon: FilledPool,
     },
   ];
 
@@ -336,10 +407,10 @@ export const AmenitiesSection: React.FC = () => {
         </h2>
         <p className="text-[#5E574E] text-sm sm:text-base mt-2.5 sm:mt-3 leading-relaxed max-w-2xl mx-auto">
           {language === 'zh'
-            ? '无论是在40层云端眺望曼谷天际线的无边际泳池，还是套内贴心配备的居家办公空间，每一处细节皆为您精心准备。'
+            ? '无论是在云端眺望曼谷天际线的无边际泳池，还是套内贴心配备的居家办公空间，每一处细节皆为您精心准备。'
             : language === 'th'
             ? 'สัมผัสสิ่งอำนวยความสะดวกครบครัน ทั้งสระว่ายน้ำลอยฟ้า ฟิตเนส สกายเลานจ์ และความสะดวกสบายระดับพรีเมียมภายในที่พัก'
-            : 'From panoramic sky facilities perched high above Rama 9 to meticulously appointed in-residence comforts, discover everything provided for your stay.'}
+            : 'From panoramic sky facilities perched high above the city to meticulously appointed in-residence comforts, discover everything provided for your stay.'}
         </p>
       </div>
 
